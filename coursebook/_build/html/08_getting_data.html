@@ -1,0 +1,3443 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Collecting data &#8212; Scientific Computing and Digital Reporting with Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '08_getting_data';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Graphics" href="04_graphics.html" />
+    <link rel="prev" title="Working with Data" href="03_data.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="00_welcome.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/course_logo.png" class="logo__image only-light" alt="Scientific Computing and Digital Reporting with Python - Home"/>
+    <script>document.write(`<img src="_static/course_logo.png" class="logo__image only-dark" alt="Scientific Computing and Digital Reporting with Python - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00_welcome.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_python_basics.html">How to use and install python</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="02_sc_with_numpy.html">Scientific computing with numpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_data.html">Working with Data</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Collecting data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_graphics.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_sc_with_scipy.html">Scientific computing with scipy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_sklearn.html">SciKit Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_torch.html">Pytorch</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="09_digital_reporting.html">Digital reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="A_math_statistics.html">Appendix - Math and statistics</a></li>
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/08_getting_data.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Collecting data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#yahoo-finance">Yahoo finance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-apis">Working with APIs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#end-of-day-historical-data-api">End of day historical data API</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edgar-api">EDGAR API</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scraping">Scraping</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import necessary packages</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">yfinance</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">yf</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pylab</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scrapy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Selector</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="collecting-data">
+<h1>Collecting data<a class="headerlink" href="#collecting-data" title="Link to this heading">#</a></h1>
+<p>One crucial aspect for your analysis is to collect data you desire. Different options exist for this purpose in python, however, the majority of data access is based on APIs which stands for Application Programming Interface. Loosely speaking an API is a set of rules and protocols how to interact with other systems. For instance, a programmer which develops a restaurant app may want to include Google Maps services in her app to enable customers route searches to restaurants. She can achieve this by using the Google Maps API which allows her to include these functions in her app. Personally, I like to think about APIs as the menu in a restaurant. It enables me to name what I want to eat and the kitchen to tell me what is available and under which name I need to order it.</p>
+<p>We are dominantly interested in data based APIs, where we do not use external applications or services, however, we want to access data which is provided by a data provider. The API tells us what how we can access the data on the server.</p>
+<p>Before we take a look at the usage of APIs, we start with a python package which takes care of the API access in the background and, thus, is more user friendly (especially for beginners).</p>
+<section id="yahoo-finance">
+<h2>Yahoo finance<a class="headerlink" href="#yahoo-finance" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://finance.yahoo.com/">Yahoo finance</a> is a web page which provides financial news, data, commentary and much more. It is addressed to retail traders and, thus, a popular source for individuals with interests in financial markets. Its data can be accessed with a cost free API and several python programmes did develop packages which enables easy to use access for it. One package which stands out as the most active and reliable, is the <a class="reference external" href="https://pypi.org/project/yfinance/">yfinance</a>. In order to access data for a company, one must need to know its ticker or symbol, respectively. This is an abbreviation under which a company’s stocks are traded on stock exchanges. The easiest way to find the ticker, you go to <a class="reference external" href="https://finance.yahoo.com/">https://finance.yahoo.com/</a> and search for the company by its name in the search bar. Once you start typing you will see the name of the company and its ticker to the left. If you follow the search, you will land at the company’s site on yahoo finance and find the ticker in brackets next to the company name. To retrieve data with the yfinance package, initiate a <code class="docutils literal notranslate"><span class="pre">Ticker</span></code> instance with the ticker. Below, you can see all attributes and methods for this instance. While some or not fully implemented or may not work for every ticker, there are a lot of interesting and different data sources. Let us take a look at some examples.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ticker</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">Ticker</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
+<span class="n">attributes_and_methods</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">ticker</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">))]</span>
+<span class="n">attributes_and_methods</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;actions&#39;,
+ &#39;analyst_price_targets&#39;,
+ &#39;balance_sheet&#39;,
+ &#39;balancesheet&#39;,
+ &#39;basic_info&#39;,
+ &#39;calendar&#39;,
+ &#39;capital_gains&#39;,
+ &#39;cash_flow&#39;,
+ &#39;cashflow&#39;,
+ &#39;dividends&#39;,
+ &#39;earnings&#39;,
+ &#39;earnings_dates&#39;,
+ &#39;earnings_estimate&#39;,
+ &#39;earnings_history&#39;,
+ &#39;eps_revisions&#39;,
+ &#39;eps_trend&#39;,
+ &#39;fast_info&#39;,
+ &#39;financials&#39;,
+ &#39;funds_data&#39;,
+ &#39;get_actions&#39;,
+ &#39;get_analyst_price_targets&#39;,
+ &#39;get_balance_sheet&#39;,
+ &#39;get_balancesheet&#39;,
+ &#39;get_calendar&#39;,
+ &#39;get_capital_gains&#39;,
+ &#39;get_cash_flow&#39;,
+ &#39;get_cashflow&#39;,
+ &#39;get_dividends&#39;,
+ &#39;get_earnings&#39;,
+ &#39;get_earnings_dates&#39;,
+ &#39;get_earnings_estimate&#39;,
+ &#39;get_earnings_history&#39;,
+ &#39;get_eps_revisions&#39;,
+ &#39;get_eps_trend&#39;,
+ &#39;get_fast_info&#39;,
+ &#39;get_financials&#39;,
+ &#39;get_funds_data&#39;,
+ &#39;get_growth_estimates&#39;,
+ &#39;get_history_metadata&#39;,
+ &#39;get_income_stmt&#39;,
+ &#39;get_incomestmt&#39;,
+ &#39;get_info&#39;,
+ &#39;get_insider_purchases&#39;,
+ &#39;get_insider_roster_holders&#39;,
+ &#39;get_insider_transactions&#39;,
+ &#39;get_institutional_holders&#39;,
+ &#39;get_isin&#39;,
+ &#39;get_major_holders&#39;,
+ &#39;get_mutualfund_holders&#39;,
+ &#39;get_news&#39;,
+ &#39;get_recommendations&#39;,
+ &#39;get_recommendations_summary&#39;,
+ &#39;get_revenue_estimate&#39;,
+ &#39;get_sec_filings&#39;,
+ &#39;get_shares&#39;,
+ &#39;get_shares_full&#39;,
+ &#39;get_splits&#39;,
+ &#39;get_sustainability&#39;,
+ &#39;get_upgrades_downgrades&#39;,
+ &#39;growth_estimates&#39;,
+ &#39;history&#39;,
+ &#39;history_metadata&#39;,
+ &#39;income_stmt&#39;,
+ &#39;incomestmt&#39;,
+ &#39;info&#39;,
+ &#39;insider_purchases&#39;,
+ &#39;insider_roster_holders&#39;,
+ &#39;insider_transactions&#39;,
+ &#39;institutional_holders&#39;,
+ &#39;isin&#39;,
+ &#39;major_holders&#39;,
+ &#39;mutualfund_holders&#39;,
+ &#39;news&#39;,
+ &#39;option_chain&#39;,
+ &#39;options&#39;,
+ &#39;proxy&#39;,
+ &#39;quarterly_balance_sheet&#39;,
+ &#39;quarterly_balancesheet&#39;,
+ &#39;quarterly_cash_flow&#39;,
+ &#39;quarterly_cashflow&#39;,
+ &#39;quarterly_earnings&#39;,
+ &#39;quarterly_financials&#39;,
+ &#39;quarterly_income_stmt&#39;,
+ &#39;quarterly_incomestmt&#39;,
+ &#39;recommendations&#39;,
+ &#39;recommendations_summary&#39;,
+ &#39;revenue_estimate&#39;,
+ &#39;sec_filings&#39;,
+ &#39;session&#39;,
+ &#39;shares&#39;,
+ &#39;splits&#39;,
+ &#39;sustainability&#39;,
+ &#39;ticker&#39;,
+ &#39;ttm_cash_flow&#39;,
+ &#39;ttm_cashflow&#39;,
+ &#39;ttm_financials&#39;,
+ &#39;ttm_income_stmt&#39;,
+ &#39;ttm_incomestmt&#39;,
+ &#39;upgrades_downgrades&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Likely, the most popular choice, to fetch historical price data use the history method. Its most important arguments are:</p>
+<ul class="simple">
+<li><p>start: start date in yyyy-mm-dd or datetime format</p></li>
+<li><p>end: end date in yyyy-mm-dd or datetime format</p></li>
+<li><p>period: data period to download, can be used as an alternative to start and end 1d, 5d, 1mo, 3mo, 6mo, 1y, 2y, 5y, 10y, ytd, max</p></li>
+<li><p>interval: frequency of the data 1m, 2m, 5m, 15m, 30m, 60m, 90m, 1h, 1d, 5d, 1wk, 1mo, 3mo</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start_day</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ticker</span><span class="o">.</span><span class="n">history</span><span class="p">(</span><span class="n">start</span> <span class="o">=</span> <span class="n">start_day</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Open</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Close</th>
+      <th>Volume</th>
+      <th>Dividends</th>
+      <th>Stock Splits</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2025-04-14 00:00:00-04:00</th>
+      <td>211.440002</td>
+      <td>212.940002</td>
+      <td>201.160004</td>
+      <td>202.520004</td>
+      <td>101352900</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2025-04-15 00:00:00-04:00</th>
+      <td>201.860001</td>
+      <td>203.509995</td>
+      <td>199.800003</td>
+      <td>202.139999</td>
+      <td>51343900</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2025-04-16 00:00:00-04:00</th>
+      <td>198.360001</td>
+      <td>200.699997</td>
+      <td>192.369995</td>
+      <td>194.270004</td>
+      <td>59732400</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2025-04-17 00:00:00-04:00</th>
+      <td>197.199997</td>
+      <td>198.830002</td>
+      <td>194.419998</td>
+      <td>196.979996</td>
+      <td>51334300</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2025-04-21 00:00:00-04:00</th>
+      <td>193.270004</td>
+      <td>193.800003</td>
+      <td>189.809998</td>
+      <td>193.160004</td>
+      <td>46663300</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>To collect general information about the company. Note, this output is given in json format which we are going to discuss later in the course.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ticker</span><span class="o">.</span><span class="n">get_info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;address1&#39;: &#39;One Apple Park Way&#39;,
+ &#39;city&#39;: &#39;Cupertino&#39;,
+ &#39;state&#39;: &#39;CA&#39;,
+ &#39;zip&#39;: &#39;95014&#39;,
+ &#39;country&#39;: &#39;United States&#39;,
+ &#39;phone&#39;: &#39;(408) 996-1010&#39;,
+ &#39;website&#39;: &#39;https://www.apple.com&#39;,
+ &#39;industry&#39;: &#39;Consumer Electronics&#39;,
+ &#39;industryKey&#39;: &#39;consumer-electronics&#39;,
+ &#39;industryDisp&#39;: &#39;Consumer Electronics&#39;,
+ &#39;sector&#39;: &#39;Technology&#39;,
+ &#39;sectorKey&#39;: &#39;technology&#39;,
+ &#39;sectorDisp&#39;: &#39;Technology&#39;,
+ &#39;longBusinessSummary&#39;: &#39;Apple Inc. designs, manufactures, and markets smartphones, personal computers, tablets, wearables, and accessories worldwide. The company offers iPhone, a line of smartphones; Mac, a line of personal computers; iPad, a line of multi-purpose tablets; and wearables, home, and accessories comprising AirPods, Apple TV, Apple Watch, Beats products, and HomePod. It also provides AppleCare support and cloud services; and operates various platforms, including the App Store that allow customers to discover and download applications and digital content, such as books, music, video, games, and podcasts, as well as advertising services include third-party licensing arrangements and its own advertising platforms. In addition, the company offers various subscription-based services, such as Apple Arcade, a game subscription service; Apple Fitness+, a personalized fitness service; Apple Music, which offers users a curated listening experience with on-demand radio stations; Apple News+, a subscription news and magazine service; Apple TV+, which offers exclusive original content; Apple Card, a co-branded credit card; and Apple Pay, a cashless payment service, as well as licenses its intellectual property. The company serves consumers, and small and mid-sized businesses; and the education, enterprise, and government markets. It distributes third-party applications for its products through the App Store. The company also sells its products through its retail and online stores, and direct sales force; and third-party cellular network carriers, wholesalers, retailers, and resellers. Apple Inc. was founded in 1976 and is headquartered in Cupertino, California.&#39;,
+ &#39;fullTimeEmployees&#39;: 150000,
+ &#39;companyOfficers&#39;: [{&#39;maxAge&#39;: 1,
+   &#39;name&#39;: &#39;Mr. Timothy D. Cook&#39;,
+   &#39;age&#39;: 63,
+   &#39;title&#39;: &#39;CEO &amp; Director&#39;,
+   &#39;yearBorn&#39;: 1961,
+   &#39;fiscalYear&#39;: 2023,
+   &#39;totalPay&#39;: 16239562,
+   &#39;exercisedValue&#39;: 0,
+   &#39;unexercisedValue&#39;: 0},
+  {&#39;maxAge&#39;: 1,
+   &#39;name&#39;: &#39;Mr. Jeffrey E. Williams&#39;,
+   &#39;age&#39;: 60,
+   &#39;title&#39;: &#39;Chief Operating Officer&#39;,
+   &#39;yearBorn&#39;: 1964,
+   &#39;fiscalYear&#39;: 2023,
+   &#39;totalPay&#39;: 4637585,
+   &#39;exercisedValue&#39;: 0,
+   &#39;unexercisedValue&#39;: 0},
+  {&#39;maxAge&#39;: 1,
+   &#39;name&#39;: &#39;Ms. Katherine L. Adams&#39;,
+   &#39;age&#39;: 60,
+   &#39;title&#39;: &#39;Senior VP, General Counsel &amp; Secretary&#39;,
+   &#39;yearBorn&#39;: 1964,
+   &#39;fiscalYear&#39;: 2023,
+   &#39;totalPay&#39;: 4618064,
+   &#39;exercisedValue&#39;: 0,
+   &#39;unexercisedValue&#39;: 0},
+  {&#39;maxAge&#39;: 1,
+   &#39;name&#39;: &quot;Ms. Deirdre  O&#39;Brien&quot;,
+   &#39;age&#39;: 57,
+   &#39;title&#39;: &#39;Chief People Officer &amp; Senior VP of Retail&#39;,
+   &#39;yearBorn&#39;: 1967,
+   &#39;fiscalYear&#39;: 2023,
+   &#39;totalPay&#39;: 4613369,
+   &#39;exercisedValue&#39;: 0,
+   &#39;unexercisedValue&#39;: 0},
+  {&#39;maxAge&#39;: 1,
+   &#39;name&#39;: &#39;Mr. Kevan  Parekh&#39;,
+   &#39;age&#39;: 52,
+   &#39;title&#39;: &#39;Senior VP &amp; CFO&#39;,
+   &#39;yearBorn&#39;: 1972,
+   &#39;fiscalYear&#39;: 2023,
+   &#39;exercisedValue&#39;: 0,
+   &#39;unexercisedValue&#39;: 0},
+  {&#39;maxAge&#39;: 1,
+   &#39;name&#39;: &#39;Mr. Chris  Kondo&#39;,
+   &#39;title&#39;: &#39;Senior Director of Corporate Accounting&#39;,
+   &#39;fiscalYear&#39;: 2023,
+   &#39;exercisedValue&#39;: 0,
+   &#39;unexercisedValue&#39;: 0},
+  {&#39;maxAge&#39;: 1,
+   &#39;name&#39;: &#39;Suhasini  Chandramouli&#39;,
+   &#39;title&#39;: &#39;Director of Investor Relations&#39;,
+   &#39;fiscalYear&#39;: 2023,
+   &#39;exercisedValue&#39;: 0,
+   &#39;unexercisedValue&#39;: 0},
+  {&#39;maxAge&#39;: 1,
+   &#39;name&#39;: &#39;Ms. Kristin Huguet Quayle&#39;,
+   &#39;title&#39;: &#39;Vice President of Worldwide Communications&#39;,
+   &#39;fiscalYear&#39;: 2023,
+   &#39;exercisedValue&#39;: 0,
+   &#39;unexercisedValue&#39;: 0},
+  {&#39;maxAge&#39;: 1,
+   &#39;name&#39;: &#39;Mr. Greg  Joswiak&#39;,
+   &#39;title&#39;: &#39;Senior Vice President of Worldwide Marketing&#39;,
+   &#39;fiscalYear&#39;: 2023,
+   &#39;exercisedValue&#39;: 0,
+   &#39;unexercisedValue&#39;: 0},
+  {&#39;maxAge&#39;: 1,
+   &#39;name&#39;: &#39;Mr. Adrian  Perica&#39;,
+   &#39;age&#39;: 50,
+   &#39;title&#39;: &#39;Vice President of Corporate Development&#39;,
+   &#39;yearBorn&#39;: 1974,
+   &#39;fiscalYear&#39;: 2023,
+   &#39;exercisedValue&#39;: 0,
+   &#39;unexercisedValue&#39;: 0}],
+ &#39;auditRisk&#39;: 7,
+ &#39;boardRisk&#39;: 1,
+ &#39;compensationRisk&#39;: 3,
+ &#39;shareHolderRightsRisk&#39;: 1,
+ &#39;overallRisk&#39;: 1,
+ &#39;governanceEpochDate&#39;: 1743465600,
+ &#39;compensationAsOfEpochDate&#39;: 1703980800,
+ &#39;irWebsite&#39;: &#39;http://investor.apple.com/&#39;,
+ &#39;executiveTeam&#39;: [],
+ &#39;maxAge&#39;: 86400,
+ &#39;priceHint&#39;: 2,
+ &#39;previousClose&#39;: 196.98,
+ &#39;open&#39;: 193.265,
+ &#39;dayLow&#39;: 189.8112,
+ &#39;dayHigh&#39;: 193.8,
+ &#39;regularMarketPreviousClose&#39;: 196.98,
+ &#39;regularMarketOpen&#39;: 193.265,
+ &#39;regularMarketDayLow&#39;: 189.8112,
+ &#39;regularMarketDayHigh&#39;: 193.8,
+ &#39;dividendRate&#39;: 1.0,
+ &#39;dividendYield&#39;: 0.52,
+ &#39;exDividendDate&#39;: 1739145600,
+ &#39;payoutRatio&#39;: 0.1571,
+ &#39;fiveYearAvgDividendYield&#39;: 0.57,
+ &#39;beta&#39;: 1.259,
+ &#39;trailingPE&#39;: 30.660316,
+ &#39;forwardPE&#39;: 23.244284,
+ &#39;volume&#39;: 46628147,
+ &#39;regularMarketVolume&#39;: 46628147,
+ &#39;averageVolume&#39;: 61513900,
+ &#39;averageVolume10days&#39;: 98546440,
+ &#39;averageDailyVolume10Day&#39;: 98546440,
+ &#39;bid&#39;: 193.03,
+ &#39;ask&#39;: 202.85,
+ &#39;bidSize&#39;: 1,
+ &#39;askSize&#39;: 1,
+ &#39;marketCap&#39;: 2959056568320,
+ &#39;fiftyTwoWeekLow&#39;: 164.92,
+ &#39;fiftyTwoWeekHigh&#39;: 260.1,
+ &#39;priceToSalesTrailing12Months&#39;: 7.4768963,
+ &#39;fiftyDayAverage&#39;: 221.0208,
+ &#39;twoHundredDayAverage&#39;: 228.03955,
+ &#39;trailingAnnualDividendRate&#39;: 0.99,
+ &#39;trailingAnnualDividendYield&#39;: 0.005025891,
+ &#39;currency&#39;: &#39;USD&#39;,
+ &#39;tradeable&#39;: False,
+ &#39;enterpriseValue&#39;: 2944687669248,
+ &#39;profitMargins&#39;: 0.24295,
+ &#39;floatShares&#39;: 14998037683,
+ &#39;sharesOutstanding&#39;: 15022100480,
+ &#39;sharesShort&#39;: 112333139,
+ &#39;sharesShortPriorMonth&#39;: 134441154,
+ &#39;sharesShortPreviousMonthDate&#39;: 1740700800,
+ &#39;dateShortInterest&#39;: 1743379200,
+ &#39;sharesPercentSharesOut&#39;: 0.0075,
+ &#39;heldPercentInsiders&#39;: 0.02073,
+ &#39;heldPercentInstitutions&#39;: 0.62975,
+ &#39;shortRatio&#39;: 2.11,
+ &#39;shortPercentOfFloat&#39;: 0.0075,
+ &#39;impliedSharesOutstanding&#39;: 15319199744,
+ &#39;bookValue&#39;: 4.438,
+ &#39;priceToBook&#39;: 43.52411,
+ &#39;lastFiscalYearEnd&#39;: 1727481600,
+ &#39;nextFiscalYearEnd&#39;: 1759017600,
+ &#39;mostRecentQuarter&#39;: 1735344000,
+ &#39;earningsQuarterlyGrowth&#39;: 0.071,
+ &#39;netIncomeToCommon&#39;: 96150003712,
+ &#39;trailingEps&#39;: 6.3,
+ &#39;forwardEps&#39;: 8.31,
+ &#39;lastSplitFactor&#39;: &#39;4:1&#39;,
+ &#39;lastSplitDate&#39;: 1598832000,
+ &#39;enterpriseToRevenue&#39;: 7.441,
+ &#39;enterpriseToEbitda&#39;: 21.439,
+ &#39;52WeekChange&#39;: 0.15733969,
+ &#39;SandP52WeekChange&#39;: 0.017286062,
+ &#39;lastDividendValue&#39;: 0.25,
+ &#39;lastDividendDate&#39;: 1739145600,
+ &#39;quoteType&#39;: &#39;EQUITY&#39;,
+ &#39;currentPrice&#39;: 193.16,
+ &#39;targetHighPrice&#39;: 300.0,
+ &#39;targetLowPrice&#39;: 165.0,
+ &#39;targetMeanPrice&#39;: 237.87096,
+ &#39;targetMedianPrice&#39;: 245.0,
+ &#39;recommendationMean&#39;: 1.97872,
+ &#39;recommendationKey&#39;: &#39;buy&#39;,
+ &#39;numberOfAnalystOpinions&#39;: 42,
+ &#39;totalCash&#39;: 53774999552,
+ &#39;totalCashPerShare&#39;: 3.58,
+ &#39;ebitda&#39;: 137352003584,
+ &#39;totalDebt&#39;: 96798998528,
+ &#39;quickRatio&#39;: 0.783,
+ &#39;currentRatio&#39;: 0.923,
+ &#39;totalRevenue&#39;: 395760009216,
+ &#39;debtToEquity&#39;: 145.0,
+ &#39;revenuePerShare&#39;: 25.974,
+ &#39;returnOnAssets&#39;: 0.22518998,
+ &#39;returnOnEquity&#39;: 1.3652,
+ &#39;grossProfits&#39;: 184102993920,
+ &#39;freeCashflow&#39;: 93833871360,
+ &#39;operatingCashflow&#39;: 108293996544,
+ &#39;earningsGrowth&#39;: 0.101,
+ &#39;revenueGrowth&#39;: 0.04,
+ &#39;grossMargins&#39;: 0.46519002,
+ &#39;ebitdaMargins&#39;: 0.34706002,
+ &#39;operatingMargins&#39;: 0.34459,
+ &#39;financialCurrency&#39;: &#39;USD&#39;,
+ &#39;symbol&#39;: &#39;AAPL&#39;,
+ &#39;language&#39;: &#39;en-US&#39;,
+ &#39;region&#39;: &#39;US&#39;,
+ &#39;typeDisp&#39;: &#39;Equity&#39;,
+ &#39;quoteSourceName&#39;: &#39;Nasdaq Real Time Price&#39;,
+ &#39;triggerable&#39;: True,
+ &#39;customPriceAlertConfidence&#39;: &#39;HIGH&#39;,
+ &#39;regularMarketChangePercent&#39;: -1.9392792,
+ &#39;regularMarketPrice&#39;: 193.16,
+ &#39;exchange&#39;: &#39;NMS&#39;,
+ &#39;messageBoardId&#39;: &#39;finmb_24937&#39;,
+ &#39;exchangeTimezoneName&#39;: &#39;America/New_York&#39;,
+ &#39;exchangeTimezoneShortName&#39;: &#39;EDT&#39;,
+ &#39;gmtOffSetMilliseconds&#39;: -14400000,
+ &#39;market&#39;: &#39;us_market&#39;,
+ &#39;esgPopulated&#39;: False,
+ &#39;shortName&#39;: &#39;Apple Inc.&#39;,
+ &#39;longName&#39;: &#39;Apple Inc.&#39;,
+ &#39;marketState&#39;: &#39;PRE&#39;,
+ &#39;hasPrePostMarketData&#39;: True,
+ &#39;earningsCallTimestampStart&#39;: 1746133200,
+ &#39;earningsCallTimestampEnd&#39;: 1746133200,
+ &#39;isEarningsDateEstimate&#39;: False,
+ &#39;epsTrailingTwelveMonths&#39;: 6.3,
+ &#39;epsForward&#39;: 8.31,
+ &#39;epsCurrentYear&#39;: 7.25482,
+ &#39;priceEpsCurrentYear&#39;: 26.62506,
+ &#39;fiftyDayAverageChange&#39;: -27.860794,
+ &#39;fiftyDayAverageChangePercent&#39;: -0.12605508,
+ &#39;twoHundredDayAverageChange&#39;: -34.879547,
+ &#39;twoHundredDayAverageChangePercent&#39;: -0.15295394,
+ &#39;sourceInterval&#39;: 15,
+ &#39;exchangeDataDelayedBy&#39;: 0,
+ &#39;averageAnalystRating&#39;: &#39;2.0 - Buy&#39;,
+ &#39;cryptoTradeable&#39;: False,
+ &#39;corporateActions&#39;: [],
+ &#39;preMarketTime&#39;: 1745316951,
+ &#39;regularMarketTime&#39;: 1745265602,
+ &#39;firstTradeDateMilliseconds&#39;: 345479400000,
+ &#39;preMarketChange&#39;: 1.8600006,
+ &#39;preMarketChangePercent&#39;: 0.9629326,
+ &#39;preMarketPrice&#39;: 195.02,
+ &#39;regularMarketChange&#39;: -3.819992,
+ &#39;regularMarketDayRange&#39;: &#39;189.8112 - 193.8&#39;,
+ &#39;fullExchangeName&#39;: &#39;NasdaqGS&#39;,
+ &#39;averageDailyVolume3Month&#39;: 61513900,
+ &#39;fiftyTwoWeekLowChange&#39;: 28.240005,
+ &#39;fiftyTwoWeekLowChangePercent&#39;: 0.17123458,
+ &#39;fiftyTwoWeekRange&#39;: &#39;164.92 - 260.1&#39;,
+ &#39;fiftyTwoWeekHighChange&#39;: -66.94,
+ &#39;fiftyTwoWeekHighChangePercent&#39;: -0.25736254,
+ &#39;fiftyTwoWeekChangePercent&#39;: 15.733969,
+ &#39;dividendDate&#39;: 1739404800,
+ &#39;earningsTimestamp&#39;: 1746129600,
+ &#39;earningsTimestampStart&#39;: 1746129600,
+ &#39;earningsTimestampEnd&#39;: 1746129600,
+ &#39;displayName&#39;: &#39;Apple&#39;,
+ &#39;trailingPegRatio&#39;: 1.8958}
+</pre></div>
+</div>
+</div>
+</div>
+<p>To collect the most recent balance sheet information.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ticker</span><span class="o">.</span><span class="n">get_balance_sheet</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>2024-09-30</th>
+      <th>2023-09-30</th>
+      <th>2022-09-30</th>
+      <th>2021-09-30</th>
+      <th>2020-09-30</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>TreasurySharesNumber</th>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>OrdinarySharesNumber</th>
+      <td>15116786000.0</td>
+      <td>15550061000.0</td>
+      <td>15943425000.0</td>
+      <td>16426786000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>ShareIssued</th>
+      <td>15116786000.0</td>
+      <td>15550061000.0</td>
+      <td>15943425000.0</td>
+      <td>16426786000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>NetDebt</th>
+      <td>76686000000.0</td>
+      <td>81123000000.0</td>
+      <td>96423000000.0</td>
+      <td>89779000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>TotalDebt</th>
+      <td>106629000000.0</td>
+      <td>111088000000.0</td>
+      <td>132480000000.0</td>
+      <td>136522000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>CashCashEquivalentsAndShortTermInvestments</th>
+      <td>65171000000.0</td>
+      <td>61555000000.0</td>
+      <td>48304000000.0</td>
+      <td>62639000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>OtherShortTermInvestments</th>
+      <td>35228000000.0</td>
+      <td>31590000000.0</td>
+      <td>24658000000.0</td>
+      <td>27699000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>CashAndCashEquivalents</th>
+      <td>29943000000.0</td>
+      <td>29965000000.0</td>
+      <td>23646000000.0</td>
+      <td>34940000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>CashEquivalents</th>
+      <td>2744000000.0</td>
+      <td>1606000000.0</td>
+      <td>5100000000.0</td>
+      <td>17635000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>CashFinancial</th>
+      <td>27199000000.0</td>
+      <td>28359000000.0</td>
+      <td>18546000000.0</td>
+      <td>17305000000.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>68 rows × 5 columns</p>
+</div></div></div>
+</div>
+<p>To collect the most recent financials.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ticker</span><span class="o">.</span><span class="n">get_financials</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>2024-09-30</th>
+      <th>2023-09-30</th>
+      <th>2022-09-30</th>
+      <th>2021-09-30</th>
+      <th>2020-09-30</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>TaxEffectOfUnusualItems</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>TaxRateForCalcs</th>
+      <td>0.241</td>
+      <td>0.147</td>
+      <td>0.162</td>
+      <td>0.133</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>NormalizedEBITDA</th>
+      <td>134661000000.0</td>
+      <td>125820000000.0</td>
+      <td>130541000000.0</td>
+      <td>123136000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>NetIncomeFromContinuingOperationNetMinorityInterest</th>
+      <td>93736000000.0</td>
+      <td>96995000000.0</td>
+      <td>99803000000.0</td>
+      <td>94680000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>ReconciledDepreciation</th>
+      <td>11445000000.0</td>
+      <td>11519000000.0</td>
+      <td>11104000000.0</td>
+      <td>11284000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>ReconciledCostOfRevenue</th>
+      <td>210352000000.0</td>
+      <td>214137000000.0</td>
+      <td>223546000000.0</td>
+      <td>212981000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>EBITDA</th>
+      <td>134661000000.0</td>
+      <td>125820000000.0</td>
+      <td>130541000000.0</td>
+      <td>123136000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>EBIT</th>
+      <td>123216000000.0</td>
+      <td>114301000000.0</td>
+      <td>119437000000.0</td>
+      <td>111852000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>NetInterestIncome</th>
+      <td>NaN</td>
+      <td>-183000000.0</td>
+      <td>-106000000.0</td>
+      <td>198000000.0</td>
+      <td>890000000.0</td>
+    </tr>
+    <tr>
+      <th>InterestExpense</th>
+      <td>NaN</td>
+      <td>3933000000.0</td>
+      <td>2931000000.0</td>
+      <td>2645000000.0</td>
+      <td>2873000000.0</td>
+    </tr>
+    <tr>
+      <th>InterestIncome</th>
+      <td>NaN</td>
+      <td>3750000000.0</td>
+      <td>2825000000.0</td>
+      <td>2843000000.0</td>
+      <td>3763000000.0</td>
+    </tr>
+    <tr>
+      <th>NormalizedIncome</th>
+      <td>93736000000.0</td>
+      <td>96995000000.0</td>
+      <td>99803000000.0</td>
+      <td>94680000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>NetIncomeFromContinuingAndDiscontinuedOperation</th>
+      <td>93736000000.0</td>
+      <td>96995000000.0</td>
+      <td>99803000000.0</td>
+      <td>94680000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>TotalExpenses</th>
+      <td>267819000000.0</td>
+      <td>268984000000.0</td>
+      <td>274891000000.0</td>
+      <td>256868000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>TotalOperatingIncomeAsReported</th>
+      <td>123216000000.0</td>
+      <td>114301000000.0</td>
+      <td>119437000000.0</td>
+      <td>108949000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>DilutedAverageShares</th>
+      <td>15408095000.0</td>
+      <td>15812547000.0</td>
+      <td>16325819000.0</td>
+      <td>16864919000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>BasicAverageShares</th>
+      <td>15343783000.0</td>
+      <td>15744231000.0</td>
+      <td>16215963000.0</td>
+      <td>16701272000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>DilutedEPS</th>
+      <td>6.08</td>
+      <td>6.13</td>
+      <td>6.11</td>
+      <td>5.61</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>BasicEPS</th>
+      <td>6.11</td>
+      <td>6.16</td>
+      <td>6.15</td>
+      <td>5.67</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>DilutedNIAvailtoComStockholders</th>
+      <td>93736000000.0</td>
+      <td>96995000000.0</td>
+      <td>99803000000.0</td>
+      <td>94680000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>NetIncomeCommonStockholders</th>
+      <td>93736000000.0</td>
+      <td>96995000000.0</td>
+      <td>99803000000.0</td>
+      <td>94680000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>NetIncome</th>
+      <td>93736000000.0</td>
+      <td>96995000000.0</td>
+      <td>99803000000.0</td>
+      <td>94680000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>NetIncomeIncludingNoncontrollingInterests</th>
+      <td>93736000000.0</td>
+      <td>96995000000.0</td>
+      <td>99803000000.0</td>
+      <td>94680000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>NetIncomeContinuousOperations</th>
+      <td>93736000000.0</td>
+      <td>96995000000.0</td>
+      <td>99803000000.0</td>
+      <td>94680000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>TaxProvision</th>
+      <td>29749000000.0</td>
+      <td>16741000000.0</td>
+      <td>19300000000.0</td>
+      <td>14527000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>PretaxIncome</th>
+      <td>123485000000.0</td>
+      <td>113736000000.0</td>
+      <td>119103000000.0</td>
+      <td>109207000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>OtherIncomeExpense</th>
+      <td>269000000.0</td>
+      <td>-565000000.0</td>
+      <td>-334000000.0</td>
+      <td>60000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>OtherNonOperatingIncomeExpenses</th>
+      <td>269000000.0</td>
+      <td>-565000000.0</td>
+      <td>-334000000.0</td>
+      <td>60000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>NetNonOperatingInterestIncomeExpense</th>
+      <td>NaN</td>
+      <td>-183000000.0</td>
+      <td>-106000000.0</td>
+      <td>198000000.0</td>
+      <td>890000000.0</td>
+    </tr>
+    <tr>
+      <th>InterestExpenseNonOperating</th>
+      <td>NaN</td>
+      <td>3933000000.0</td>
+      <td>2931000000.0</td>
+      <td>2645000000.0</td>
+      <td>2873000000.0</td>
+    </tr>
+    <tr>
+      <th>InterestIncomeNonOperating</th>
+      <td>NaN</td>
+      <td>3750000000.0</td>
+      <td>2825000000.0</td>
+      <td>2843000000.0</td>
+      <td>3763000000.0</td>
+    </tr>
+    <tr>
+      <th>OperatingIncome</th>
+      <td>123216000000.0</td>
+      <td>114301000000.0</td>
+      <td>119437000000.0</td>
+      <td>108949000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>OperatingExpense</th>
+      <td>57467000000.0</td>
+      <td>54847000000.0</td>
+      <td>51345000000.0</td>
+      <td>43887000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>ResearchAndDevelopment</th>
+      <td>31370000000.0</td>
+      <td>29915000000.0</td>
+      <td>26251000000.0</td>
+      <td>21914000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>SellingGeneralAndAdministration</th>
+      <td>26097000000.0</td>
+      <td>24932000000.0</td>
+      <td>25094000000.0</td>
+      <td>21973000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>GrossProfit</th>
+      <td>180683000000.0</td>
+      <td>169148000000.0</td>
+      <td>170782000000.0</td>
+      <td>152836000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>CostOfRevenue</th>
+      <td>210352000000.0</td>
+      <td>214137000000.0</td>
+      <td>223546000000.0</td>
+      <td>212981000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>TotalRevenue</th>
+      <td>391035000000.0</td>
+      <td>383285000000.0</td>
+      <td>394328000000.0</td>
+      <td>365817000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>OperatingRevenue</th>
+      <td>391035000000.0</td>
+      <td>383285000000.0</td>
+      <td>394328000000.0</td>
+      <td>365817000000.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>To collect the most recent income statements.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ticker</span><span class="o">.</span><span class="n">get_income_stmt</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>2024-09-30</th>
+      <th>2023-09-30</th>
+      <th>2022-09-30</th>
+      <th>2021-09-30</th>
+      <th>2020-09-30</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>TaxEffectOfUnusualItems</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>TaxRateForCalcs</th>
+      <td>0.241</td>
+      <td>0.147</td>
+      <td>0.162</td>
+      <td>0.133</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>NormalizedEBITDA</th>
+      <td>134661000000.0</td>
+      <td>125820000000.0</td>
+      <td>130541000000.0</td>
+      <td>123136000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>NetIncomeFromContinuingOperationNetMinorityInterest</th>
+      <td>93736000000.0</td>
+      <td>96995000000.0</td>
+      <td>99803000000.0</td>
+      <td>94680000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>ReconciledDepreciation</th>
+      <td>11445000000.0</td>
+      <td>11519000000.0</td>
+      <td>11104000000.0</td>
+      <td>11284000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>ReconciledCostOfRevenue</th>
+      <td>210352000000.0</td>
+      <td>214137000000.0</td>
+      <td>223546000000.0</td>
+      <td>212981000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>EBITDA</th>
+      <td>134661000000.0</td>
+      <td>125820000000.0</td>
+      <td>130541000000.0</td>
+      <td>123136000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>EBIT</th>
+      <td>123216000000.0</td>
+      <td>114301000000.0</td>
+      <td>119437000000.0</td>
+      <td>111852000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>NetInterestIncome</th>
+      <td>NaN</td>
+      <td>-183000000.0</td>
+      <td>-106000000.0</td>
+      <td>198000000.0</td>
+      <td>890000000.0</td>
+    </tr>
+    <tr>
+      <th>InterestExpense</th>
+      <td>NaN</td>
+      <td>3933000000.0</td>
+      <td>2931000000.0</td>
+      <td>2645000000.0</td>
+      <td>2873000000.0</td>
+    </tr>
+    <tr>
+      <th>InterestIncome</th>
+      <td>NaN</td>
+      <td>3750000000.0</td>
+      <td>2825000000.0</td>
+      <td>2843000000.0</td>
+      <td>3763000000.0</td>
+    </tr>
+    <tr>
+      <th>NormalizedIncome</th>
+      <td>93736000000.0</td>
+      <td>96995000000.0</td>
+      <td>99803000000.0</td>
+      <td>94680000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>NetIncomeFromContinuingAndDiscontinuedOperation</th>
+      <td>93736000000.0</td>
+      <td>96995000000.0</td>
+      <td>99803000000.0</td>
+      <td>94680000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>TotalExpenses</th>
+      <td>267819000000.0</td>
+      <td>268984000000.0</td>
+      <td>274891000000.0</td>
+      <td>256868000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>TotalOperatingIncomeAsReported</th>
+      <td>123216000000.0</td>
+      <td>114301000000.0</td>
+      <td>119437000000.0</td>
+      <td>108949000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>DilutedAverageShares</th>
+      <td>15408095000.0</td>
+      <td>15812547000.0</td>
+      <td>16325819000.0</td>
+      <td>16864919000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>BasicAverageShares</th>
+      <td>15343783000.0</td>
+      <td>15744231000.0</td>
+      <td>16215963000.0</td>
+      <td>16701272000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>DilutedEPS</th>
+      <td>6.08</td>
+      <td>6.13</td>
+      <td>6.11</td>
+      <td>5.61</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>BasicEPS</th>
+      <td>6.11</td>
+      <td>6.16</td>
+      <td>6.15</td>
+      <td>5.67</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>DilutedNIAvailtoComStockholders</th>
+      <td>93736000000.0</td>
+      <td>96995000000.0</td>
+      <td>99803000000.0</td>
+      <td>94680000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>NetIncomeCommonStockholders</th>
+      <td>93736000000.0</td>
+      <td>96995000000.0</td>
+      <td>99803000000.0</td>
+      <td>94680000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>NetIncome</th>
+      <td>93736000000.0</td>
+      <td>96995000000.0</td>
+      <td>99803000000.0</td>
+      <td>94680000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>NetIncomeIncludingNoncontrollingInterests</th>
+      <td>93736000000.0</td>
+      <td>96995000000.0</td>
+      <td>99803000000.0</td>
+      <td>94680000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>NetIncomeContinuousOperations</th>
+      <td>93736000000.0</td>
+      <td>96995000000.0</td>
+      <td>99803000000.0</td>
+      <td>94680000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>TaxProvision</th>
+      <td>29749000000.0</td>
+      <td>16741000000.0</td>
+      <td>19300000000.0</td>
+      <td>14527000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>PretaxIncome</th>
+      <td>123485000000.0</td>
+      <td>113736000000.0</td>
+      <td>119103000000.0</td>
+      <td>109207000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>OtherIncomeExpense</th>
+      <td>269000000.0</td>
+      <td>-565000000.0</td>
+      <td>-334000000.0</td>
+      <td>60000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>OtherNonOperatingIncomeExpenses</th>
+      <td>269000000.0</td>
+      <td>-565000000.0</td>
+      <td>-334000000.0</td>
+      <td>60000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>NetNonOperatingInterestIncomeExpense</th>
+      <td>NaN</td>
+      <td>-183000000.0</td>
+      <td>-106000000.0</td>
+      <td>198000000.0</td>
+      <td>890000000.0</td>
+    </tr>
+    <tr>
+      <th>InterestExpenseNonOperating</th>
+      <td>NaN</td>
+      <td>3933000000.0</td>
+      <td>2931000000.0</td>
+      <td>2645000000.0</td>
+      <td>2873000000.0</td>
+    </tr>
+    <tr>
+      <th>InterestIncomeNonOperating</th>
+      <td>NaN</td>
+      <td>3750000000.0</td>
+      <td>2825000000.0</td>
+      <td>2843000000.0</td>
+      <td>3763000000.0</td>
+    </tr>
+    <tr>
+      <th>OperatingIncome</th>
+      <td>123216000000.0</td>
+      <td>114301000000.0</td>
+      <td>119437000000.0</td>
+      <td>108949000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>OperatingExpense</th>
+      <td>57467000000.0</td>
+      <td>54847000000.0</td>
+      <td>51345000000.0</td>
+      <td>43887000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>ResearchAndDevelopment</th>
+      <td>31370000000.0</td>
+      <td>29915000000.0</td>
+      <td>26251000000.0</td>
+      <td>21914000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>SellingGeneralAndAdministration</th>
+      <td>26097000000.0</td>
+      <td>24932000000.0</td>
+      <td>25094000000.0</td>
+      <td>21973000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>GrossProfit</th>
+      <td>180683000000.0</td>
+      <td>169148000000.0</td>
+      <td>170782000000.0</td>
+      <td>152836000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>CostOfRevenue</th>
+      <td>210352000000.0</td>
+      <td>214137000000.0</td>
+      <td>223546000000.0</td>
+      <td>212981000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>TotalRevenue</th>
+      <td>391035000000.0</td>
+      <td>383285000000.0</td>
+      <td>394328000000.0</td>
+      <td>365817000000.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>OperatingRevenue</th>
+      <td>391035000000.0</td>
+      <td>383285000000.0</td>
+      <td>394328000000.0</td>
+      <td>365817000000.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>To collect some recent news.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ticker</span><span class="o">.</span><span class="n">get_news</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;id&#39;: &#39;debff5be-1170-4c2d-8dc9-e249fea79be3&#39;,
+  &#39;content&#39;: {&#39;id&#39;: &#39;debff5be-1170-4c2d-8dc9-e249fea79be3&#39;,
+   &#39;contentType&#39;: &#39;STORY&#39;,
+   &#39;title&#39;: &#39;Chicken, crypto, and Nvidia: The companies that helped Trump’s inauguration shatter fundraising records&#39;,
+   &#39;description&#39;: &#39;&#39;,
+   &#39;summary&#39;: &#39;A wide array of companies helped President Trump shatter fundraising records during his second inauguration, netting $239 million.&#39;,
+   &#39;pubDate&#39;: &#39;2025-04-21T16:09:42Z&#39;,
+   &#39;displayTime&#39;: &#39;2025-04-21T16:09:43Z&#39;,
+   &#39;isHosted&#39;: True,
+   &#39;bypassModal&#39;: False,
+   &#39;previewUrl&#39;: None,
+   &#39;thumbnail&#39;: {&#39;originalUrl&#39;: &#39;https://s.yimg.com/os/creatr-uploaded-images/2025-04/0daa3150-1eca-11f0-baff-5cb796c95ca7&#39;,
+    &#39;originalWidth&#39;: 7378,
+    &#39;originalHeight&#39;: 4919,
+    &#39;caption&#39;: &#39;&#39;,
+    &#39;resolutions&#39;: [{&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/olaYzgHnl6yVYHnSaw_ylA--~B/aD00OTE5O3c9NzM3ODthcHBpZD15dGFjaHlvbg--/https://s.yimg.com/os/creatr-uploaded-images/2025-04/0daa3150-1eca-11f0-baff-5cb796c95ca7&#39;,
+      &#39;width&#39;: 7378,
+      &#39;height&#39;: 4919,
+      &#39;tag&#39;: &#39;original&#39;},
+     {&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/11VZb6PXHyKmUIHqXtnDcA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://s.yimg.com/os/creatr-uploaded-images/2025-04/0daa3150-1eca-11f0-baff-5cb796c95ca7&#39;,
+      &#39;width&#39;: 170,
+      &#39;height&#39;: 128,
+      &#39;tag&#39;: &#39;170x128&#39;}]},
+   &#39;provider&#39;: {&#39;displayName&#39;: &#39;Yahoo Finance&#39;,
+    &#39;url&#39;: &#39;http://finance.yahoo.com/&#39;},
+   &#39;canonicalUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/chicken-crypto-and-nvidia-the-companies-that-helped-trumps-inauguration-shatter-fundraising-records-160942136.html&#39;,
+    &#39;site&#39;: &#39;finance&#39;,
+    &#39;region&#39;: &#39;US&#39;,
+    &#39;lang&#39;: &#39;en-US&#39;},
+   &#39;clickThroughUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/chicken-crypto-and-nvidia-the-companies-that-helped-trumps-inauguration-shatter-fundraising-records-160942136.html&#39;,
+    &#39;site&#39;: &#39;finance&#39;,
+    &#39;region&#39;: &#39;US&#39;,
+    &#39;lang&#39;: &#39;en-US&#39;},
+   &#39;metadata&#39;: {&#39;editorsPick&#39;: True},
+   &#39;finance&#39;: {&#39;premiumFinance&#39;: {&#39;isPremiumNews&#39;: False,
+     &#39;isPremiumFreeNews&#39;: False}},
+   &#39;storyline&#39;: {&#39;storylineItems&#39;: [{&#39;content&#39;: {&#39;id&#39;: &#39;26c0f14d-876f-3f8e-aeba-d8fe7f217b13&#39;,
+       &#39;contentType&#39;: &#39;VIDEO&#39;,
+       &#39;isHosted&#39;: True,
+       &#39;title&#39;: &quot;How China&#39;s &#39;monster market&#39; could impact US Big Tech&quot;,
+       &#39;thumbnail&#39;: {&#39;originalUrl&#39;: &#39;https://s.yimg.com/os/creatr-uploaded-images/2025-04/528577a0-1ec3-11f0-bfff-ce2f5fc2a15e&#39;,
+        &#39;originalWidth&#39;: 5000,
+        &#39;originalHeight&#39;: 2814,
+        &#39;caption&#39;: &#39;&#39;,
+        &#39;resolutions&#39;: None},
+       &#39;provider&#39;: {&#39;displayName&#39;: &#39;Yahoo Finance Video&#39;,
+        &#39;sourceId&#39;: &#39;video.yahoofinance.com&#39;},
+       &#39;previewUrl&#39;: None,
+       &#39;providerContentUrl&#39;: &#39;&#39;,
+       &#39;canonicalUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/video/chinas-monster-market-could-impact-153517257.html&#39;},
+       &#39;clickThroughUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/video/chinas-monster-market-could-impact-153517257.html&#39;}}},
+     {&#39;content&#39;: {&#39;id&#39;: &#39;1141c53f-8932-40a9-8d7a-cb6cb4af20df&#39;,
+       &#39;contentType&#39;: &#39;STORY&#39;,
+       &#39;isHosted&#39;: True,
+       &#39;title&#39;: &#39;What the falling US dollar has historically meant for stocks: By the numbers&#39;,
+       &#39;thumbnail&#39;: {&#39;originalUrl&#39;: &#39;https://s.yimg.com/os/creatr-uploaded-images/2025-04/854f5a90-1c5a-11f0-b7ff-c4f5f95f1f4f&#39;,
+        &#39;originalWidth&#39;: 3500,
+        &#39;originalHeight&#39;: 2165,
+        &#39;caption&#39;: &#39;&#39;,
+        &#39;resolutions&#39;: None},
+       &#39;provider&#39;: {&#39;displayName&#39;: &#39;Yahoo Finance&#39;,
+        &#39;sourceId&#39;: &#39;yahoofinance.com&#39;},
+       &#39;previewUrl&#39;: None,
+       &#39;providerContentUrl&#39;: &#39;&#39;,
+       &#39;canonicalUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/what-the-falling-us-dollar-has-historically-meant-for-stocks-by-the-numbers-142613097.html&#39;},
+       &#39;clickThroughUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/what-the-falling-us-dollar-has-historically-meant-for-stocks-by-the-numbers-142613097.html&#39;}}}]}}},
+ {&#39;id&#39;: &#39;aa382e73-42e4-3552-ab3e-b38e8088ad2b&#39;,
+  &#39;content&#39;: {&#39;id&#39;: &#39;aa382e73-42e4-3552-ab3e-b38e8088ad2b&#39;,
+   &#39;contentType&#39;: &#39;STORY&#39;,
+   &#39;title&#39;: &#39;ChatGPT: Everything you need to know about the AI-powered chatbot&#39;,
+   &#39;description&#39;: &#39;&#39;,
+   &#39;summary&#39;: &#39;ChatGPT, OpenAI’s text-generating AI chatbot, has taken the world by storm since its launch in November 2022. What started as a tool to supercharge productivity through writing essays and code with short text prompts has evolved into a behemoth with 300 million weekly active users. 2024 was a big year for OpenAI, from its partnership with Apple for its generative AI offering, Apple Intelligence, the release of GPT-4o with voice capabilities, and the highly-anticipated launch of its text-to-video&#39;,
+   &#39;pubDate&#39;: &#39;2025-04-21T13:25:27Z&#39;,
+   &#39;displayTime&#39;: &#39;2025-04-21T13:25:27Z&#39;,
+   &#39;isHosted&#39;: True,
+   &#39;bypassModal&#39;: False,
+   &#39;previewUrl&#39;: None,
+   &#39;thumbnail&#39;: None,
+   &#39;provider&#39;: {&#39;displayName&#39;: &#39;TechCrunch&#39;, &#39;url&#39;: &#39;https://techcrunch.com/&#39;},
+   &#39;canonicalUrl&#39;: {&#39;url&#39;: &#39;https://techcrunch.com/2025/04/21/chatgpt-everything-to-know-about-the-ai-chatbot/&#39;,
+    &#39;site&#39;: &#39;finance&#39;,
+    &#39;region&#39;: &#39;US&#39;,
+    &#39;lang&#39;: &#39;en-US&#39;},
+   &#39;clickThroughUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/chatgpt-everything-know-ai-powered-210339686.html&#39;,
+    &#39;site&#39;: &#39;finance&#39;,
+    &#39;region&#39;: &#39;US&#39;,
+    &#39;lang&#39;: &#39;en-US&#39;},
+   &#39;metadata&#39;: {&#39;editorsPick&#39;: True},
+   &#39;finance&#39;: {&#39;premiumFinance&#39;: {&#39;isPremiumNews&#39;: False,
+     &#39;isPremiumFreeNews&#39;: False}},
+   &#39;storyline&#39;: None}},
+ {&#39;id&#39;: &#39;ff1e0e11-9e2d-4525-8760-1c22db58f449&#39;,
+  &#39;content&#39;: {&#39;id&#39;: &#39;ff1e0e11-9e2d-4525-8760-1c22db58f449&#39;,
+   &#39;contentType&#39;: &#39;STORY&#39;,
+   &#39;title&#39;: &#39;Apple may have a key problem bringing back manufacturing to beat Trump tariffs, former Intel CEO warns&#39;,
+   &#39;description&#39;: &#39;&#39;,
+   &#39;summary&#39;: &quot;It won&#39;t be so easy to build US manufacturing if you are Apple, warns Intel&#39;s former CEO.&quot;,
+   &#39;pubDate&#39;: &#39;2025-04-21T13:21:51Z&#39;,
+   &#39;displayTime&#39;: &#39;2025-04-21T13:21:51Z&#39;,
+   &#39;isHosted&#39;: True,
+   &#39;bypassModal&#39;: False,
+   &#39;previewUrl&#39;: None,
+   &#39;thumbnail&#39;: {&#39;originalUrl&#39;: &#39;https://s.yimg.com/os/creatr-uploaded-images/2025-04/970345f0-17bc-11f0-a75f-24dfd543a792&#39;,
+    &#39;originalWidth&#39;: 8126,
+    &#39;originalHeight&#39;: 5420,
+    &#39;caption&#39;: &#39;&#39;,
+    &#39;resolutions&#39;: [{&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/EenhkQ0neq1ni9W1GHfkiQ--~B/aD01NDIwO3c9ODEyNjthcHBpZD15dGFjaHlvbg--/https://s.yimg.com/os/creatr-uploaded-images/2025-04/970345f0-17bc-11f0-a75f-24dfd543a792&#39;,
+      &#39;width&#39;: 8126,
+      &#39;height&#39;: 5420,
+      &#39;tag&#39;: &#39;original&#39;},
+     {&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/XTWbUydk5ETG6CZt_UB5ng--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://s.yimg.com/os/creatr-uploaded-images/2025-04/970345f0-17bc-11f0-a75f-24dfd543a792&#39;,
+      &#39;width&#39;: 170,
+      &#39;height&#39;: 128,
+      &#39;tag&#39;: &#39;170x128&#39;}]},
+   &#39;provider&#39;: {&#39;displayName&#39;: &#39;Yahoo Finance&#39;,
+    &#39;url&#39;: &#39;http://finance.yahoo.com/&#39;},
+   &#39;canonicalUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/apple-may-have-a-key-problem-bringing-back-manufacturing-to-beat-trump-tariffs-former-intel-ceo-warns-132151346.html&#39;,
+    &#39;site&#39;: &#39;finance&#39;,
+    &#39;region&#39;: &#39;US&#39;,
+    &#39;lang&#39;: &#39;en-US&#39;},
+   &#39;clickThroughUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/apple-may-have-a-key-problem-bringing-back-manufacturing-to-beat-trump-tariffs-former-intel-ceo-warns-132151346.html&#39;,
+    &#39;site&#39;: &#39;finance&#39;,
+    &#39;region&#39;: &#39;US&#39;,
+    &#39;lang&#39;: &#39;en-US&#39;},
+   &#39;metadata&#39;: {&#39;editorsPick&#39;: True},
+   &#39;finance&#39;: {&#39;premiumFinance&#39;: {&#39;isPremiumNews&#39;: False,
+     &#39;isPremiumFreeNews&#39;: False}},
+   &#39;storyline&#39;: None}},
+ {&#39;id&#39;: &#39;f261d0b6-83f6-33bf-9a68-b1b9808c48d2&#39;,
+  &#39;content&#39;: {&#39;id&#39;: &#39;f261d0b6-83f6-33bf-9a68-b1b9808c48d2&#39;,
+   &#39;contentType&#39;: &#39;STORY&#39;,
+   &#39;title&#39;: &quot;Despite Cutting Apple&#39;s Price Target, Wedbush&#39;s Dan Ives Remains Bullish on the Stock for the Long Term. Should You?&quot;,
+   &#39;description&#39;: &#39;&#39;,
+   &#39;summary&#39;: &quot;Investors may not know what to make of Apple (NASDAQ: AAPL) stock.  This is not the case with Wedbush&#39;s Dan Ives, who continues to hold to a long-term bullish call on Apple stock.  Ives seems to base his case for Apple stock primarily on the success of the iPhone.&quot;,
+   &#39;pubDate&#39;: &#39;2025-04-22T09:29:52Z&#39;,
+   &#39;displayTime&#39;: &#39;2025-04-22T09:29:52Z&#39;,
+   &#39;isHosted&#39;: True,
+   &#39;bypassModal&#39;: False,
+   &#39;previewUrl&#39;: None,
+   &#39;thumbnail&#39;: {&#39;originalUrl&#39;: &#39;https://media.zenfs.com/en/motleyfool.com/000c84e185d50451f6a7805f42ed6da9&#39;,
+    &#39;originalWidth&#39;: 720,
+    &#39;originalHeight&#39;: 441,
+    &#39;caption&#39;: &#39;AAPL PE Ratio Chart&#39;,
+    &#39;resolutions&#39;: [{&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/ggsSH7iS3Y33dgNj6_nhUw--~B/aD00NDE7dz03MjA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/000c84e185d50451f6a7805f42ed6da9&#39;,
+      &#39;width&#39;: 720,
+      &#39;height&#39;: 441,
+      &#39;tag&#39;: &#39;original&#39;},
+     {&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/4wZP3.Wmbfku0DCNr6oHrA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/000c84e185d50451f6a7805f42ed6da9&#39;,
+      &#39;width&#39;: 170,
+      &#39;height&#39;: 128,
+      &#39;tag&#39;: &#39;170x128&#39;}]},
+   &#39;provider&#39;: {&#39;displayName&#39;: &#39;Motley Fool&#39;, &#39;url&#39;: &#39;http://www.fool.com/&#39;},
+   &#39;canonicalUrl&#39;: {&#39;url&#39;: &#39;https://www.fool.com/investing/2025/04/22/despite-apple-target-dan-ives-bullish-long-term/?source=eptyholnk0000202&amp;utm_source=yahoo-host-full&amp;utm_medium=feed&amp;utm_campaign=article&amp;referring_guid=e1cd63d2-2f6a-469c-8b27-70f980b280cc&#39;,
+    &#39;site&#39;: &#39;finance&#39;,
+    &#39;region&#39;: &#39;US&#39;,
+    &#39;lang&#39;: &#39;en-US&#39;},
+   &#39;clickThroughUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/despite-cutting-apples-price-target-092952069.html&#39;,
+    &#39;site&#39;: &#39;finance&#39;,
+    &#39;region&#39;: &#39;US&#39;,
+    &#39;lang&#39;: &#39;en-US&#39;},
+   &#39;metadata&#39;: {&#39;editorsPick&#39;: False},
+   &#39;finance&#39;: {&#39;premiumFinance&#39;: {&#39;isPremiumNews&#39;: False,
+     &#39;isPremiumFreeNews&#39;: False}},
+   &#39;storyline&#39;: None}},
+ {&#39;id&#39;: &#39;b62a7e74-e858-36c2-a2a0-9c9f5e6f4fe9&#39;,
+  &#39;content&#39;: {&#39;id&#39;: &#39;b62a7e74-e858-36c2-a2a0-9c9f5e6f4fe9&#39;,
+   &#39;contentType&#39;: &#39;STORY&#39;,
+   &#39;title&#39;: &quot;Trump&#39;s Tariffs Continue to Affect Apple. Should Investors Sell the Stock?&quot;,
+   &#39;description&#39;: &#39;&#39;,
+   &#39;summary&#39;: &quot;President Trump&#39;s economic policies are causing significant volatility in the stock market.  On April 3, he announced his administration would impose expansive tariffs on most countries.  Then, about a week later, he decided to pause this plan for 90 days for most countries -- except China, for which he increased the previously announced tariffs.&quot;,
+   &#39;pubDate&#39;: &#39;2025-04-22T08:54:00Z&#39;,
+   &#39;displayTime&#39;: &#39;2025-04-22T08:54:00Z&#39;,
+   &#39;isHosted&#39;: True,
+   &#39;bypassModal&#39;: False,
+   &#39;previewUrl&#39;: None,
+   &#39;thumbnail&#39;: {&#39;originalUrl&#39;: &#39;https://media.zenfs.com/en/motleyfool.com/188fbd7bafe95097ce8c734b8b983aef&#39;,
+    &#39;originalWidth&#39;: 720,
+    &#39;originalHeight&#39;: 441,
+    &#39;caption&#39;: &#39;AAPL Free Cash Flow Chart&#39;,
+    &#39;resolutions&#39;: [{&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/nWdkrVICqX4CBKonMhCQKA--~B/aD00NDE7dz03MjA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/188fbd7bafe95097ce8c734b8b983aef&#39;,
+      &#39;width&#39;: 720,
+      &#39;height&#39;: 441,
+      &#39;tag&#39;: &#39;original&#39;},
+     {&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/wRhMMVMQPTUDsyUkETq6EA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/188fbd7bafe95097ce8c734b8b983aef&#39;,
+      &#39;width&#39;: 170,
+      &#39;height&#39;: 128,
+      &#39;tag&#39;: &#39;170x128&#39;}]},
+   &#39;provider&#39;: {&#39;displayName&#39;: &#39;Motley Fool&#39;, &#39;url&#39;: &#39;http://www.fool.com/&#39;},
+   &#39;canonicalUrl&#39;: {&#39;url&#39;: &#39;https://www.fool.com/investing/2025/04/22/trumps-tariffs-continue-to-affect-apple-should-inv/?source=eptyholnk0000202&amp;utm_source=yahoo-host-full&amp;utm_medium=feed&amp;utm_campaign=article&amp;referring_guid=48d36758-a504-4ff2-973a-ef6d50d08bdf&#39;,
+    &#39;site&#39;: &#39;finance&#39;,
+    &#39;region&#39;: &#39;US&#39;,
+    &#39;lang&#39;: &#39;en-US&#39;},
+   &#39;clickThroughUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/trumps-tariffs-continue-affect-apple-085400122.html&#39;,
+    &#39;site&#39;: &#39;finance&#39;,
+    &#39;region&#39;: &#39;US&#39;,
+    &#39;lang&#39;: &#39;en-US&#39;},
+   &#39;metadata&#39;: {&#39;editorsPick&#39;: False},
+   &#39;finance&#39;: {&#39;premiumFinance&#39;: {&#39;isPremiumNews&#39;: False,
+     &#39;isPremiumFreeNews&#39;: False}},
+   &#39;storyline&#39;: None}},
+ {&#39;id&#39;: &#39;49d58730-e13e-3521-b702-b0ebbb427459&#39;,
+  &#39;content&#39;: {&#39;id&#39;: &#39;49d58730-e13e-3521-b702-b0ebbb427459&#39;,
+   &#39;contentType&#39;: &#39;STORY&#39;,
+   &#39;title&#39;: &#39;Apple Inc. (AAPL) to Use On-Device Data and Synthetic Inputs to Boost AI Capabilities&#39;,
+   &#39;description&#39;: &#39;&#39;,
+   &#39;summary&#39;: &#39;We recently compiled a list of the 12 AI Stocks on Wall Street’s Radar. In this article, we are going to take a look at where Apple Inc. (NASDAQ:AAPL) stands against the other AI stocks on Wall Street’s radar. Almost 50 House Democrats have signed a message to stop the unauthorized use of AI tools in […]&#39;,
+   &#39;pubDate&#39;: &#39;2025-04-22T07:49:32Z&#39;,
+   &#39;displayTime&#39;: &#39;2025-04-22T07:49:32Z&#39;,
+   &#39;isHosted&#39;: True,
+   &#39;bypassModal&#39;: False,
+   &#39;previewUrl&#39;: None,
+   &#39;thumbnail&#39;: {&#39;originalUrl&#39;: &#39;https://media.zenfs.com/en/insidermonkey.com/bd47dc2e86b4a3086f845d200d9daf1f&#39;,
+    &#39;originalWidth&#39;: 1456,
+    &#39;originalHeight&#39;: 816,
+    &#39;caption&#39;: &#39;Apple (AAPL) Target Slashed to $141: ‘No Easy Answers’ as Trade Tensions and AI Lag Take Toll&#39;,
+    &#39;resolutions&#39;: [{&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/fTPNobtT0bdcSxj2xXAamw--~B/aD04MTY7dz0xNDU2O2FwcGlkPXl0YWNoeW9u/https://media.zenfs.com/en/insidermonkey.com/bd47dc2e86b4a3086f845d200d9daf1f&#39;,
+      &#39;width&#39;: 1456,
+      &#39;height&#39;: 816,
+      &#39;tag&#39;: &#39;original&#39;},
+     {&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/ERk7UFMt6k8ofjYa8ja0kw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/bd47dc2e86b4a3086f845d200d9daf1f&#39;,
+      &#39;width&#39;: 170,
+      &#39;height&#39;: 128,
+      &#39;tag&#39;: &#39;170x128&#39;}]},
+   &#39;provider&#39;: {&#39;displayName&#39;: &#39;Insider Monkey&#39;,
+    &#39;url&#39;: &#39;http://www.insidermonkey.com&#39;},
+   &#39;canonicalUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/apple-inc-aapl-device-data-074932869.html&#39;,
+    &#39;site&#39;: &#39;finance&#39;,
+    &#39;region&#39;: &#39;US&#39;,
+    &#39;lang&#39;: &#39;en-US&#39;},
+   &#39;clickThroughUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/apple-inc-aapl-device-data-074932869.html&#39;,
+    &#39;site&#39;: &#39;finance&#39;,
+    &#39;region&#39;: &#39;US&#39;,
+    &#39;lang&#39;: &#39;en-US&#39;},
+   &#39;metadata&#39;: {&#39;editorsPick&#39;: False},
+   &#39;finance&#39;: {&#39;premiumFinance&#39;: {&#39;isPremiumNews&#39;: False,
+     &#39;isPremiumFreeNews&#39;: False}},
+   &#39;storyline&#39;: None}},
+ {&#39;id&#39;: &#39;0aa6eadc-79e8-38f0-9385-d48cd7dead32&#39;,
+  &#39;content&#39;: {&#39;id&#39;: &#39;0aa6eadc-79e8-38f0-9385-d48cd7dead32&#39;,
+   &#39;contentType&#39;: &#39;STORY&#39;,
+   &#39;title&#39;: &#39;Apple Inc. (AAPL): Among Stocks That Could 10X Over the Next 2 Years&#39;,
+   &#39;description&#39;: &#39;&#39;,
+   &#39;summary&#39;: &#39;We recently published a list of 9 Stocks That Could 10X Over the Next 2 Years. In this article, we are going to take a look at where Apple Inc. (NASDAQ:AAPL) stands against other stocks that could 10X over the next 2 years. US Tariffs and the Stock Market Turmoil While tariffs from the US […]&#39;,
+   &#39;pubDate&#39;: &#39;2025-04-22T02:16:14Z&#39;,
+   &#39;displayTime&#39;: &#39;2025-04-22T02:16:14Z&#39;,
+   &#39;isHosted&#39;: True,
+   &#39;bypassModal&#39;: False,
+   &#39;previewUrl&#39;: None,
+   &#39;thumbnail&#39;: {&#39;originalUrl&#39;: &#39;https://media.zenfs.com/en/insidermonkey.com/bd47dc2e86b4a3086f845d200d9daf1f&#39;,
+    &#39;originalWidth&#39;: 1456,
+    &#39;originalHeight&#39;: 816,
+    &#39;caption&#39;: &#39;Apple Inc. (AAPL): Among Stocks That Could 10X Over the Next 2 Years&#39;,
+    &#39;resolutions&#39;: [{&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/fTPNobtT0bdcSxj2xXAamw--~B/aD04MTY7dz0xNDU2O2FwcGlkPXl0YWNoeW9u/https://media.zenfs.com/en/insidermonkey.com/bd47dc2e86b4a3086f845d200d9daf1f&#39;,
+      &#39;width&#39;: 1456,
+      &#39;height&#39;: 816,
+      &#39;tag&#39;: &#39;original&#39;},
+     {&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/ERk7UFMt6k8ofjYa8ja0kw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/bd47dc2e86b4a3086f845d200d9daf1f&#39;,
+      &#39;width&#39;: 170,
+      &#39;height&#39;: 128,
+      &#39;tag&#39;: &#39;170x128&#39;}]},
+   &#39;provider&#39;: {&#39;displayName&#39;: &#39;Insider Monkey&#39;,
+    &#39;url&#39;: &#39;http://www.insidermonkey.com&#39;},
+   &#39;canonicalUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/apple-inc-aapl-among-stocks-021614536.html&#39;,
+    &#39;site&#39;: &#39;finance&#39;,
+    &#39;region&#39;: &#39;US&#39;,
+    &#39;lang&#39;: &#39;en-US&#39;},
+   &#39;clickThroughUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/apple-inc-aapl-among-stocks-021614536.html&#39;,
+    &#39;site&#39;: &#39;finance&#39;,
+    &#39;region&#39;: &#39;US&#39;,
+    &#39;lang&#39;: &#39;en-US&#39;},
+   &#39;metadata&#39;: {&#39;editorsPick&#39;: False},
+   &#39;finance&#39;: {&#39;premiumFinance&#39;: {&#39;isPremiumNews&#39;: False,
+     &#39;isPremiumFreeNews&#39;: False}},
+   &#39;storyline&#39;: None}},
+ {&#39;id&#39;: &#39;4c360dee-b15c-397a-9384-f150963ae39c&#39;,
+  &#39;content&#39;: {&#39;id&#39;: &#39;4c360dee-b15c-397a-9384-f150963ae39c&#39;,
+   &#39;contentType&#39;: &#39;STORY&#39;,
+   &#39;title&#39;: &#39;Can President Trump Fire Fed Chair Jerome Powell?&#39;,
+   &#39;description&#39;: &#39;&#39;,
+   &#39;summary&#39;: &#39;(Bloomberg) -- Never miss an episode. Follow The Big Take daily podcast today.Most Read from BloombergDOGE Visits National Gallery of Art to Discuss Museum’s Legal StatusTrump Gives New York ‘One Last Chance’ to End Congestion FeeTrump Administration Takes Over New York Penn Station RevampThe Racial Wealth Gap Is Not Just About MoneyNashville’s $3 Billion Transit Plan Brings a Call for Zoning ReformPresident Trump’s attacks on Federal Reserve Chair Jerome Powell just keep comingToday on the Big&#39;,
+   &#39;pubDate&#39;: &#39;2025-04-21T21:52:36Z&#39;,
+   &#39;displayTime&#39;: &#39;2025-04-21T21:52:36Z&#39;,
+   &#39;isHosted&#39;: True,
+   &#39;bypassModal&#39;: False,
+   &#39;previewUrl&#39;: None,
+   &#39;thumbnail&#39;: {&#39;originalUrl&#39;: &#39;https://media.zenfs.com/en/bloomberg_holding_pen_162/a2e6d45401c66f66016df17aff921f4d&#39;,
+    &#39;originalWidth&#39;: 2000,
+    &#39;originalHeight&#39;: 1334,
+    &#39;caption&#39;: &#39;&#39;,
+    &#39;resolutions&#39;: [{&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/g16zHqpoRLxu0u6S8mCR5A--~B/aD0xMzM0O3c9MjAwMDthcHBpZD15dGFjaHlvbg--/https://media.zenfs.com/en/bloomberg_holding_pen_162/a2e6d45401c66f66016df17aff921f4d&#39;,
+      &#39;width&#39;: 2000,
+      &#39;height&#39;: 1334,
+      &#39;tag&#39;: &#39;original&#39;},
+     {&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/X651u2kcAhbBfPwlK0RMLw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/bloomberg_holding_pen_162/a2e6d45401c66f66016df17aff921f4d&#39;,
+      &#39;width&#39;: 170,
+      &#39;height&#39;: 128,
+      &#39;tag&#39;: &#39;170x128&#39;}]},
+   &#39;provider&#39;: {&#39;displayName&#39;: &#39;Bloomberg&#39;,
+    &#39;url&#39;: &#39;https://www.bloomberg.com/company&#39;},
+   &#39;canonicalUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/president-trump-fire-fed-chair-215236982.html&#39;,
+    &#39;site&#39;: &#39;finance&#39;,
+    &#39;region&#39;: &#39;US&#39;,
+    &#39;lang&#39;: &#39;en-US&#39;},
+   &#39;clickThroughUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/president-trump-fire-fed-chair-215236982.html&#39;,
+    &#39;site&#39;: &#39;finance&#39;,
+    &#39;region&#39;: &#39;US&#39;,
+    &#39;lang&#39;: &#39;en-US&#39;},
+   &#39;metadata&#39;: {&#39;editorsPick&#39;: False},
+   &#39;finance&#39;: {&#39;premiumFinance&#39;: {&#39;isPremiumNews&#39;: False,
+     &#39;isPremiumFreeNews&#39;: False}},
+   &#39;storyline&#39;: None}},
+ {&#39;id&#39;: &#39;d0ed9b50-6f93-32a7-98ca-dfb392ba2db2&#39;,
+  &#39;content&#39;: {&#39;id&#39;: &#39;d0ed9b50-6f93-32a7-98ca-dfb392ba2db2&#39;,
+   &#39;contentType&#39;: &#39;STORY&#39;,
+   &#39;title&#39;: &#39;Apple (AAPL) Stock Moves -1.94%: What You Should Know&#39;,
+   &#39;description&#39;: &#39;&#39;,
+   &#39;summary&#39;: &#39;In the most recent trading session, Apple (AAPL) closed at $193.16, indicating a -1.94% shift from the previous trading day.&#39;,
+   &#39;pubDate&#39;: &#39;2025-04-21T21:45:31Z&#39;,
+   &#39;displayTime&#39;: &#39;2025-04-21T21:45:31Z&#39;,
+   &#39;isHosted&#39;: True,
+   &#39;bypassModal&#39;: False,
+   &#39;previewUrl&#39;: None,
+   &#39;thumbnail&#39;: {&#39;originalUrl&#39;: &#39;https://media.zenfs.com/en/zacks.com/432476d296d64c50172213c0415587c9&#39;,
+    &#39;originalWidth&#39;: 1000,
+    &#39;originalHeight&#39;: 603,
+    &#39;caption&#39;: &#39;&#39;,
+    &#39;resolutions&#39;: [{&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/Fs_R4sd8jCoOMib958Znmg--~B/aD02MDM7dz0xMDAwO2FwcGlkPXl0YWNoeW9u/https://media.zenfs.com/en/zacks.com/432476d296d64c50172213c0415587c9&#39;,
+      &#39;width&#39;: 1000,
+      &#39;height&#39;: 603,
+      &#39;tag&#39;: &#39;original&#39;},
+     {&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/VHlzTcmp5MiZoTQkdAhz1A--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/432476d296d64c50172213c0415587c9&#39;,
+      &#39;width&#39;: 170,
+      &#39;height&#39;: 128,
+      &#39;tag&#39;: &#39;170x128&#39;}]},
+   &#39;provider&#39;: {&#39;displayName&#39;: &#39;Zacks&#39;, &#39;url&#39;: &#39;http://www.zacks.com/&#39;},
+   &#39;canonicalUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/apple-aapl-stock-moves-1-214531353.html&#39;,
+    &#39;site&#39;: &#39;finance&#39;,
+    &#39;region&#39;: &#39;US&#39;,
+    &#39;lang&#39;: &#39;en-US&#39;},
+   &#39;clickThroughUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/apple-aapl-stock-moves-1-214531353.html&#39;,
+    &#39;site&#39;: &#39;finance&#39;,
+    &#39;region&#39;: &#39;US&#39;,
+    &#39;lang&#39;: &#39;en-US&#39;},
+   &#39;metadata&#39;: {&#39;editorsPick&#39;: False},
+   &#39;finance&#39;: {&#39;premiumFinance&#39;: {&#39;isPremiumNews&#39;: False,
+     &#39;isPremiumFreeNews&#39;: False}},
+   &#39;storyline&#39;: None}},
+ {&#39;id&#39;: &#39;75570703-143d-32d9-9d87-93917492ed85&#39;,
+  &#39;content&#39;: {&#39;id&#39;: &#39;75570703-143d-32d9-9d87-93917492ed85&#39;,
+   &#39;contentType&#39;: &#39;STORY&#39;,
+   &#39;title&#39;: &quot;Apple&#39;s China Dependence Leaves It Exposed as Tariff Risks Rise&quot;,
+   &#39;description&#39;: &#39;&#39;,
+   &#39;summary&#39;: &#39;Apple makes 90% of iPhones in China, keeping it exposed to U.S. tariffs.&#39;,
+   &#39;pubDate&#39;: &#39;2025-04-21T21:35:29Z&#39;,
+   &#39;displayTime&#39;: &#39;2025-04-21T21:35:29Z&#39;,
+   &#39;isHosted&#39;: True,
+   &#39;bypassModal&#39;: False,
+   &#39;previewUrl&#39;: None,
+   &#39;thumbnail&#39;: {&#39;originalUrl&#39;: &#39;https://media.zenfs.com/en/us.finance.gurufocus/b3bdeaa8bbcaaef7d764d6a0b08ff6b8&#39;,
+    &#39;originalWidth&#39;: 550,
+    &#39;originalHeight&#39;: 475,
+    &#39;caption&#39;: &#39;&#39;,
+    &#39;resolutions&#39;: [{&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/0y.fLTbHepNRlzX9490YSQ--~B/aD00NzU7dz01NTA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/us.finance.gurufocus/b3bdeaa8bbcaaef7d764d6a0b08ff6b8&#39;,
+      &#39;width&#39;: 550,
+      &#39;height&#39;: 475,
+      &#39;tag&#39;: &#39;original&#39;},
+     {&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/qyu.XK0O5AdUbWxEPL2_KA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/us.finance.gurufocus/b3bdeaa8bbcaaef7d764d6a0b08ff6b8&#39;,
+      &#39;width&#39;: 170,
+      &#39;height&#39;: 128,
+      &#39;tag&#39;: &#39;170x128&#39;}]},
+   &#39;provider&#39;: {&#39;displayName&#39;: &#39;GuruFocus.com&#39;,
+    &#39;url&#39;: &#39;http://www.gurufocus.com/&#39;},
+   &#39;canonicalUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/apples-china-dependence-leaves-exposed-213529963.html&#39;,
+    &#39;site&#39;: &#39;finance&#39;,
+    &#39;region&#39;: &#39;US&#39;,
+    &#39;lang&#39;: &#39;en-US&#39;},
+   &#39;clickThroughUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/apples-china-dependence-leaves-exposed-213529963.html&#39;,
+    &#39;site&#39;: &#39;finance&#39;,
+    &#39;region&#39;: &#39;US&#39;,
+    &#39;lang&#39;: &#39;en-US&#39;},
+   &#39;metadata&#39;: {&#39;editorsPick&#39;: False},
+   &#39;finance&#39;: {&#39;premiumFinance&#39;: {&#39;isPremiumNews&#39;: False,
+     &#39;isPremiumFreeNews&#39;: False}},
+   &#39;storyline&#39;: None}}]
+</pre></div>
+</div>
+</div>
+</div>
+<p>To collect recommendations from stock market analysts.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ticker</span><span class="o">.</span><span class="n">get_recommendations</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>period</th>
+      <th>strongBuy</th>
+      <th>buy</th>
+      <th>hold</th>
+      <th>sell</th>
+      <th>strongSell</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0m</td>
+      <td>7</td>
+      <td>23</td>
+      <td>16</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-1m</td>
+      <td>7</td>
+      <td>21</td>
+      <td>14</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-2m</td>
+      <td>7</td>
+      <td>21</td>
+      <td>13</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-3m</td>
+      <td>8</td>
+      <td>21</td>
+      <td>13</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>To get information for the number or shares.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ticker</span><span class="o">.</span><span class="n">get_shares_full</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-10-27 00:00:00-04:00    15634199552
+2023-10-28 00:00:00-04:00    15634199552
+2023-11-03 00:00:00-04:00    15634199552
+2023-11-04 00:00:00-04:00    15634199552
+2023-11-09 00:00:00-05:00    15552799744
+                                ...     
+2025-04-11 00:00:00-04:00    15687100416
+2025-04-12 00:00:00-04:00    15022100480
+2025-04-16 00:00:00-04:00    15022100480
+2025-04-17 00:00:00-04:00    15022100480
+2025-04-22 00:00:00-04:00    15319199744
+Length: 128, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>And there are a few more. For instance, we can even retrieve options data. First you can get all expiration dates by.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">expiration_dates</span> <span class="o">=</span> <span class="n">ticker</span><span class="o">.</span><span class="n">options</span>
+<span class="n">expiration_dates</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;2025-04-25&#39;,
+ &#39;2025-05-02&#39;,
+ &#39;2025-05-09&#39;,
+ &#39;2025-05-16&#39;,
+ &#39;2025-05-23&#39;,
+ &#39;2025-05-30&#39;,
+ &#39;2025-06-20&#39;,
+ &#39;2025-07-18&#39;,
+ &#39;2025-08-15&#39;,
+ &#39;2025-09-19&#39;,
+ &#39;2025-10-17&#39;,
+ &#39;2025-12-19&#39;,
+ &#39;2026-01-16&#39;,
+ &#39;2026-03-20&#39;,
+ &#39;2026-06-18&#39;,
+ &#39;2026-12-18&#39;,
+ &#39;2027-01-15&#39;,
+ &#39;2027-06-17&#39;,
+ &#39;2027-12-17&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>With the <code class="docutils literal notranslate"><span class="pre">option_chain</span></code> method, we can retrieve all options for an expiration date. Let us do this in a loop, to collect options for all expiration dates. Below you can see the most traded options at the time of writing.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">calls</span><span class="p">,</span> <span class="n">puts</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">e_date</span> <span class="ow">in</span> <span class="n">expiration_dates</span><span class="p">:</span>
+    <span class="n">options_date</span> <span class="o">=</span> <span class="n">ticker</span><span class="o">.</span><span class="n">option_chain</span><span class="p">(</span><span class="n">expiration_dates</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">puts_date</span> <span class="o">=</span> <span class="n">options_date</span><span class="o">.</span><span class="n">puts</span>
+    <span class="n">calls_date</span> <span class="o">=</span> <span class="n">options_date</span><span class="o">.</span><span class="n">calls</span>
+    <span class="n">puts_date</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;expiration&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">e_date</span>
+    <span class="n">calls_date</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;expiration&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">e_date</span>
+    <span class="n">calls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">calls_date</span><span class="p">)</span>
+    <span class="n">puts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">puts_date</span><span class="p">)</span>
+
+<span class="n">calls_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">calls</span><span class="p">)</span>
+<span class="n">puts_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">puts</span><span class="p">)</span>
+
+<span class="n">calls_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;call&quot;</span>
+<span class="n">puts_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;put&quot;</span>
+<span class="n">options_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">calls_df</span><span class="p">,</span> <span class="n">puts_df</span><span class="p">))</span>
+
+<span class="c1"># take a look at the most traded options by volume</span>
+<span class="n">options_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="s2">&quot;volume&quot;</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>contractSymbol</th>
+      <th>lastTradeDate</th>
+      <th>strike</th>
+      <th>lastPrice</th>
+      <th>bid</th>
+      <th>ask</th>
+      <th>change</th>
+      <th>percentChange</th>
+      <th>volume</th>
+      <th>openInterest</th>
+      <th>impliedVolatility</th>
+      <th>inTheMoney</th>
+      <th>contractSize</th>
+      <th>currency</th>
+      <th>expiration</th>
+      <th>type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>46</th>
+      <td>AAPL250425C00200000</td>
+      <td>2025-04-21 19:59:59+00:00</td>
+      <td>200.0</td>
+      <td>1.51</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>32673.0</td>
+      <td>0</td>
+      <td>0.062509</td>
+      <td>False</td>
+      <td>REGULAR</td>
+      <td>USD</td>
+      <td>2025-09-19</td>
+      <td>call</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>AAPL250425C00200000</td>
+      <td>2025-04-21 19:59:59+00:00</td>
+      <td>200.0</td>
+      <td>1.51</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>32673.0</td>
+      <td>0</td>
+      <td>0.062509</td>
+      <td>False</td>
+      <td>REGULAR</td>
+      <td>USD</td>
+      <td>2025-05-30</td>
+      <td>call</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>AAPL250425C00200000</td>
+      <td>2025-04-21 19:59:59+00:00</td>
+      <td>200.0</td>
+      <td>1.51</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>32673.0</td>
+      <td>0</td>
+      <td>0.062509</td>
+      <td>False</td>
+      <td>REGULAR</td>
+      <td>USD</td>
+      <td>2027-12-17</td>
+      <td>call</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>AAPL250425C00200000</td>
+      <td>2025-04-21 19:59:59+00:00</td>
+      <td>200.0</td>
+      <td>1.51</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>32673.0</td>
+      <td>0</td>
+      <td>0.062509</td>
+      <td>False</td>
+      <td>REGULAR</td>
+      <td>USD</td>
+      <td>2026-01-16</td>
+      <td>call</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>AAPL250425C00200000</td>
+      <td>2025-04-21 19:59:59+00:00</td>
+      <td>200.0</td>
+      <td>1.51</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>32673.0</td>
+      <td>0</td>
+      <td>0.062509</td>
+      <td>False</td>
+      <td>REGULAR</td>
+      <td>USD</td>
+      <td>2025-05-02</td>
+      <td>call</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>AAPL250425C00200000</td>
+      <td>2025-04-21 19:59:59+00:00</td>
+      <td>200.0</td>
+      <td>1.51</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>32673.0</td>
+      <td>0</td>
+      <td>0.062509</td>
+      <td>False</td>
+      <td>REGULAR</td>
+      <td>USD</td>
+      <td>2025-12-19</td>
+      <td>call</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>AAPL250425C00200000</td>
+      <td>2025-04-21 19:59:59+00:00</td>
+      <td>200.0</td>
+      <td>1.51</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>32673.0</td>
+      <td>0</td>
+      <td>0.062509</td>
+      <td>False</td>
+      <td>REGULAR</td>
+      <td>USD</td>
+      <td>2026-06-18</td>
+      <td>call</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>AAPL250425C00200000</td>
+      <td>2025-04-21 19:59:59+00:00</td>
+      <td>200.0</td>
+      <td>1.51</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>32673.0</td>
+      <td>0</td>
+      <td>0.062509</td>
+      <td>False</td>
+      <td>REGULAR</td>
+      <td>USD</td>
+      <td>2025-05-09</td>
+      <td>call</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>AAPL250425C00200000</td>
+      <td>2025-04-21 19:59:59+00:00</td>
+      <td>200.0</td>
+      <td>1.51</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>32673.0</td>
+      <td>0</td>
+      <td>0.062509</td>
+      <td>False</td>
+      <td>REGULAR</td>
+      <td>USD</td>
+      <td>2026-03-20</td>
+      <td>call</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>AAPL250425C00200000</td>
+      <td>2025-04-21 19:59:59+00:00</td>
+      <td>200.0</td>
+      <td>1.51</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>32673.0</td>
+      <td>0</td>
+      <td>0.062509</td>
+      <td>False</td>
+      <td>REGULAR</td>
+      <td>USD</td>
+      <td>2025-10-17</td>
+      <td>call</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Last but not least, it is also possible to download historical data for multiple tickers at once. This can be done by the <code class="docutils literal notranslate"><span class="pre">download</span></code> method of the package as demonstrated below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">download</span><span class="p">([</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;MSFT&quot;</span><span class="p">],</span> <span class="n">period</span> <span class="o">=</span> <span class="s2">&quot;1y&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[                       0%                       ]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[*********************100%***********************]  2 of 2 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>YF.download() has changed argument auto_adjust default to True
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th>Price</th>
+      <th colspan="2" halign="left">Close</th>
+      <th colspan="2" halign="left">High</th>
+      <th colspan="2" halign="left">Low</th>
+      <th colspan="2" halign="left">Open</th>
+      <th colspan="2" halign="left">Volume</th>
+    </tr>
+    <tr>
+      <th>Ticker</th>
+      <th>AAPL</th>
+      <th>MSFT</th>
+      <th>AAPL</th>
+      <th>MSFT</th>
+      <th>AAPL</th>
+      <th>MSFT</th>
+      <th>AAPL</th>
+      <th>MSFT</th>
+      <th>AAPL</th>
+      <th>MSFT</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2024-04-22</th>
+      <td>165.060593</td>
+      <td>397.922028</td>
+      <td>166.473917</td>
+      <td>399.797722</td>
+      <td>163.995629</td>
+      <td>392.751511</td>
+      <td>164.742104</td>
+      <td>397.048690</td>
+      <td>48116400</td>
+      <td>20286900</td>
+    </tr>
+    <tr>
+      <th>2024-04-23</th>
+      <td>166.115601</td>
+      <td>404.481934</td>
+      <td>166.264905</td>
+      <td>405.107165</td>
+      <td>164.144910</td>
+      <td>400.006095</td>
+      <td>164.572897</td>
+      <td>401.177147</td>
+      <td>49537800</td>
+      <td>15734500</td>
+    </tr>
+    <tr>
+      <th>2024-04-24</th>
+      <td>168.225662</td>
+      <td>405.960632</td>
+      <td>168.504345</td>
+      <td>409.344799</td>
+      <td>165.428871</td>
+      <td>403.697909</td>
+      <td>165.757307</td>
+      <td>406.456844</td>
+      <td>48251800</td>
+      <td>15065300</td>
+    </tr>
+    <tr>
+      <th>2024-04-25</th>
+      <td>169.091583</td>
+      <td>396.016571</td>
+      <td>169.808201</td>
+      <td>396.860137</td>
+      <td>167.359755</td>
+      <td>385.089982</td>
+      <td>168.733275</td>
+      <td>391.044521</td>
+      <td>50558300</td>
+      <td>40586500</td>
+    </tr>
+    <tr>
+      <th>2024-04-26</th>
+      <td>168.504349</td>
+      <td>403.241425</td>
+      <td>170.534755</td>
+      <td>409.870805</td>
+      <td>168.384902</td>
+      <td>402.685670</td>
+      <td>169.081625</td>
+      <td>409.047107</td>
+      <td>44838400</td>
+      <td>29694700</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>You may have realized this already, yfinance uses pandas data frames, which makes it is for us to further process the data. E.g., determine the discrete returns of adjusted closing prices and scatter plot them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;Close&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;MSFT&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/71ead80c852184d4a67141fd895ab733bf3d5d0da2771022ffd0fe5a445aefd8.png" src="_images/71ead80c852184d4a67141fd895ab733bf3d5d0da2771022ffd0fe5a445aefd8.png" />
+</div>
+</div>
+<p>While working with the yfinance package is simple and powerful, it also comes along with a few disadvantages. First of all, it is written by a nice person who is doing this voluntarily. Very likely, this is not the person’s main job and if some changes occur which cause errors, it may take a while until the package is running again. Furthermore, yahoo finance excludes delisted companies from their web page. This means, no information can be found for stocks which are not listed on exchanges anymore. Try for yourself by, e.g. looking for Twitter. This causes problems from an academic perspective. One of the reasons for stocks getting delisted is that they go bankrupt or are bought by another companies. Often, this follows adverse company developments. By ignoring such companies in analysis, we introduce a bias towards more successful companies. Thus, results are more promising than they are in reality. This is also quite relevant if you compare different trading strategies so be careful!</p>
+</section>
+<section id="working-with-apis">
+<h2>Working with APIs<a class="headerlink" href="#working-with-apis" title="Link to this heading">#</a></h2>
+<p>For the majority of APIs, you will not find a pre-written package, so it is an asset to know how to access directly via an API. Normally, the procedure is to register an e-mail account to get an <strong>identification key</strong>. This key is needed to use the API from your computer and enables the provider to track your activity. For example, if only <em>n</em> downloads are free per day, too unrestrained a downloading business might even get you kicked or banned. In any case, to work properly with an API, one should read the documentary (or at least parts of it).</p>
+<p>In general, we will use the <a class="reference external" href="https://requests.readthedocs.io/en/master/"><code class="docutils literal notranslate"><span class="pre">requests</span></code></a> package for working with APIs. With the requests package, we usually set send a request for a <em>get</em> response from the server, for example the data you asked for. In many cases, we retrieve the data in JSON format which stands for <strong>J</strong>ava<strong>S</strong>cript <strong>O</strong>bject <strong>N</strong>otation and is a type of data format which you will frequently encounter when working with online data. Its structure looks is very similar to a python dictionary, using curly and square brackets and key-value pairs as well as enabling nesting. Data is therefore stored in such objects. There are packages which can handle json files, for example pandas to transform it into a dataframe.</p>
+<section id="end-of-day-historical-data-api">
+<h3>End of day historical data API<a class="headerlink" href="#end-of-day-historical-data-api" title="Link to this heading">#</a></h3>
+<p>Let us take a look at the <a class="reference external" href="https://eodhd.com/">eodhd</a> API as an example. Usually, we need to sign up, however, it also gives us a demo access without an individual API key. For instance, in their documentation, we can find instructions how to use the end of day API which is build to transfer stock price data. As shown <a class="reference external" href="https://eodhd.com/financial-apis/api-for-historical-data-and-volumes/">here</a>, you can extract data in json format by first sending a request with the <code class="docutils literal notranslate"><span class="pre">get</span></code> method to the API.</p>
+<p>You can see that the API is addressed as an URL which stands for <strong>U</strong>niform <strong>R</strong>esource <strong>L</strong>ocator and is the address your request is telling the server to look for information. It consists of several elements:</p>
+<ul class="simple">
+<li><p>the protocol: usually <code class="docutils literal notranslate"><span class="pre">http</span></code> or <code class="docutils literal notranslate"><span class="pre">https</span></code> in the www, followed by a colon and doube slash <code class="docutils literal notranslate"><span class="pre">://</span></code></p></li>
+<li><p>the hostname: <code class="docutils literal notranslate"><span class="pre">eodhd.com</span></code></p></li>
+<li><p>a path/query: appended with <code class="docutils literal notranslate"><span class="pre">/</span></code> or <code class="docutils literal notranslate"><span class="pre">?</span></code> to the hostname</p></li>
+</ul>
+<p>In case of the API, <code class="docutils literal notranslate"><span class="pre">https://eodhd.com/api/eod/</span></code> is the endpoint which is the same for all companies and funds. <a class="reference external" href="http://MCD.US">MCD.US</a> is the ticker with the market, so here, MCD for McDonald’s and US for United States. What follows after the question mark are further arguments. The api_token would be your user specific key, fmt is the format argument. All arguments as well as the endpoint definition are API specific and must be studied in corresponding documentations before usage. As json format can be transformed to pandas dataframes, it gets quite simple after a successful request. See the example below.</p>
+<p>Eodhd provides more endpoints with different financial data. In comparison to yahoo finance, it also includes historical data for delisted companies. However, it is not free and you must get register first. You can use a few endpoints up to certain request limits per day for free. Information can be found <a class="reference external" href="https://eodhd.com/pricing">here</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;https://eodhd.com/api/eod/MCD.US?api_token=demo&amp;fmt=json&#39;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date</th>
+      <th>open</th>
+      <th>high</th>
+      <th>low</th>
+      <th>close</th>
+      <th>adjusted_close</th>
+      <th>volume</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>11362</th>
+      <td>2025-04-14</td>
+      <td>312.43</td>
+      <td>318.20</td>
+      <td>311.13</td>
+      <td>316.07</td>
+      <td>316.07</td>
+      <td>4068300</td>
+    </tr>
+    <tr>
+      <th>11363</th>
+      <td>2025-04-15</td>
+      <td>316.13</td>
+      <td>317.20</td>
+      <td>311.84</td>
+      <td>312.48</td>
+      <td>312.48</td>
+      <td>2901200</td>
+    </tr>
+    <tr>
+      <th>11364</th>
+      <td>2025-04-16</td>
+      <td>313.57</td>
+      <td>314.29</td>
+      <td>307.37</td>
+      <td>309.10</td>
+      <td>309.10</td>
+      <td>3098900</td>
+    </tr>
+    <tr>
+      <th>11365</th>
+      <td>2025-04-17</td>
+      <td>309.22</td>
+      <td>312.99</td>
+      <td>307.13</td>
+      <td>311.30</td>
+      <td>311.30</td>
+      <td>2726900</td>
+    </tr>
+    <tr>
+      <th>11366</th>
+      <td>2025-04-21</td>
+      <td>311.00</td>
+      <td>311.28</td>
+      <td>305.12</td>
+      <td>308.72</td>
+      <td>308.72</td>
+      <td>2668300</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="edgar-api">
+<h3>EDGAR API<a class="headerlink" href="#edgar-api" title="Link to this heading">#</a></h3>
+<p>Another interesting API for the US the market is the EDGAR API which is provided by the Securities and Exchange Commission (SEC). The SEC uses Central Index Keys (CIK) to identify companies. According to US stock market regulations, companies must submit to the SEC which is collected in the EDGAR database and can be accessed via an API. The only thing you need to present is a user header as demonstrated below. A good place to start to inform yourself about the rules of the API is given <a class="reference external" href="https://www.sec.gov/edgar/sec-api-documentation">here</a>. The CIKs can be searched on their web page under the Filing -&gt; Company Filings search. For instance Apple’s CIK is 0000320193. Let us take a look at all submitted filings by Apple.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;User-Agent&quot;</span><span class="p">:</span> <span class="s2">&quot;student@uni-passau.de&quot;</span><span class="p">}</span>
+<span class="n">cik</span> <span class="o">=</span> <span class="s2">&quot;0000320193&quot;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://data.sec.gov/submissions/CIK</span><span class="si">{</span><span class="n">cik</span><span class="si">}</span><span class="s2">.json&quot;</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">filings</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;filings&#39;</span><span class="p">][</span><span class="s1">&#39;recent&#39;</span><span class="p">])</span>
+<span class="n">filings</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>accessionNumber</th>
+      <th>filingDate</th>
+      <th>reportDate</th>
+      <th>acceptanceDateTime</th>
+      <th>act</th>
+      <th>form</th>
+      <th>fileNumber</th>
+      <th>filmNumber</th>
+      <th>items</th>
+      <th>core_type</th>
+      <th>size</th>
+      <th>isXBRL</th>
+      <th>isInlineXBRL</th>
+      <th>primaryDocument</th>
+      <th>primaryDocDescription</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0000320193-25-000049</td>
+      <td>2025-04-17</td>
+      <td>2025-04-15</td>
+      <td>2025-04-17T22:32:02.000Z</td>
+      <td></td>
+      <td>4</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>4</td>
+      <td>13415</td>
+      <td>0</td>
+      <td>0</td>
+      <td>xslF345X05/wk-form4_1744929115.xml</td>
+      <td>FORM 4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0000320193-25-000048</td>
+      <td>2025-04-17</td>
+      <td>2025-04-15</td>
+      <td>2025-04-17T22:31:13.000Z</td>
+      <td></td>
+      <td>4</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>4</td>
+      <td>16183</td>
+      <td>0</td>
+      <td>0</td>
+      <td>xslF345X05/wk-form4_1744929066.xml</td>
+      <td>FORM 4</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0001140361-25-012359</td>
+      <td>2025-04-04</td>
+      <td></td>
+      <td>2025-04-04T20:30:11.000Z</td>
+      <td>34</td>
+      <td>SD</td>
+      <td>001-36743</td>
+      <td>25815163</td>
+      <td></td>
+      <td>SD</td>
+      <td>221487</td>
+      <td>0</td>
+      <td>0</td>
+      <td>ef20046400_sd.htm</td>
+      <td>SD</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0000320193-25-000045</td>
+      <td>2025-04-03</td>
+      <td>2025-04-01</td>
+      <td>2025-04-03T22:33:37.000Z</td>
+      <td></td>
+      <td>4</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>4</td>
+      <td>19563</td>
+      <td>0</td>
+      <td>0</td>
+      <td>xslF345X05/wk-form4_1743719610.xml</td>
+      <td>FORM 4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0000320193-25-000044</td>
+      <td>2025-04-03</td>
+      <td>2025-04-01</td>
+      <td>2025-04-03T22:32:58.000Z</td>
+      <td></td>
+      <td>4</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>4</td>
+      <td>13553</td>
+      <td>0</td>
+      <td>0</td>
+      <td>xslF345X05/wk-form4_1743719572.xml</td>
+      <td>FORM 4</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>This is an overview of different filings. The type of filings can be determined by the form. Very interesting filings are, e.g., filings of form 10-Q (quarter reports), form 10-K (annual reports) or form 8-K which is information that must be disclosed to the public if it can have a potential impact on the company. Each filing can be uniquely identified by its accession number (and primary document key). The content of each document can be found by the combination of an url and these identifiers. For instance let us get the link to the most recent annual report.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">most_recent_10k</span> <span class="o">=</span> <span class="n">filings</span><span class="p">[</span><span class="n">filings</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s2">&quot;10-K&quot;</span><span class="p">,</span> <span class="s2">&quot;10-K/A&quot;</span><span class="p">])]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span>
+<span class="n">most_recent_10k</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>accessionNumber              0000320193-24-000123
+filingDate                             2024-11-01
+reportDate                             2024-09-28
+acceptanceDateTime       2024-11-01T10:01:36.000Z
+act                                            34
+form                                         10-K
+fileNumber                              001-36743
+filmNumber                              241416806
+items                                            
+core_type                                    XBRL
+size                                      9759333
+isXBRL                                          1
+isInlineXBRL                                    1
+primaryDocument                 aapl-20240928.htm
+primaryDocDescription                        10-K
+Name: 43, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tenk_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://www.sec.gov/Archives/edgar/data/</span><span class="si">{</span><span class="n">cik</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">most_recent_10k</span><span class="o">.</span><span class="n">accessionNumber</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">most_recent_10k</span><span class="o">.</span><span class="n">primaryDocument</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="n">tenk_url</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;https://www.sec.gov/Archives/edgar/data/0000320193/000032019324000123/aapl-20240928.htm&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is another URL which contains the information of the full report, we can also request its data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">tenk_url</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">[</span><span class="mi">5000</span><span class="p">:</span><span class="mi">6000</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b&#39;&quot;us-gaap:FinanceLeaseLiabilityCurrentStatementOfFinancialPositionExtensibleList&quot; id=&quot;f-863&quot;&gt;http://fasb.org/us-gaap/2024#OtherLiabilitiesCurrent&lt;/ix:nonNumeric&gt;&lt;ix:nonNumeric contextRef=&quot;c-21&quot; name=&quot;us-gaap:FinanceLeaseLiabilityNoncurrentStatementOfFinancialPositionExtensibleList&quot; id=&quot;f-866&quot;&gt;http://fasb.org/us-gaap/2024#OtherLiabilitiesNoncurrent&lt;/ix:nonNumeric&gt;&lt;ix:nonNumeric contextRef=&quot;c-22&quot; name=&quot;us-gaap:FinanceLeaseLiabilityNoncurrentStatementOfFinancialPositionExtensibleList&quot; id=&quot;f-867&quot;&gt;http://fasb.org/us-gaap/2024#OtherLiabilitiesNoncurrent&lt;/ix:nonNumeric&gt;&lt;ix:nonNumeric contextRef=&quot;c-189&quot; name=&quot;ecd:TrdArrDuration&quot; id=&quot;f-1124&quot;&gt;P856D&lt;/ix:nonNumeric&gt;&lt;ix:nonNumeric contextRef=&quot;c-192&quot; name=&quot;ecd:TrdArrDuration&quot; id=&quot;f-1125&quot;&gt;P473D&lt;/ix:nonNumeric&gt;&lt;/ix:hidden&gt;&lt;ix:references xml:lang=&quot;en-US&quot;&gt;&lt;link:schemaRef xlink:type=&quot;simple&quot; xlink:href=&quot;aapl-20240928.xsd&quot;/&gt;&lt;/ix:references&gt;&lt;ix:resources&gt;&lt;xbrli:unit id=&quot;usd&quot;&gt;&lt;xbrli:measure&gt;iso4217:USD&lt;/xbrli:measure&gt;&lt;/xbrli:unit&gt;&lt;xbrli:unit id=&quot;shares&quot;&gt;&lt;xbr&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The output if this request is the content of the URL which is not part of the EDGAR API. If we want to extract its content we need other techniques which are collected under the term <em>Scraping</em>. Before we do so, let me share some more information for the EDGAR API. If you read carefully through the documentation on their web page, you can find a lot of information what the different forms represent and which data can be collected by it. For some APIs it is offered to download bulk data which is favorable for larger data retrieval. While filings contain mostly textual information, financial data which follows certain accounting standards and which are demanded by the SEC can also be found. A good example is given by the companyfacts API or its bulk data. Feel free to examine these different sources.</p>
+</section>
+</section>
+<section id="scraping">
+<h2>Scraping<a class="headerlink" href="#scraping" title="Link to this heading">#</a></h2>
+<p>To collect data and information from web pages, we first need to learn basic concepts how content is stored. The first is the <strong>H</strong>yper<strong>T</strong>ext <strong>M</strong>arkup <strong>L</strong>anguage for web browsers. HTML uses <strong>tags</strong> to structure hierarchical data, telling the browser how to display the single elements. Tags appear in pairs and are enclosed in angle brackets <code class="docutils literal notranslate"><span class="pre">&lt;tag&gt;</span></code> to open a respective section and <code class="docutils literal notranslate"><span class="pre">&lt;/tag&gt;</span></code> to close it.<br />
+Any HTML will be enclosed in the most outer <code class="docutils literal notranslate"><span class="pre">&lt;html&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;/html&gt;</span></code> tags. Inside this, the document is structured by various tags. To name just some:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;body&gt;</span></code>: the main part of a website containing the displayed information</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code>: division, denotes a section</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;p&gt;</span></code>: paragraph, simple text information</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;table&gt;</span></code>: displays data in a table, (<code class="docutils literal notranslate"><span class="pre">&lt;tr&gt;</span></code> for single rows)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;b&gt;</span></code>: bold, does not structure the page, but alters the font</p></li>
+</ul>
+<p>Beside the tag itself attributes may be included inside the brackets. With the right tools, we can exploit tags and attributes to navigate to specific elements on webpages in order to extract the element information. Very common attributes are <code class="docutils literal notranslate"><span class="pre">id</span></code> and <code class="docutils literal notranslate"><span class="pre">class</span></code>.</p>
+<p>A simple html may look like this (inside “”” and indented):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">&lt;html&gt;</span>
+<span class="sd">  &lt;body&gt;</span>
+<span class="sd">    &lt;div id=&#39;div_1&#39;&gt;</span>
+<span class="sd">      &lt;p class=&#39;section&#39; id =&#39;intro&#39;&gt;</span>
+<span class="sd">        This is a brief introduction to &lt;b&gt;HTML&lt;/b&gt;.</span>
+<span class="sd">      &lt;/p&gt;</span>
+<span class="sd">    &lt;/div&gt;</span>
+<span class="sd">  &lt;/body&gt;</span>
+<span class="sd">&lt;/html&gt;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&quot;\n&lt;html&gt;\n  &lt;body&gt;\n    &lt;div id=&#39;div_1&#39;&gt;\n      &lt;p class=&#39;section&#39; id =&#39;intro&#39;&gt;\n        This is a brief introduction to &lt;b&gt;HTML&lt;/b&gt;.\n      &lt;/p&gt;\n    &lt;/div&gt;\n  &lt;/body&gt;\n&lt;/html&gt;\n&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Related to HTML is <strong>E</strong>xtensible <strong>M</strong>arkup <strong>L</strong>anguage <strong>XML</strong> which provides something like a framework to markup languages to encode structured, hierarchical data for transfer. In comparison to HTML it is less for displaying data than storing and transferring it. While the differences are not of interest here (learn about them yourself anytime, though), the similarities are: in the way, we can use them to navigate html documents.</p>
+<p>The <strong>XML Path Language</strong> (<strong>Xpath</strong>) allows to select items from an xml document by addressing tag names, attributes and structural characteristics. We can use the respective commands to retrieve elements from html documents, i.e. websites.</p>
+<p>The two basic operators are</p>
+<ul class="simple">
+<li><p>a forward slash <code class="docutils literal notranslate"><span class="pre">/</span></code>: to look into the next generation</p></li>
+<li><p>square brackets <code class="docutils literal notranslate"><span class="pre">[]</span></code>: select a specific element</p></li>
+</ul>
+<p>The forward slash works basically the same way as in an URL or path when navigating a directory on your computer. The square brackets on the other hand have a very similar functionality to the usage of square brackets in python.</p>
+<p>Lets have a look at a slightly extended version of the html document from above to see how we can use these operators for navigation.</p>
+<p>As usual, different python packages in python exist for navigating through xml documents and extract the desired content. One example is the <a class="reference external" href="https://scrapy.org/">Scrapy</a> package with its <code class="docutils literal notranslate"><span class="pre">Selector</span></code> module which we are going to use. As an alternative you may want to examine the <a class="reference external" href="https://beautiful-soup-4.readthedocs.io/en/latest/">Beautiful Soup</a> package.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_html</span> <span class="o">=</span> \
+<span class="sd">&quot;&quot;&quot;&lt;html&gt;&lt;body&gt;&lt;div id=&#39;div_1&#39;&gt;&lt;p class=&#39;parag-1&#39; id =&#39;intro&#39;&gt;This is a brief introduction to &lt;b&gt;HTML&lt;/b&gt;.&lt;/p&gt;</span>
+<span class="sd">&lt;p class=&#39;parag-1-1&#39; id =&#39;main&#39;&gt;Part 2.&lt;/p&gt;&lt;/div id=&#39;div_2&#39; href=&#39;www.uni-passau.de&#39;&gt;</span>
+<span class="sd">&lt;p class=&#39;parag-2&#39; id =&#39;outro&#39;&gt;Part 3. &lt;a href=&#39;www.uni-passau.de&#39;&gt;Homepage&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1">#formatted version to better visualise the structure</span>
+
+<span class="c1"># &lt;html&gt;</span>
+<span class="c1">#   &lt;body&gt;</span>
+<span class="c1">#     &lt;div id=&#39;div_1&#39;&gt;</span>
+<span class="c1">#       &lt;p class=&#39;parag-1&#39; id =&#39;intro&#39;&gt;</span>
+<span class="c1">#         This is a brief introduction to &lt;b&gt;HTML&lt;/b&gt;.</span>
+<span class="c1">#       &lt;/p&gt;</span>
+<span class="c1">#       &lt;p class=&#39;parag-1-1&#39; id =&#39;main&#39;&gt;</span>
+<span class="c1">#         Part 2.</span>
+<span class="c1">#       &lt;/p&gt;</span>
+<span class="c1">#     &lt;/div id=&#39;div_2&#39; &gt;</span>
+<span class="c1">#     &lt;p class=&#39;parag-2&#39; id =&#39;outro&#39;&gt;</span>
+<span class="c1">#         Part 3.</span>
+<span class="c1">#         &lt;a href=&#39;www.uni-passau.de&#39;&gt;Homepage&lt;/a&gt;</span>
+<span class="c1">#     &lt;/p&gt;</span>
+<span class="c1">#   &lt;/body&gt;</span>
+<span class="c1"># &lt;/html&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Because of the tree like structure elements are labeled in on the basis of a family tree. The html consists of the <strong>body</strong> inside the <strong>html</strong> tags. In the next generation, called <em>child generation</em>, we see one <strong>div</strong> element, itself containing two <strong>p</strong> elements, i.e. <em>children</em>. Another <strong>p</strong> element appears as a <em>sibling</em> to the only <strong>div</strong> element.</p>
+<p>Now let’s select single elements from this html using the <code class="docutils literal notranslate"><span class="pre">xpath()</span></code> method to which we pass our statement as string. To do so, we must first instantiate an Selector object with <code class="docutils literal notranslate"><span class="pre">my_html</span></code>. Note that chaining the <code class="docutils literal notranslate"><span class="pre">extract()</span></code> method to the selector object gives the desired result.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sel</span> <span class="o">=</span> <span class="n">Selector</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">my_html</span><span class="p">)</span>
+
+<span class="c1"># navigate to p elements inside div</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;both p elements:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;/html/body/div/p&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>both p elements:
+ [&#39;&lt;p class=&quot;parag-1&quot; id=&quot;intro&quot;&gt;This is a brief introduction to &lt;b&gt;HTML&lt;/b&gt;.&lt;/p&gt;&#39;, &#39;&lt;p class=&quot;parag-1-1&quot; id=&quot;main&quot;&gt;Part 2.&lt;/p&gt;&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the special case here, where all child elements are the <em>p</em> elements we are looking for, we can use the wildcard character <code class="docutils literal notranslate"><span class="pre">*</span></code>. It wil select any element, no matter the tag in the next generation (or in all future generations with a double forward slash).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># use wildcard character *</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">wildcard *:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;/html/body/div/*&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>wildcard *:
+ [&#39;&lt;p class=&quot;parag-1&quot; id=&quot;intro&quot;&gt;This is a brief introduction to &lt;b&gt;HTML&lt;/b&gt;.&lt;/p&gt;&#39;, &#39;&lt;p class=&quot;parag-1-1&quot; id=&quot;main&quot;&gt;Part 2.&lt;/p&gt;&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>To select only the first <em>p</em> element, index the result with square brackets.</p>
+<div class="{admonition}Caution docutils">
+<p>:class: caution
+Xpath indexing starts with 1 and not 0 like python does!:::</p>
+<p>Another way is to use scrapy’s <code class="docutils literal notranslate"><span class="pre">extract_first()</span></code> method.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># select first p with [1]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;slelect only first p</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;/html/body/div/p[1]&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">())</span>
+
+<span class="c1"># indexing the python list starts with 0!</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">slelect only first p</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;/html/body/div/p&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># with extract_first()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">slelect only first p</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;/html/body/div/p&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>slelect only first p
+ [&#39;&lt;p class=&quot;parag-1&quot; id=&quot;intro&quot;&gt;This is a brief introduction to &lt;b&gt;HTML&lt;/b&gt;.&lt;/p&gt;&#39;]
+
+slelect only first p
+ &lt;p class=&quot;parag-1&quot; id=&quot;intro&quot;&gt;This is a brief introduction to &lt;b&gt;HTML&lt;/b&gt;.&lt;/p&gt;
+
+slelect only first p
+ &lt;p class=&quot;parag-1&quot; id=&quot;intro&quot;&gt;This is a brief introduction to &lt;b&gt;HTML&lt;/b&gt;.&lt;/p&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see, that a forward slash navigates one generation deeper into the structure, from <em>html</em> over <em>body</em> and <em>div</em> to both(!) <em>p</em> elements. Here, we get back a list (first print statement) of the <em>p</em> elements, where we can intuitively use the square brackets to select only the first one. What we get back, however, is still a <em>selector object</em>. To extract the text only, we need to modify the statement further by <code class="docutils literal notranslate"><span class="pre">/text()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># select text from first p element</span>
+<span class="n">to_print</span> <span class="o">=</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;/html/body/div/p[1]/text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;text in first p:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">to_print</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>text in first p:
+ [&#39;This is a brief introduction to &#39;, &#39;.&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now again, we do not see all of the text, just the string before the <em>b</em> tags and the dot after it as elements of a list. Even though the <em>b</em> tags for bold printing appear in-line, they still define a child generation for the enclosed ‘HTML’ string. Here, we could navigate further down the tree using a path to the b element for example. Instead, we will make use of the double forward slash <code class="docutils literal notranslate"><span class="pre">//</span></code>, which selects everything ‘<strong>from future generations</strong>’. Meaning it will select all the text from all generations that follow this first <em>p</em> element.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># select text from first p element and all future generations by a double forward slash</span>
+<span class="n">to_print</span> <span class="o">=</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;/html/body/div/p[1]//text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;text in first p and future generations with double slash:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">to_print</span><span class="p">)</span>
+
+<span class="c1"># for one string, use the join() function</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">complete string:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">to_print</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>text in first p and future generations with double slash:
+ [&#39;This is a brief introduction to &#39;, &#39;HTML&#39;, &#39;.&#39;]
+
+complete string:
+ This is a brief introduction to HTML.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Beside specifying a path explicitly, we can leverage built-in methods to extract our desired elements. Scrapy’s <code class="docutils literal notranslate"><span class="pre">getall()</span></code> returns all elements of a given tag as list.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;scrapy:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//p&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getall</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>scrapy:
+ [&#39;&lt;p class=&quot;parag-1&quot; id=&quot;intro&quot;&gt;This is a brief introduction to &lt;b&gt;HTML&lt;/b&gt;.&lt;/p&gt;&#39;, &#39;&lt;p class=&quot;parag-1-1&quot; id=&quot;main&quot;&gt;Part 2.&lt;/p&gt;&#39;, &#39;&lt;p class=&quot;parag-2&quot; id=&quot;outro&quot;&gt;Part 3. &lt;a href=&quot;www.uni-passau.de&quot;&gt;Homepage&lt;/a&gt;&lt;/p&gt;&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>As mentioned before, elements can be addressed using attributes, like ID or class name. The attribute is addressed in square brackets, with <code class="docutils literal notranslate"><span class="pre">&#64;attr</span> <span class="pre">=</span> <span class="pre">'attr_name'</span></code>. If the same attribute applies to several tags, a list of all results is returned.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># search all elements in document (leading //*) by id</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ID with wildcard:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//*[@id=&quot;div_1&quot;]&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">())</span>
+
+<span class="c1"># same as (tag must be known)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">ID with div:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//div[@id=&quot;div_1&quot;]&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ID with wildcard:
+ [&#39;&lt;div id=&quot;div_1&quot;&gt;&lt;p class=&quot;parag-1&quot; id=&quot;intro&quot;&gt;This is a brief introduction to &lt;b&gt;HTML&lt;/b&gt;.&lt;/p&gt;\n&lt;p class=&quot;parag-1-1&quot; id=&quot;main&quot;&gt;Part 2.&lt;/p&gt;&lt;/div&gt;&#39;]
+
+ID with div:
+ [&#39;&lt;div id=&quot;div_1&quot;&gt;&lt;p class=&quot;parag-1&quot; id=&quot;intro&quot;&gt;This is a brief introduction to &lt;b&gt;HTML&lt;/b&gt;.&lt;/p&gt;\n&lt;p class=&quot;parag-1-1&quot; id=&quot;main&quot;&gt;Part 2.&lt;/p&gt;&lt;/div&gt;&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">contains</span></code> function provides access to attributes based on (parts of) the attribute name.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># find all elements where attr contains string</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;contains string:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//*[contains(@class, &quot;parag-1&quot;)]&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>contains string:
+ [&#39;&lt;p class=&quot;parag-1&quot; id=&quot;intro&quot;&gt;This is a brief introduction to &lt;b&gt;HTML&lt;/b&gt;.&lt;/p&gt;&#39;, &#39;&lt;p class=&quot;parag-1-1&quot; id=&quot;main&quot;&gt;Part 2.&lt;/p&gt;&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally, an attribute can be returned by addressing it in the path.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;get attribute:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;/html/body/div/p[1]/@id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>get attribute:
+ [&#39;intro&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <strong>C</strong>ascading <strong>S</strong>tyle <strong>S</strong>heets language is another way to work with markup languages and thus html. Of special interest for us is that it also provides selectors. Even more convenient is that scrapy includes these selectors and the respective language. CSS uses a different syntax, which can offer much simpler and shorter statements for the same element than xpath (or sometime, the opposite)</p>
+<p>The basic syntax changes from xpath like this:</p>
+<ul class="simple">
+<li><p>a single generation forward: <code class="docutils literal notranslate"><span class="pre">/</span></code> is replaced by <code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></li>
+<li><p>all future generations: <code class="docutils literal notranslate"><span class="pre">//</span></code> is replaced by a blank space (!)</p></li>
+<li><p>not so short anymore: indexing with <code class="docutils literal notranslate"><span class="pre">[k]</span></code> becomes <code class="docutils literal notranslate"><span class="pre">:nth-of-type(k)</span></code></p></li>
+</ul>
+<p>For scrapy, nothing changes really, except using <code class="docutils literal notranslate"><span class="pre">.css()</span></code> method. The selector object is the same as before.<br />
+Some examples:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># navigate to p elements inside div</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;xpath:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;/html/body/div/p&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">css:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">sel</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;html&gt;body&gt;div&gt;p&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">())</span>
+
+<span class="c1"># navigate to all p elements in document</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">all p elements&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;xpath:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//p&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">css:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">sel</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>xpath:
+ [&#39;&lt;p class=&quot;parag-1&quot; id=&quot;intro&quot;&gt;This is a brief introduction to &lt;b&gt;HTML&lt;/b&gt;.&lt;/p&gt;&#39;, &#39;&lt;p class=&quot;parag-1-1&quot; id=&quot;main&quot;&gt;Part 2.&lt;/p&gt;&#39;]
+
+css:
+ [&#39;&lt;p class=&quot;parag-1&quot; id=&quot;intro&quot;&gt;This is a brief introduction to &lt;b&gt;HTML&lt;/b&gt;.&lt;/p&gt;&#39;, &#39;&lt;p class=&quot;parag-1-1&quot; id=&quot;main&quot;&gt;Part 2.&lt;/p&gt;&#39;]
+
+all p elements
+xpath:
+ [&#39;&lt;p class=&quot;parag-1&quot; id=&quot;intro&quot;&gt;This is a brief introduction to &lt;b&gt;HTML&lt;/b&gt;.&lt;/p&gt;&#39;, &#39;&lt;p class=&quot;parag-1-1&quot; id=&quot;main&quot;&gt;Part 2.&lt;/p&gt;&#39;, &#39;&lt;p class=&quot;parag-2&quot; id=&quot;outro&quot;&gt;Part 3. &lt;a href=&quot;www.uni-passau.de&quot;&gt;Homepage&lt;/a&gt;&lt;/p&gt;&#39;]
+
+css:
+ [&#39;&lt;p class=&quot;parag-1&quot; id=&quot;intro&quot;&gt;This is a brief introduction to &lt;b&gt;HTML&lt;/b&gt;.&lt;/p&gt;&#39;, &#39;&lt;p class=&quot;parag-1-1&quot; id=&quot;main&quot;&gt;Part 2.&lt;/p&gt;&#39;, &#39;&lt;p class=&quot;parag-2&quot; id=&quot;outro&quot;&gt;Part 3. &lt;a href=&quot;www.uni-passau.de&quot;&gt;Homepage&lt;/a&gt;&lt;/p&gt;&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>The css locator provides short notation when working with <em>id</em> or <em>class</em>:</p>
+<ul class="simple">
+<li><p>to select elements by class: use <code class="docutils literal notranslate"><span class="pre">tag.class-name</span></code> (similiar to method chaining)</p></li>
+<li><p>to select elements by id: use <code class="docutils literal notranslate"><span class="pre">tag#id-name</span></code></p></li>
+</ul>
+<p>Examples from the toy html above:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># select by id</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;select by class:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">sel</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;*.parag-1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">())</span>
+
+<span class="c1"># select by id</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">select by id:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">sel</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;*#intro&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>select by class:
+ [&#39;&lt;p class=&quot;parag-1&quot; id=&quot;intro&quot;&gt;This is a brief introduction to &lt;b&gt;HTML&lt;/b&gt;.&lt;/p&gt;&#39;]
+
+select by id:
+ [&#39;&lt;p class=&quot;parag-1&quot; id=&quot;intro&quot;&gt;This is a brief introduction to &lt;b&gt;HTML&lt;/b&gt;.&lt;/p&gt;&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Attributes are in general addressed by a double colon <code class="docutils literal notranslate"><span class="pre">::attr(attribute-name)</span></code>, for example to extract a link from the <code class="docutils literal notranslate"><span class="pre">href</span></code> attribute:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># select by attribute</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">select by attribute:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">sel</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;*::attr(href)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>select by attribute:
+ [&#39;www.uni-passau.de&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>The double colon is also used to extract <code class="docutils literal notranslate"><span class="pre">::text</span></code>, like we used <code class="docutils literal notranslate"><span class="pre">/text()</span></code> in xpath:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># extract all (blank space!) text descending from p elements inside div elements with class &#39;div_1&#39; </span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">extract text:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">sel</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;div#div_1&gt;p ::text&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>extract text:
+ [&#39;This is a brief introduction to &#39;, &#39;HTML&#39;, &#39;.&#39;, &#39;Part 2.&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Look for exampe at <a class="reference external" href="https://devhints.io/xpath">this cheatsheet</a> for more commands with xpath and css. Common internet browsers like firefox, chrome, safari, etc. include functionality to inspect webpages, meaning to look at the underlying html. To view the html, right-click on a specific element on the webpage, e.g. a headline, and select “Inspect Element” (or something similar), like shown in this screenshot below.</p>
+<p><img alt="title" src="_images/search_html.png" /></p>
+<p>We are going to practice this a little in the tutorials. If you need to scrape data from dynamic web pages you can look for the <a class="reference external" href="https://selenium-python.readthedocs.io/">Selenium</a> package. Furthermore, sometimes you may want to extract data from multiple web pages for which you may want to look into the web crawler documentation of the scrapy package.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="03_data.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Working with Data</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="04_graphics.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Graphics</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#yahoo-finance">Yahoo finance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-apis">Working with APIs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#end-of-day-historical-data-api">End of day historical data API</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edgar-api">EDGAR API</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scraping">Scraping</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Prof. Dr. Ralf Kellner
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

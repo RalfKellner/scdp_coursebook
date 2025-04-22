@@ -1,0 +1,1441 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Scientific computing with numpy &#8212; Scientific Computing and Digital Reporting with Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '02_sc_with_numpy';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Working with Data" href="03_data.html" />
+    <link rel="prev" title="How to use and install python" href="01_python_basics.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="00_welcome.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/course_logo.png" class="logo__image only-light" alt="Scientific Computing and Digital Reporting with Python - Home"/>
+    <script>document.write(`<img src="_static/course_logo.png" class="logo__image only-dark" alt="Scientific Computing and Digital Reporting with Python - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00_welcome.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_python_basics.html">How to use and install python</a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Scientific computing with numpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_data.html">Working with Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_getting_data.html">Collecting data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_graphics.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_sc_with_scipy.html">Scientific computing with scipy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_sklearn.html">SciKit Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_torch.html">Pytorch</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="09_digital_reporting.html">Digital reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="A_math_statistics.html">Appendix - Math and statistics</a></li>
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/02_sc_with_numpy.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Scientific computing with numpy</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-fundamentals">Numpy fundamentals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-operations-with-numpy">Mathematical operations with numpy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fundamental-stock-market-calculations-with-numpy">Fundamental stock market calculations with numpy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-algebra-with-numpy">Linear algebra with numpy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-independence-of-vectors">Linear independence of vectors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#similarity-of-vectors">Similarity of vectors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-inversion">Matrix inversion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-decomposition">Matrix decomposition</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression-with-numpy">Linear regression with numpy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pca-with-numpy">PCA with numpy</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import necessary packages</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="scientific-computing-with-numpy">
+<h1>Scientific computing with numpy<a class="headerlink" href="#scientific-computing-with-numpy" title="Link to this heading">#</a></h1>
+<p><a class="reference external" href="https://numpy.org/doc/stable/"><strong>Numpy</strong></a> is a fundamental python package for scientific computing. It comes along with a flexible array definition and includes many important mathematical functions and routines. We start with the discussion of numpy because other fundamental libraries such as scipy or pandas use its ndarrays as a common format. Numpy can be intalled by <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">numpy</span></code> and it is common to import numpy using the alias <em>np</em>.</p>
+<section id="numpy-fundamentals">
+<h2>Numpy fundamentals<a class="headerlink" href="#numpy-fundamentals" title="Link to this heading">#</a></h2>
+<p>Numpy arrays can be created from other python sequences such as lists or tuples or they can be created by several functions. Arrays can have multiple dimensions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;One dimensional array from a list: </span><span class="se">\n</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">])</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Two dimensional array from a list: </span><span class="se">\n</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">]])</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Three dimensional array from a list: </span><span class="se">\n</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">]],</span><span class="w"> </span><span class="p">[[</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">]]])</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;One dimensional array created with linspace: </span><span class="se">\n</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">stop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">19</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;One dimensional array created with arange: </span><span class="se">\n</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Create an identity matrix: </span><span class="se">\n</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Create a matrix with ones: </span><span class="se">\n</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Create a matrix with zeros: </span><span class="se">\n</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>One dimensional array from a list: 
+[1 2 3]
+
+Two dimensional array from a list: 
+[[1 2]
+ [3 4]]
+
+Three dimensional array from a list: 
+[[[1 2]
+  [3 4]]
+
+ [[4 5]
+  [6 7]]]
+
+One dimensional array created with linspace: 
+[ 1.   1.5  2.   2.5  3.   3.5  4.   4.5  5.   5.5  6.   6.5  7.   7.5
+  8.   8.5  9.   9.5 10. ]
+
+One dimensional array created with arange: 
+[1.  1.5 2.  2.5 3.  3.5 4.  4.5 5.  5.5 6.  6.5 7.  7.5 8.  8.5 9.  9.5]
+
+Create an identity matrix: 
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+
+Create a matrix with ones: 
+[[1. 1.]
+ [1. 1.]
+ [1. 1.]]
+
+Create a matrix with zeros: 
+[[0. 0.]
+ [0. 0.]
+ [0. 0.]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Arrays can be indexed with the <code class="docutils literal notranslate"><span class="pre">x[obj]</span></code> syntax where x is the array and obj the selection. Index counting starts at <span class="math notranslate nohighlight">\(0\)</span>, single elements can be accessed with their index values. Negative indices start from the end of an array. If multiple values should be selected, we can use slicing which defines the selection by <code class="docutils literal notranslate"><span class="pre">start:stop:step</span></code> definitions. See below for some examples.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">one_dim_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">two_dim_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">one_dim_array</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;One-dimensional array x: </span><span class="se">\n</span><span class="si">{</span><span class="n">one_dim_array</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Two-dimensional array X: </span><span class="se">\n</span><span class="si">{</span><span class="n">two_dim_array</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Select the third element of x by x[2]: </span><span class="se">\n</span><span class="si">{</span><span class="n">one_dim_array</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Select the third element of the second row of  X by X[1, 2]: </span><span class="se">\n</span><span class="si">{</span><span class="n">two_dim_array</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Select the first three elements of x by x[:3]: </span><span class="se">\n</span><span class="si">{</span><span class="n">one_dim_array</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Select elements 4 to 6 of x by x[3:6]: </span><span class="se">\n</span><span class="si">{</span><span class="n">one_dim_array</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Select the last two elements of x by x[-2:]: </span><span class="se">\n</span><span class="si">{</span><span class="n">one_dim_array</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Select every second element of x by x[::2]: </span><span class="se">\n</span><span class="si">{</span><span class="n">one_dim_array</span><span class="p">[::</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Select the second column of X by X[:, 1]: </span><span class="se">\n</span><span class="si">{</span><span class="n">two_dim_array</span><span class="p">[:,</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Select the first row of X by X[0, :]: </span><span class="se">\n</span><span class="si">{</span><span class="n">two_dim_array</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="p">:]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>One-dimensional array x: 
+[0 1 2 3 4 5 6 7 8 9]
+
+Two-dimensional array X: 
+[[0 1 2 3 4]
+ [5 6 7 8 9]]
+
+Select the third element of x by x[2]: 
+2
+
+Select the third element of the second row of  X by X[1, 2]: 
+7
+
+Select the first three elements of x by x[:3]: 
+[0 1 2]
+
+Select elements 4 to 6 of x by x[3:6]: 
+[3 4 5]
+
+Select the last two elements of x by x[-2:]: 
+[8 9]
+
+Select every second element of x by x[::2]: 
+[0 2 4 6 8]
+
+Select the second column of X by X[:, 1]: 
+[1 6]
+
+Select the first row of X by X[0, :]: 
+[0 1 2 3 4]
+</pre></div>
+</div>
+</div>
+</div>
+<p>When new objects are defined by selecting parts of existing arrays, be aware of the difference between a <em>view</em> and a <em>copy</em>. While an object created as a view shares data of the original array and is changed with it, the objected created as a copy won’t.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create an object </span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="c1"># define a new object as a slice of x: note view is added hear for didactic purposes, the same happens without calling .view explicitly</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The original array: </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;A new array as a view on x: </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">x</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The original array after its change: </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The array created out of x: </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The original array: [0 1 2 3 4 5 6 7 8 9]
+A new array as a view on x: [0 1]
+The original array after its change: [11 12  2  3  4  5  6  7  8  9]
+The array created out of x: [11 12]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create an object </span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="c1"># define a new object as a slice of x and copy it: note .copy is equivalent to so called advanced indexing which would be done by: y = x[[0, 1, 2]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The original array: </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;A new array as a copy on x: </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">x</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The original array after its change: </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The array created out of x: </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The original array: [0 1 2 3 4 5 6 7 8 9]
+A new array as a copy on x: [0 1]
+The original array after its change: [11 12  2  3  4  5  6  7  8  9]
+The array created out of x: [0 1]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mathematical-operations-with-numpy">
+<h2>Mathematical operations with numpy<a class="headerlink" href="#mathematical-operations-with-numpy" title="Link to this heading">#</a></h2>
+<p>Numpy arrays can be used for mathematical calculations which are vectorized. By broadcasting numpy often is able to figure out by itself how to handle mathematical operations for arrays with different shape. Let us take a look at some basic operations:</p>
+<ul class="simple">
+<li><p>addition and multiplication of a scalar with a vector (one-dimensional array) or matrix (two-dimensional array) for each element</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># scalar</span>
+<span class="n">s</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="c1"># vector</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="c1"># matrix</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;s: </span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;x: </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;X: </span><span class="se">\n</span><span class="si">{</span><span class="n">X</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Results for addition:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">X</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Results for multiplication:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">X</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>s: 2
+
+x: [1 2 3]
+
+X: 
+[[1 2]
+ [3 4]]
+
+Results for addition:
+[3 4 5]
+[[3 4]
+ [5 6]]
+
+Results for multiplication:
+[2 4 6]
+[[2 4]
+ [6 8]]
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>addition and multiplication of vectors and matrices for each element</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;y: </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Y: </span><span class="se">\n</span><span class="si">{</span><span class="n">Y</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Results for vector addition and multiplication for each element:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;x + y: </span><span class="si">{</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;x * y: </span><span class="si">{</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Results for matrix addition and multiplication for each element:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;X + Y: </span><span class="se">\n</span><span class="si">{</span><span class="n">X</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Y</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;X * Y: </span><span class="se">\n</span><span class="si">{</span><span class="n">X</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Y</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>y: [4 5 6]
+
+Y: 
+[[5 6]
+ [7 8]]
+
+Results for vector addition and multiplication for each element:
+x + y: [5 7 9]
+x * y: [ 4 10 18]
+
+Results for matrix addition and multiplication for each element:
+X + Y: 
+[[ 6  8]
+ [10 12]]
+
+X * Y: 
+[[ 5 12]
+ [21 32]]
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>matrix multiplication can be done by the <code class="docutils literal notranslate"><span class="pre">np.matmul</span></code> method or by the <code class="docutils literal notranslate"><span class="pre">dot</span></code> method of numpy arrays</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dot product of x and y: </span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Matrix multiplication of X and Y: </span><span class="se">\n</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="n">Y</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dot product of x and y: 32
+Matrix multiplication of X and Y: 
+[[19 22]
+ [43 50]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Besides basic operations, numpy comes along with many common functions from analysis and statistics. An overview can be found <a class="reference external" href="https://numpy.org/doc/stable/reference/routines.math.html">here</a> and <a class="reference external" href="https://numpy.org/doc/stable/reference/routines.statistics.html">here</a>. We demonstrate the usage with a practical application to stock market data in the next subsection.</p>
+</section>
+<section id="fundamental-stock-market-calculations-with-numpy">
+<h2>Fundamental stock market calculations with numpy<a class="headerlink" href="#fundamental-stock-market-calculations-with-numpy" title="Link to this heading">#</a></h2>
+<p>In the cell below you can see how we import a dataset (we talk later about pandas datasets) which includes adjusted end of day stock prices for ten large US companies. The output shows you the stock prices for the first two days already in numpy array format. Note, that all we do here serves demonstrational purposes and we do this later in a more convenient way. Overall, the array contains 536 observations, thus, approximately two years of daily data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">close_prices</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/close_prices_small.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="s2">&quot;date&quot;</span><span class="p">)</span>
+<span class="n">stock_prices</span> <span class="o">=</span> <span class="n">close_prices</span><span class="o">.</span><span class="n">values</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Shape of the array (number of observations, number of companies): </span><span class="si">{</span><span class="n">stock_prices</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Observations for the first two days:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stock_prices</span><span class="p">[:</span><span class="mi">2</span><span class="p">,</span> <span class="p">:])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Shape of the array (number of observations, number of companies): (536, 10)
+
+Observations for the first two days:
+
+[[182.00999451 334.75       144.99150085 399.92666626 338.54000854
+  170.40449524 301.20999146 663.32000732 221.07032776  62.84332275]
+ [179.69999695 329.01000977 144.39950562 383.19665527 336.52999878
+  167.52200317 292.8999939  670.91998291 222.09866333  65.20711517]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>The most common way to analyze the development of companies on stock markets is by examining their returns. Discrete returns are defined by price (<span class="math notranslate nohighlight">\(s\)</span>) change between two periods <span class="math notranslate nohighlight">\(t-1\)</span> and <span class="math notranslate nohighlight">\(t\)</span> in relation to the price at <span class="math notranslate nohighlight">\(t-1\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+r_t = \frac{s_t - s_{t-1}}{s_{t-1}} = \frac{s_t}{s_{t-1}} - 1
+\]</div>
+<p>An alternative is given by logarithmic returns which assume continuous price development and are defined by:</p>
+<div class="math notranslate nohighlight">
+\[
+d_t = \ln \left( \frac{s_t}{s_{t-1}} \right)
+\]</div>
+<p>For small price changes, discrete and log-returns are very similar. Both have different mathematical properties. While discrete returns are additive in the cross-section (at the same point in time), log-returns are additive over time (over time). Basically, this means, if we want to determine an average return at the same point in time, e.g., a portfolio return of an investment into multiple assets, the average discrete return can be easily calculated by:</p>
+<div class="math notranslate nohighlight">
+\[
+r_t^{p} = \frac{1}{n} \sum_{i = 1}^n r_{t,i}
+\]</div>
+<p>The same is not possible for log-returns, however, the value development of an initial investment <span class="math notranslate nohighlight">\(p_0\)</span> over time steps <span class="math notranslate nohighlight">\(t = 1, 2, 3, ..., T\)</span> can be determined by:</p>
+<div class="math notranslate nohighlight">
+\[
+p_T = p_0 e^{\sum_{t = 1}^{T} d_t}
+\]</div>
+<p>Luckily, we can transform discrete returns to log-returns and vice versa by:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+d_t = \ln \left( 1 + r_t \right) \\
+r_t = e^{d_t} - 1
+\end{split}\]</div>
+<p>Now, let us do the following:</p>
+<ol class="arabic simple">
+<li><p>Calculate daily discrete returns</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">discrete_returns</span> <span class="o">=</span> <span class="n">stock_prices</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="p">:]</span> <span class="o">/</span> <span class="n">stock_prices</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Discrete returns on the first day.&quot;</span><span class="p">)</span>
+<span class="n">discrete_returns</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Discrete returns on the first day.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-0.0126916 , -0.0171471 , -0.00408297, -0.0418327 , -0.00593729,
+       -0.01691559, -0.02758872,  0.01145748,  0.00465162,  0.03761406])
+</pre></div>
+</div>
+</div>
+</div>
+<p>In order to get a feeling for the profit and risk of each company we determine the average discrete returns per company and estimate the standard deviation.
+Hereby, get to know the <code class="docutils literal notranslate"><span class="pre">axis</span></code> argument. It defines along which dimension the operation should be done. By default, it conducts the operation over all elements in the array. However, in our scenario, we want to conduct each operation per column which refers to the first dimension of the array and which is done by setting <code class="docutils literal notranslate"><span class="pre">axis</span> <span class="pre">=</span> <span class="pre">0</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average discrete returns per company: </span><span class="se">\n</span><span class="si">{</span><span class="n">discrete_returns</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estimated standard deviation for discrete returns per company: </span><span class="se">\n</span><span class="si">{</span><span class="n">discrete_returns</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">axis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Average discrete returns per company: 
+[ 0.00016443  0.00052218  0.00020384 -0.00063917  0.0012004   0.00032709
+  0.00211155  0.00138704  0.00053273  0.00113565]
+
+Estimated standard deviation for discrete returns per company: 
+[0.01799022 0.0189567  0.02170079 0.03744394 0.0342092  0.02638379
+ 0.03504752 0.02184552 0.01507697 0.0188964 ]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Besides individual metrics, a very important aspect on financial markets is how similar company returns behave over time. To calculate the (Bravais-Pearson) matrix, we can use the <code class="docutils literal notranslate"><span class="pre">corrcoef</span></code> method as shown below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corrmat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">discrete_returns</span><span class="p">,</span> <span class="n">rowvar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">corrmat</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.        , 0.73390036, 0.69870792, 0.55934367, 0.5480876 ,
+        0.61345432, 0.65443752, 0.64198519, 0.64278306, 0.20997612],
+       [0.73390036, 1.        , 0.72875756, 0.46279101, 0.59162586,
+        0.69162914, 0.69906846, 0.61477863, 0.56881728, 0.10738494],
+       [0.69870792, 0.72875756, 1.        , 0.44880208, 0.62986847,
+        0.6764548 , 0.63009485, 0.55986681, 0.50112936, 0.1148427 ],
+       [0.55934367, 0.46279101, 0.44880208, 1.        , 0.36588011,
+        0.49250584, 0.55922199, 0.48450068, 0.39109367, 0.09203781],
+       [0.5480876 , 0.59162586, 0.62986847, 0.36588011, 1.        ,
+        0.60955277, 0.53682121, 0.48266997, 0.4054681 , 0.05912017],
+       [0.61345432, 0.69162914, 0.6764548 , 0.49250584, 0.60955277,
+        1.        , 0.60010326, 0.54848904, 0.48150364, 0.13150585],
+       [0.65443752, 0.69906846, 0.63009485, 0.55922199, 0.53682121,
+        0.60010326, 1.        , 0.7086261 , 0.52208267, 0.0970571 ],
+       [0.64198519, 0.61477863, 0.55986681, 0.48450068, 0.48266997,
+        0.54848904, 0.7086261 , 1.        , 0.51335932, 0.17385641],
+       [0.64278306, 0.56881728, 0.50112936, 0.39109367, 0.4054681 ,
+        0.48150364, 0.52208267, 0.51335932, 1.        , 0.22865644],
+       [0.20997612, 0.10738494, 0.1148427 , 0.09203781, 0.05912017,
+        0.13150585, 0.0970571 , 0.17385641, 0.22865644, 1.        ]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let us use this example to showcase some more advanced array selection. The correlation matrix is symmetric and we are interested in the values below or above the diagonal only, respectively. For instance, we may want to calculate how high the average pairwise correlation is. To get the indices of the lower triangular matrix, we can use the <code class="docutils literal notranslate"><span class="pre">tril_indices</span></code> method as shown below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Indices of lower triangular entries:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">tril_indices</span><span class="p">(</span><span class="n">corrmat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">k</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Corresponding correlations:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">corrmat</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">tril_indices</span><span class="p">(</span><span class="n">corrmat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">k</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average correlation: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">corrmat</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">tril_indices</span><span class="p">(</span><span class="n">corrmat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">)])</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Indices of lower triangular entries:
+
+(array([1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 7,
+       7, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 9, 9, 9,
+       9]), array([0, 0, 1, 0, 1, 2, 0, 1, 2, 3, 0, 1, 2, 3, 4, 0, 1, 2, 3, 4, 5, 0,
+       1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7,
+       8]))
+
+Corresponding correlations:
+
+[0.73390036 0.69870792 0.72875756 0.55934367 0.46279101 0.44880208
+ 0.5480876  0.59162586 0.62986847 0.36588011 0.61345432 0.69162914
+ 0.6764548  0.49250584 0.60955277 0.65443752 0.69906846 0.63009485
+ 0.55922199 0.53682121 0.60010326 0.64198519 0.61477863 0.55986681
+ 0.48450068 0.48266997 0.54848904 0.7086261  0.64278306 0.56881728
+ 0.50112936 0.39109367 0.4054681  0.48150364 0.52208267 0.51335932
+ 0.20997612 0.10738494 0.1148427  0.09203781 0.05912017 0.13150585
+ 0.0970571  0.17385641 0.22865644]
+
+Average correlation: 0.4847
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Determine the average discrete return every day. This means we want to calculate the average of discrete returns per day (per row) which can be done by setting  <code class="docutils literal notranslate"><span class="pre">axis</span> <span class="pre">=</span> <span class="pre">1</span></code> when using the <em>mean</em> method. Note that this corresponds to what is called a naive portfolio which means we split all our money equally among the companies.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">discrete_returns_naive</span> <span class="o">=</span> <span class="n">discrete_returns</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The discrete portfolio returns on the first five days: </span><span class="si">{</span><span class="n">discrete_returns_naive</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The discrete portfolio returns on the first five days: [-0.00724728 -0.03177535  0.00064376 -0.01111619  0.00053785]
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Transform to log-returns</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log_returns_naive</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">discrete_returns_naive</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The log portfolio returns on the first five days: </span><span class="si">{</span><span class="n">log_returns_naive</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The log portfolio returns on the first five days: [-0.00727367 -0.03229115  0.00064355 -0.01117844  0.0005377 ]
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Calculate the value development of one monetary unit</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">log_returns_naive</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(1.3259655751986106)
+</pre></div>
+</div>
+</div>
+</div>
+<p>About 32% increase in value over the past two years. This sounds very promising. But note, by selecting today’s largest company, we selected companies which must have been successful in the recent past.</p>
+</section>
+<section id="linear-algebra-with-numpy">
+<h2>Linear algebra with numpy<a class="headerlink" href="#linear-algebra-with-numpy" title="Link to this heading">#</a></h2>
+<p>Certain vector and matrix attributes are important in the field of finance and economics. Examples are:</p>
+<ul class="simple">
+<li><p>linear independence of vectors</p></li>
+<li><p>similarity of vectors</p></li>
+<li><p>matrix inversion</p></li>
+<li><p>matrix decomposition</p></li>
+</ul>
+<p>These examples are from the mathematical field of linear algebra. Numpy includes many useful linear algebra algorithms in the corresponding module. Let us use the examples from above to familiarize ourselves with this module.</p>
+<section id="linear-independence-of-vectors">
+<h3>Linear independence of vectors<a class="headerlink" href="#linear-independence-of-vectors" title="Link to this heading">#</a></h3>
+<p>Vectors <span class="math notranslate nohighlight">\(\boldsymbol{a_1}, \boldsymbol{a_2}, ..., \boldsymbol{a_k} \in \mathbb{R}^m\)</span> are independent if the linear equation system:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{pmatrix}
+    a_{11} &amp; \cdots &amp; a_{1n}\\
+    a_{21} &amp; \cdots &amp; a_{2n}\\
+    \vdots &amp;        &amp; \vdots\\
+    a_{m1} &amp; \cdots &amp; a_{mn}
+\end{pmatrix}
+\begin{pmatrix}
+    x_1 \\
+    x_2 \\
+    \vdots \\
+    x_n \\
+\end{pmatrix} = 
+\begin{pmatrix}
+    0 \\
+    0 \\
+    \vdots \\
+    0 \\
+\end{pmatrix}
+\end{split}\]</div>
+<p>only has a unique solution. If it exists it must be the so called trivial solution <span class="math notranslate nohighlight">\(\boldsymbol{x} = \boldsymbol{0}\)</span>. We can try the <code class="docutils literal notranslate"><span class="pre">numpy.linalg.solve</span></code> method and see if the solution exists and if it is the null vector.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;An example matrix A: </span><span class="se">\n</span><span class="si">{</span><span class="n">A</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The solution for Ax=0: </span><span class="se">\n</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>An example matrix A: 
+[[-1  1  1]
+ [ 1 -3 -2]
+ [ 5  1  4]]
+
+The solution for Ax=0: 
+[ 0. -0.  0.]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Equivalently, we can calculate the determinant of A. If its value is different from zero, we know that the linear equation system has a unique solution. If it would be equal to zero, there may be multiple solutions or none.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The determinant of A: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The determinant of A: 12.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="similarity-of-vectors">
+<h3>Similarity of vectors<a class="headerlink" href="#similarity-of-vectors" title="Link to this heading">#</a></h3>
+<p>Different ways exist to quantify how similar vectors are. Popular examples are euclidean distance and cosine similarity. Euclidean distance <span class="math notranslate nohighlight">\(d(\boldsymbol{a}, \boldsymbol{b})\)</span> between two vectors <span class="math notranslate nohighlight">\(\boldsymbol{a}, \boldsymbol{b} \in \mathbb{R}^n\)</span> is calculated as:</p>
+<div class="math notranslate nohighlight">
+\[d(\boldsymbol{a}, \boldsymbol{b}) = \Vert \boldsymbol{a} - \boldsymbol{b} \Vert = 	\sqrt{\sum_{i = 1}^{n} (a_i - b_i)^2}\]</div>
+<p>Cosine similarity measures similarity by the angle between two vectors and is derived by:</p>
+<div class="math notranslate nohighlight">
+\[\cos \theta = \frac{\boldsymbol{a}^T \boldsymbol{b} }{ \Vert \boldsymbol{a} \Vert \Vert \boldsymbol{b} \Vert}\]</div>
+<p>The lower the distance or cosine similarity, respectively, the more similar the vectors are. Note that</p>
+<div class="math notranslate nohighlight">
+\[\Vert\boldsymbol{a}\Vert=\sqrt{\boldsymbol{a^T\ a}}=\sqrt{\sum\limits_{i=1}^n a_i^2}\]</div>
+<p>is the l2-norm of vector <span class="math notranslate nohighlight">\(\boldsymbol{a}\)</span> and is calculated as the square root of the dot product of a vector with its transposed. Imagine, you collect financial indicators from companies and each vectors represents one company. With euclidean distance or cosine similarity you are able to analyze how similar companies are.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Example vector a: </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Example vector b: </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Euclidean distance between a and b: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cosine similarity between a and b: </span><span class="si">{</span><span class="n">a</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">b</span><span class="p">))</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Example vector a: [2 1]
+Example vector b: [1 2]
+Euclidean distance between a and b: 1.4142
+Cosine similarity between a and b: 0.8000
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="matrix-inversion">
+<h3>Matrix inversion<a class="headerlink" href="#matrix-inversion" title="Link to this heading">#</a></h3>
+<p>For a square matrix (number of rows and columns are equal), the inverse of a matrix <span class="math notranslate nohighlight">\(\boldsymbol{A}^{-1}\)</span> is defined as <span class="math notranslate nohighlight">\(\boldsymbol{A} \boldsymbol{A}^{-1} = \boldsymbol{A}^{-1} \boldsymbol{A} = \boldsymbol{I}\)</span>. <span class="math notranslate nohighlight">\(\boldsymbol{I}\)</span> is called <em>identity matrix</em> and is a square matrix <span class="math notranslate nohighlight">\(\boldsymbol{I} \in \mathbb{R}^{n \times n}\)</span> whose elements are all equal to zero except those on its diagonal which are all equal to one. However, not for every matrix an inverse exists, but if it exists it is unique; a matrix with an inverse is called <em>regular</em>, while it is called <em>singular</em> if no inverse exists. If a matrix is invertible can be examined by its determinant (must be different from zero) or if it has full rank which means the rank equals its rows or columns, respectively. The rank of a matrix is the number of independent rows or columns, respectively.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;An example matrix A: </span><span class="se">\n</span><span class="si">{</span><span class="n">A</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Determinant of A: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Inverse of A: </span><span class="se">\n</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>An example matrix A: 
+[[-1  1  1]
+ [ 1 -3 -2]
+ [ 5  1  4]]
+
+Determinant of A: 12.0
+
+Inverse of A: 
+[[-0.83 -0.25  0.08]
+ [-1.17 -0.75 -0.08]
+ [ 1.33  0.5   0.17]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="matrix-decomposition">
+<h3>Matrix decomposition<a class="headerlink" href="#matrix-decomposition" title="Link to this heading">#</a></h3>
+<p>Sometimes decomposition of matrices can be useful for certain applications. We will take a look at the <em>eigendecomposition</em> as an example. The eigen decomposition of a square matrix <span class="math notranslate nohighlight">\(\boldsymbol{A} \in \mathbb{R}^{n \times n}\)</span> depends on <em>eigenvalues</em> and <em>eigenvectors</em> of it. If a number <span class="math notranslate nohighlight">\(\lambda \in \mathbb{R}\)</span> exists such that:</p>
+<div class="math notranslate nohighlight">
+\[ \boldsymbol{A} \boldsymbol{x} = \lambda \boldsymbol{x} \]</div>
+<p>then we call <span class="math notranslate nohighlight">\(\lambda\)</span> eigenvalue and <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbb{R}^n\)</span> the eigenvector. As <span class="math notranslate nohighlight">\(\boldsymbol{A} \boldsymbol{0} = \lambda \boldsymbol{0}\)</span> is always true, we are only interested in eigenvectors <span class="math notranslate nohighlight">\(\boldsymbol{x} \neq \boldsymbol{0}\)</span>.</p>
+<p>We can rewrite the equation above to:</p>
+<div class="math notranslate nohighlight">
+\[ \left( \boldsymbol{A} - \lambda \boldsymbol{I}_n \right) \boldsymbol{x} = \boldsymbol{0}\]</div>
+<p>One solution is always <span class="math notranslate nohighlight">\(\boldsymbol{x} = \boldsymbol{0}\)</span> and as we are only interested in solutions different from this one, we are searching for values of <span class="math notranslate nohighlight">\(\lambda\)</span> such that multiple solutions exist. For this to be true <span class="math notranslate nohighlight">\(\text{det}\left( \boldsymbol{A} - \lambda \boldsymbol{I}_n \right) = 0\)</span> must hold, because if the determinant is not equal to zero only a unique solution exists which is <span class="math notranslate nohighlight">\(\boldsymbol{x} = \boldsymbol{0}\)</span>. Deriving the determinant in dependence of <span class="math notranslate nohighlight">\(\lambda\)</span> leads to a <span class="math notranslate nohighlight">\(n\)</span>-th degree polynomial, the <em>characteristic polynomial</em>, whose roots are eigenvalues. Once we know those eigenvalues, we can derive corresponding eigenvectors with solving techniques of linear equation systems.</p>
+<p>Given a <span class="math notranslate nohighlight">\(n \times n\)</span> matrix has <span class="math notranslate nohighlight">\(n\)</span> linearly independent eigenvectors with eigenvalues <span class="math notranslate nohighlight">\(\boldsymbol{\lambda} = (\lambda_1, \lambda_2, ..., \lambda_n)\)</span>. The eigenvectors are concatenated column wise in the matrix:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{X} =  
+\begin{pmatrix}
+   \boldsymbol{x}^{(1)} &amp; \boldsymbol{x}^{(2)} &amp; ... &amp; \boldsymbol{x}^{(n)} \\
+\end{pmatrix} = 
+\begin{pmatrix}
+    x_{11} &amp; \cdots &amp; a_{1n}\\
+    x_{21} &amp; \cdots &amp; a_{2n}\\
+    \vdots &amp;        &amp; \vdots\\
+    x_{n1} &amp; \cdots &amp; x_{nn}
+\end{pmatrix}\end{split}\]</div>
+<p>then, the eigendecomposition of <span class="math notranslate nohighlight">\(\boldsymbol{A}\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{A} = \boldsymbol{X}\text{diag}\lbrace \lambda_i \rbrace \boldsymbol{X}^{-1}
+\]</div>
+<p>Eigenvectors can be used for many things and are needed for principal component analysis which is a tool for dimensionality reduction in data analysis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Example matrix A: </span><span class="se">\n</span><span class="si">{</span><span class="n">A</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">l</span><span class="p">,</span> <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Its eigenvalues: </span><span class="si">{</span><span class="n">l</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Its eigenvectors (columnwise): </span><span class="se">\n</span><span class="si">{</span><span class="n">X</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Calculation of its eigenvalue decomposition: </span><span class="se">\n</span><span class="si">{</span><span class="n">X</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">l</span><span class="p">))</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">X</span><span class="p">))</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Example matrix A: 
+[[1.   0.5  0.25]
+ [0.5  1.   0.1 ]
+ [0.25 0.1  1.  ]]
+
+Its eigenvalues: [1.6032748  0.47577635 0.92094885]
+
+Its eigenvectors (columnwise): 
+[[ 0.67828342  0.72634911 -0.11112416]
+ [ 0.62596041 -0.65037454 -0.43033304]
+ [ 0.38484434 -0.22232844  0.89580405]]
+
+Calculation of its eigenvalue decomposition: 
+[[1.   0.5  0.25]
+ [0.5  1.   0.1 ]
+ [0.25 0.1  1.  ]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="linear-regression-with-numpy">
+<h2>Linear regression with numpy<a class="headerlink" href="#linear-regression-with-numpy" title="Link to this heading">#</a></h2>
+<p>One of the most popular methods in the financial domain is the linear regression model. To estimate its parameters, we only need to be able to conduct basic matrix operations as we learned them in the previous subsection.</p>
+<p>The linear regression model is defined by:</p>
+<div class="math notranslate nohighlight">
+\[
+y = x_1 \beta_1 + ... + x_p \beta_p + \epsilon = \boldsymbol{x}^T \boldsymbol{\beta} + \epsilon
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(y\)</span> is the dependent variable</p></li>
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> are independent variables</p></li>
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol{\beta}\)</span> are parameters of the regression line</p></li>
+<li><p><span class="math notranslate nohighlight">\(\epsilon\)</span> is the residual term which is assumed to be a random variable with variance <span class="math notranslate nohighlight">\(\sigma^2\)</span></p></li>
+</ul>
+<p>In order to estimated the model parameters, we can use ordinary least square estimation which minimizes the score function:</p>
+<div class="math notranslate nohighlight">
+\[
+S(\boldsymbol{\beta}) = \sum_{i=1}^n \left( y_i - \boldsymbol{x}_i^T \boldsymbol{\beta} \right)^2 = || \boldsymbol{y} - \boldsymbol{X}\boldsymbol{\beta}||^2 
+\]</div>
+<p>The solution to this minimization problem is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{\boldsymbol{\beta}} = \left( \boldsymbol{X}^T \boldsymbol{X} \right)^{-1} \boldsymbol{X}^T \boldsymbol{y}
+\]</div>
+<p>Given these estimates, we can calculate:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{\boldsymbol{\epsilon}} = \boldsymbol{y} - \boldsymbol{x}_i^T \hat{\boldsymbol{\beta}}
+\]</div>
+<p>And estimate the last parameter of the model with:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{\sigma}^2 = \frac{\hat{\boldsymbol{\epsilon}}^T\hat{\boldsymbol{\epsilon}}}{n - p}
+\]</div>
+<p>Note that <span class="math notranslate nohighlight">\(n\)</span> represents the number of observations and <span class="math notranslate nohighlight">\(p\)</span> the number of independent variables, <span class="math notranslate nohighlight">\(\left(n - p\right)\)</span> in the denominator is a bias correction. The linear regression model is well implemented in libraries such as scikit-learn or statsmodels. However, for didactic reasons, we are going to implement our own small regression class which can be done with the knowledge you gained so far. Take a look at the class function below which you are going to learn in detail in the tutorial of this course. Examples for linear regression analysis on financial markets are cross-sectional regressions of asset price returns as well as factor regressions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MyLinearRegression</span><span class="p">:</span>
+
+    <span class="c1"># add_constant clarifies if we want to estimate the regression line with our without constant \beta_0</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">add_constant</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_constant</span> <span class="o">=</span> <span class="n">add_constant</span>
+
+    <span class="c1"># we try to mimic the convention of the scikit-learn library which implements a fit method for the estimation of model parameters</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_constant</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">X</span><span class="p">),</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">X</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+
+        <span class="c1"># formula for the OLS method</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">beta_coef</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">)),</span> <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">transpose</span><span class="p">())</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+        <span class="c1"># determine the predictions for given data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y_hat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">beta_coef</span><span class="p">)</span>
+        <span class="c1"># determine epsilon_hat for every observation</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">residuals</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_hat</span>
+        <span class="c1"># estimate the variance</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">var_coef</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">residuals</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">residuals</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="c1"># accordingly, the estimated standard deviation</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sd_coef</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">var_coef</span><span class="p">)</span>
+
+    <span class="c1"># in the tutorial we may want to add another method which predicts values for new and unseen data</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>One very important question for financial markets theory, i.e., for asset pricing, is the link of a company’s return to systematic risk factors because it tells us how large expected returns should be, given investors bear the related risk. This goes back to the famous capital asset pricing model which assumes that returns (more concrete excess returns over the risk free rate) can be explained by their linkage to the market portfolio. The according regression model regresses the excess return of a security upon the excess return of a market portfolio:</p>
+<div class="math notranslate nohighlight">
+\[r_{it} - r_{ft} = \beta_0 + \beta_1 r_{mt} - r_{ft} + \epsilon_{it}\]</div>
+<p><span class="math notranslate nohighlight">\(r_{it}, r_{mt}, r_{ft}\)</span> represent the security, market and risk free return at time <span class="math notranslate nohighlight">\(t\)</span>. The higher <span class="math notranslate nohighlight">\(\beta_1\)</span> the more sensitive reacts the company towards market movements, the more it correlates which are companies that are also sensitive to the market. While this may lead to higher upswings of the market value in good economic times, it also leads to larger drops in times of financial turmoil. This behavior increases the variation in market value and, thus, the volatility of the return. As volatility is considered to be a good approximation of risk on financial markets (due to risk aversion of rational investors), investors should be compensated with higher profits. To estimate the <span class="math notranslate nohighlight">\(\beta_1\)</span> for each company, we can use our own class and some example data.</p>
+<p>See the cell below for a short demonstration which uses data from the past two years, omits the risk free rate and assumes the Russell 3000 index to be a good approximation of the market portfolio. The results show us that these companies mostly exhibit estimates <span class="math notranslate nohighlight">\(\hat{\beta}_1 &gt; 1\)</span> which speaks for a sensitive behavior towards the overall market. Note that if the exposure to the market is enough to price the asset appropriately, <span class="math notranslate nohighlight">\(\beta_0\)</span> should be equal to zero. Empirically, it has been shown that further risk factors should be taken into account. We come to this at a later point in time in the course.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import adjusted close prices</span>
+<span class="n">close_prices</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/close_prices_small.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="s2">&quot;date&quot;</span><span class="p">)</span>
+<span class="n">close_prices_rua</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/close_prices_rua.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
+<span class="n">close_prices_all</span> <span class="o">=</span> <span class="n">close_prices_rua</span><span class="p">[</span><span class="s2">&quot;Adj Close&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="s2">&quot;RUA&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">close_prices</span><span class="p">,</span> <span class="n">left_index</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="c1"># calculate returns </span>
+<span class="n">discrete_returns</span> <span class="o">=</span> <span class="n">close_prices_all</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;First return observations in the data set:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">discrete_returns</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="c1"># define independent and dependent variables</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">discrete_returns</span><span class="o">.</span><span class="n">RUA</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">discrete_returns</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;RUA&quot;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+
+<span class="c1"># in a loop estimate betas with our own class</span>
+<span class="n">betas</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+    <span class="n">lr</span> <span class="o">=</span> <span class="n">MyLinearRegression</span><span class="p">(</span><span class="n">add_constant</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">lr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">[:,</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">betas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lr</span><span class="o">.</span><span class="n">beta_coef</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Estimated market betas: </span><span class="se">\n</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">betas</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>First return observations in the data set:
+
+                 RUA      AAPL      MSFT     GOOGL      TSLA      META  \
+2022-01-04 -0.001611 -0.012692 -0.017147 -0.004083 -0.041833 -0.005937   
+2022-01-05 -0.021807 -0.026600 -0.038388 -0.045876 -0.053471 -0.036728   
+2022-01-06 -0.000051 -0.016693 -0.007902 -0.000200 -0.021523  0.025573   
+2022-01-07 -0.004965  0.000988  0.000510 -0.005303 -0.035447 -0.002015   
+2022-01-10 -0.001460  0.000116  0.000732  0.012061  0.030342 -0.011212   
+
+                AMZN      NVDA      AVGO         V       XOM  
+2022-01-04 -0.016916 -0.027589  0.011457  0.004652  0.037614  
+2022-01-05 -0.018893 -0.057562 -0.041614 -0.011058  0.012437  
+2022-01-06 -0.006711  0.020794 -0.009285 -0.001136  0.023521  
+2022-01-07 -0.004288 -0.033040 -0.028068 -0.012696  0.008197  
+2022-01-10 -0.006570  0.005615  0.003246 -0.023000 -0.005952  
+
+Estimated market betas: 
+[1.2  1.2  1.3  1.83 1.73 1.58 2.11 1.3  0.88 0.51]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="pca-with-numpy">
+<h2>PCA with numpy<a class="headerlink" href="#pca-with-numpy" title="Link to this heading">#</a></h2>
+<p>Let us take a look into another interesting method which can be used for financial analysis and is linked to the field of linear algebra - <em>principal component analysis</em> (PCA). Generally, PCA receives mean centered data <span class="math notranslate nohighlight">\(\boldsymbol{X} \in \mathbb{R}^{n \times p}\)</span> where <span class="math notranslate nohighlight">\(n\)</span> is the number of observations and <span class="math notranslate nohighlight">\(p\)</span> the number of variables which are often also called features. PCA creates up to <span class="math notranslate nohighlight">\(p\)</span> new variables out of the data by creating linear combinations of the form:</p>
+<div class="math notranslate nohighlight">
+\[ z_{ij} = \boldsymbol{x}_i^T \boldsymbol{\phi}_j = x_{i1} \phi_{j1} + ... + x_{ip} \phi_{jp} \]</div>
+<p><span class="math notranslate nohighlight">\(z_{ij}\)</span> is the principal component score for observation <span class="math notranslate nohighlight">\(i\)</span> and pricipal component <span class="math notranslate nohighlight">\(j\)</span>. <span class="math notranslate nohighlight">\(\boldsymbol{\phi}_j\)</span> is represents principal component <span class="math notranslate nohighlight">\(j\)</span> where its entries are often called loadings. You may realize that each principal component creates a weighted average of all observable realizations for each observation. Each principal component is normalized, thus, <span class="math notranslate nohighlight">\(||\boldsymbol{\phi}|| = 1\)</span> and independent to the other principal components. Its most common application is in the field of dimensionality reduction. This means the aim is to create <span class="math notranslate nohighlight">\(m &lt; p\)</span> variables out of the original data which keep the most important information. Two equivalent optimization problems lead to the best values of <span class="math notranslate nohighlight">\( \boldsymbol{\Phi} =  \begin{pmatrix} \boldsymbol{\phi}_1 &amp;  ... &amp; \boldsymbol{\phi}_m \\ \end{pmatrix}\)</span> for given data. One can either minimize the difference between actual observations and their projections:</p>
+<div class="math notranslate nohighlight">
+\[ 
+||\boldsymbol{X} - \boldsymbol{X} \boldsymbol{\Phi} \boldsymbol{\Phi}^T ||^2
+\]</div>
+<p>or maximize the variance of all pca score vectors <span class="math notranslate nohighlight">\(\boldsymbol{z}_j\)</span> always subject to <span class="math notranslate nohighlight">\(\boldsymbol{\Phi}^T \boldsymbol{\Phi} = \boldsymbol{I}^{m \times m}\)</span> (orthonormality). The solutions to these optimization problems can be found by calculating the eigenvectors of the covariance maxtrix from <span class="math notranslate nohighlight">\(\boldsymbol{X}\)</span>. As it is a positive definit matrix, its eigenvalues are all positive. Each eigenvalue corresponds to a principal component and the eigenvalue tells us how much of the variation is captured by the corresponding principal component. Instead of the covariance matrix, we can also use the correlation matrix. This leads to different results, but, shifts the focus towards pairwise correlations instead of univariate variation. In a financial context, this is often more important. Let us take a look in the cell below which determines the eigenvectors and eigenvalues for the correlation matrix or four companies.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">close_prices</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/close_prices_small.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="s2">&quot;date&quot;</span><span class="p">)</span>
+<span class="n">close_prices</span> <span class="o">=</span> <span class="n">close_prices</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;MSFT&quot;</span><span class="p">,</span> <span class="s2">&quot;GOOGL&quot;</span><span class="p">,</span> <span class="s2">&quot;TSLA&quot;</span><span class="p">]]</span>
+<span class="n">discrete_returns</span> <span class="o">=</span> <span class="n">close_prices</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;First five observations of discrete returns for Apple, Microsoft, Google and Tesla:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">discrete_returns</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">discrete_returns</span><span class="o">.</span><span class="n">values</span>
+<span class="n">corrmat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">rowvar</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">correlation matrix: </span><span class="se">\n</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">corrmat</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">v</span><span class="p">,</span> <span class="n">L</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">corrmat</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Eigenvalues: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Eigenvectors: </span><span class="se">\n</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>First five observations of discrete returns for Apple, Microsoft, Google and Tesla:
+
+                AAPL      MSFT     GOOGL      TSLA
+date                                              
+2022-01-04 -0.012692 -0.017147 -0.004083 -0.041833
+2022-01-05 -0.026600 -0.038388 -0.045876 -0.053471
+2022-01-06 -0.016693 -0.007902 -0.000200 -0.021523
+2022-01-07  0.000988  0.000510 -0.005303 -0.035447
+2022-01-10  0.000116  0.000732  0.012061  0.030342
+
+correlation matrix: 
+[[1.   0.73 0.7  0.56]
+ [0.73 1.   0.73 0.46]
+ [0.7  0.73 1.   0.45]
+ [0.56 0.46 0.45 1.  ]]
+
+Eigenvalues: [2.83 0.25 0.29 0.63]
+
+Eigenvectors: 
+[[ 0.53  0.61  0.58 -0.05]
+ [ 0.52 -0.74  0.28 -0.32]
+ [ 0.51  0.23 -0.75 -0.35]
+ [ 0.42 -0.14 -0.16  0.88]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>The first principal component has the largest eigenvalue (<span class="math notranslate nohighlight">\(2.83\)</span>) and, thus, captures the largest amount of variation in the original data. For this vector, the loadings of Apple and Microsoft are the largest which underlines their importance for co-movements of the companies’ returns. At the same time Tesla has the smallest loading which makes sense as it exhibits the lowest correlation on average to the remaining companies. All companies share the same (positive) sign w.r.t. to the loading of the first principal component. This means if the value of <span class="math notranslate nohighlight">\(z_{i1}\)</span> is positive, we simply know by this value that on average this must have been a day with positive market value developments. The second largest eigenvalue can be observed for the fourth eigenvector. Looking at the signs of the loadings we observe that the second principle component splits Tesla apart from the other companies. This seems to make sense, given the different business in comparison to the remaining companies. How many principal components we want to use, depends on a trade-off between dimensionality and variation explained by the lower dimensional representation. Determining the proportion of each eigenvalue and the sum of all eigenvalues we can extract the variation explained.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Variation explained by each principal component in decreasing order:&quot;</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">v</span><span class="p">))</span> <span class="o">/</span> <span class="n">v</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Variation explained by each principal component in decreasing order:
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.70865207, 0.15637343, 0.07222124, 0.06275327])
+</pre></div>
+</div>
+</div>
+</div>
+<p>As we can see, a little more than 85% of variation is explained by the first two principal components. This means by just two variables, we contain a large amount of variation in the original data. However, with only two dimensions, we, e.g., would be able to visualize the data in a two dimensional plot. Furthermore, another important application would be to use the first principal components and their scores as systematic risk factors for a regression type analysis as for the regression example above. The estimated betas can be used to examine which companies systematically behave similar and different to others, respectively. Such an information can be used, e.g., for portfolio selection purposes and to identify systematically vulnerable companies. Let us end this subsection with an example class which would implement PCA by using numpy only.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MyPCA</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">corrmat</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">corrmat</span> <span class="o">=</span> <span class="n">corrmat</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">X</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">corrmat</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">X_</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">rowvar</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">X_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">X</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X_</span><span class="p">,</span> <span class="n">rowvar</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="n">v</span><span class="p">,</span> <span class="n">L</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mat</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">eigenvalues</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">v</span><span class="p">))]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loadings</span> <span class="o">=</span> <span class="n">L</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">v</span><span class="p">))]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">variation_explained</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">eigenvalues</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">eigenvalues</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">variation_explained_cumsum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">variation_explained</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This chapter is meant to introduce and highlight some functionalities of the numpy package. On purpose, this chapter has a rather raw looking output. The next chapters will introduce packages for data manipulation and visualization to increase accessability.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01_python_basics.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">How to use and install python</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="03_data.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Working with Data</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-fundamentals">Numpy fundamentals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-operations-with-numpy">Mathematical operations with numpy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fundamental-stock-market-calculations-with-numpy">Fundamental stock market calculations with numpy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-algebra-with-numpy">Linear algebra with numpy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-independence-of-vectors">Linear independence of vectors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#similarity-of-vectors">Similarity of vectors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-inversion">Matrix inversion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-decomposition">Matrix decomposition</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression-with-numpy">Linear regression with numpy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pca-with-numpy">PCA with numpy</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Prof. Dr. Ralf Kellner
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
