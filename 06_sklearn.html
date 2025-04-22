@@ -1,0 +1,1417 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>SciKit Learn &#8212; Scientific Computing and Digital Reporting with Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '06_sklearn';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Pytorch" href="07_torch.html" />
+    <link rel="prev" title="Scientific computing with scipy" href="05_sc_with_scipy.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="00_welcome.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/course_logo.png" class="logo__image only-light" alt="Scientific Computing and Digital Reporting with Python - Home"/>
+    <script>document.write(`<img src="_static/course_logo.png" class="logo__image only-dark" alt="Scientific Computing and Digital Reporting with Python - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00_welcome.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_python_basics.html">How to use and install python</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="02_sc_with_numpy.html">Scientific computing with numpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_data.html">Working with Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_getting_data.html">Collecting data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_graphics.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_sc_with_scipy.html">Scientific computing with scipy</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">SciKit Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_torch.html">Pytorch</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="09_digital_reporting.html">Digital reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="A_math_statistics.html">Appendix - Math and statistics</a></li>
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/06_sklearn.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>SciKit Learn</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-manipulation">Data manipulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imputation">Imputation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-categorical-data">Encoding categorical data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparability-of-numerical-data">Comparability of numerical data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-learning-with-sklearn">Supervised learning with sklearn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unsupervised-learning-with-sklearn">Unsupervised learning with sklearn</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pca">PCA</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">Evaluation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-packages-for-statistics-and-deep-learning">Other packages for statistics and deep learning</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import necessary packages</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pylab</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.impute</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimpleImputer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.compose</span><span class="w"> </span><span class="kn">import</span> <span class="n">ColumnTransformer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">OrdinalEncoder</span><span class="p">,</span> <span class="n">OneHotEncoder</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">,</span> <span class="n">MinMaxScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span><span class="p">,</span> <span class="n">QuantileRegressor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">GradientBoostingRegressor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">KMeans</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_regression</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span><span class="p">,</span> <span class="n">KFold</span><span class="p">,</span> <span class="n">cross_val_score</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">r2_score</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="scikit-learn">
+<h1>SciKit Learn<a class="headerlink" href="#scikit-learn" title="Link to this heading">#</a></h1>
+<p>The scikit-learn or in short <a class="reference external" href="https://scikit-learn.org/stable/">sklearn package</a> provides a broad collection of data analysis and machine learning tools. These tools basically cover the whole process from data manipulation over fitting different models to the data and evaluating the results. Sklearn is based on <strong>numpy</strong> and may thus require that the data to analyze is provided as an numpy array. Results will also be returned as such arrays.</p>
+<p>The respective modules, i.e. classes and functions of different algorithms, are provided in an API which allows easy application basically without requiring knowledge about how the algorithm itself works. It goes without mentioning, that you should have some basic understanding about the particular strengths of an algorithm and any caveats when fitting a model to extract meaningful results.</p>
+<p>In this course, we will present only a small portion of sklearn’s functionality and refer to the <a class="reference external" href="https://scikit-learn.org/stable/modules/classes.html">API’s documentation</a>.</p>
+<p>Sklearn provides a kind of framework syntax for fitting models of different kinds:</p>
+<ul class="simple">
+<li><p>instantiate the respective (algorithm’s) object. Here, the hyper parameters and options are set</p></li>
+<li><p>fit the data using this object</p></li>
+<li><p>evaluate the model or use the model for prediction</p></li>
+</ul>
+<p>We will now look at some basic procedures for analyzing data using different methods. To load our modules, we import them specifically from the <code class="docutils literal notranslate"><span class="pre">skikit-learn</span></code> (name for installation) package instead of importing the whole package.</p>
+<section id="data-manipulation">
+<h2>Data manipulation<a class="headerlink" href="#data-manipulation" title="Link to this heading">#</a></h2>
+<p>One of the reasons for the great popularity of the sklearn package is its versatility. It does not only come along with a large amount of machine learning algorithms, among others it also provides various methods which are usually employed before training a machine learning model to the data. More concrete, sklearn provides methods for handling missing data, encoding categorical data and normalizing numerical data. These tasks all are crucial for the succesful training of a machine learning model.</p>
+<section id="imputation">
+<h3>Imputation<a class="headerlink" href="#imputation" title="Link to this heading">#</a></h3>
+<p>Many real-world datasets have missing values, marked by blanks, NaNs, or other placeholders, making them incompatible with machine learning algorithms that require numerical values with meaning. A simple approach is to discard rows or columns with missing values, but this can result in valuable data loss. As an alternative, we can impute the missing values, inferring them from the known data, as suggested in the glossary entry on imputation. Note, this potentially introduces a bias to the dataset such that a trade-off between more data and less bias exists.</p>
+<p>The easiest way to replace missing values is to replace them with a representative value of the variable, e.g., the mean or median. This can be done with the <code class="docutils literal notranslate"><span class="pre">SimpleImputer</span></code> of the <code class="docutils literal notranslate"><span class="pre">impute</span></code>module as shown in the next cell.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;z&quot;</span><span class="p">])</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="n">simple_imputer</span> <span class="o">=</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="s2">&quot;mean&quot;</span><span class="p">)</span>
+<span class="n">simple_imputer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">df_mean_replaced</span> <span class="o">=</span> <span class="n">simple_imputer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Data with mean replacement:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_mean_replaced</span><span class="p">)</span>
+
+<span class="n">simple_imputer</span> <span class="o">=</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="s2">&quot;median&quot;</span><span class="p">)</span>
+<span class="n">simple_imputer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">df_mean_replaced</span> <span class="o">=</span> <span class="n">simple_imputer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Data with median replacement:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_mean_replaced</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data:
+     x    y     z
+0  1.0  5.0   NaN
+1  NaN  6.0  10.0
+2  3.0  NaN  11.0
+3  4.0  8.0  12.0
+
+Data with mean replacement:
+[[ 1.          5.         11.        ]
+ [ 2.66666667  6.         10.        ]
+ [ 3.          6.33333333 11.        ]
+ [ 4.          8.         12.        ]]
+
+Data with median replacement:
+[[ 1.  5. 11.]
+ [ 3.  6. 10.]
+ [ 3.  6. 11.]
+ [ 4.  8. 12.]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>If a variable is categorical, we can use the most frequent strategy to replace its missing values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="s2">&quot;a&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">],</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]],</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;categories&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">simple_imputer</span> <span class="o">=</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="s2">&quot;most_frequent&quot;</span><span class="p">)</span>
+<span class="n">df_most_frequent</span> <span class="o">=</span> <span class="n">simple_imputer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Data with most frequent replacement:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_most_frequent</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data:
+  categories
+0          a
+1          b
+2          a
+3        NaN
+
+Data with most frequent replacement:
+[[&#39;a&#39;]
+ [&#39;b&#39;]
+ [&#39;a&#39;]
+ [&#39;a&#39;]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>In more realistic scenarios, we have numerical and categorical features in a data set, such that different strategies need to be applied for each feature. This can be done by using the <code class="docutils literal notranslate"><span class="pre">ColumnTransformer</span></code> as demonstrated in the cell below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;z&quot;</span><span class="p">])</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;categorical&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">column_transformer</span> <span class="o">=</span> <span class="n">ColumnTransformer</span><span class="p">(</span>
+    <span class="n">transformers</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;numerical&quot;</span><span class="p">,</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="s2">&quot;median&quot;</span><span class="p">),</span> <span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;z&quot;</span><span class="p">]),</span>
+            <span class="p">(</span><span class="s2">&quot;categorical&quot;</span><span class="p">,</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="s2">&quot;most_frequent&quot;</span><span class="p">),</span> <span class="p">[</span><span class="s2">&quot;categorical&quot;</span><span class="p">])</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">df_replaced</span> <span class="o">=</span> <span class="n">column_transformer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Data with median and most frequent replacement:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_replaced</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data:
+     x    y     z categorical
+0  1.0  5.0   NaN           a
+1  NaN  6.0  10.0           b
+2  3.0  NaN  11.0           a
+3  4.0  8.0  12.0         NaN
+
+Data with median and most frequent replacement:
+[[1.0 5.0 11.0 &#39;a&#39;]
+ [3.0 6.0 10.0 &#39;b&#39;]
+ [3.0 6.0 11.0 &#39;a&#39;]
+ [4.0 8.0 12.0 &#39;a&#39;]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Another and eventually more sophisticated way to impute missing data is given by the <code class="docutils literal notranslate"><span class="pre">IterativeImputer</span></code> which iteratively treats one variable as a dependent variable, builds a model to estimate its value by means of the other variables and replaces missing values with predictions from this model. This is done for all variables.</p>
+</section>
+<section id="encoding-categorical-data">
+<h3>Encoding categorical data<a class="headerlink" href="#encoding-categorical-data" title="Link to this heading">#</a></h3>
+<p>Once no missing values are left, we can and sometimes must preprocess data. Categorical data is often provided by strings or numerical values which are nominal, thus, ordering them or interpreting the distance between these values is meaningless. For ordinal data, we can use the <code class="docutils literal notranslate"><span class="pre">OrdinalEncoder</span></code> which transforms strings to numerical values in ordinal order. It should be noted that by default, the categories are asserted by alphabetical order of the original values. This can be changed by setting the categories explicitly as shown below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ordinal_features</span> <span class="o">=</span> <span class="p">[[</span><span class="s2">&quot;one&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;two&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;three&quot;</span><span class="p">]]</span>
+<span class="n">ordinal_encoder</span> <span class="o">=</span> <span class="n">OrdinalEncoder</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;default behavior: &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ordinal_encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">ordinal_features</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">with explicit order:&quot;</span><span class="p">)</span>
+<span class="n">ordinal_encoder</span> <span class="o">=</span> <span class="n">OrdinalEncoder</span><span class="p">(</span><span class="n">categories</span><span class="o">=</span><span class="p">[[</span><span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="s2">&quot;two&quot;</span><span class="p">,</span> <span class="s2">&quot;three&quot;</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ordinal_encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">ordinal_features</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>default behavior: 
+[[0.]
+ [2.]
+ [1.]]
+
+with explicit order:
+[[0.]
+ [1.]
+ [2.]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Given the feature is on a nominal scale, it should not be transformed to an ordinal feature. Instead it might be better represented by one-hot encoding. Given a feature has <span class="math notranslate nohighlight">\(K\)</span> categories, its one-hot encoded version is represented by a <span class="math notranslate nohighlight">\(K\)</span> dimensional vector which has zeros everywhere except at the position which represents category <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nominal_features</span> <span class="o">=</span> <span class="p">[[</span><span class="s2">&quot;female&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;male&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;female&quot;</span><span class="p">]]</span>
+<span class="n">onehot_encoder</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">sparse_output</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">onehot_encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">nominal_features</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1., 0.],
+       [0., 1.],
+       [1., 0.]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>One-hot encoding is very similar to what is called dummy encoding. However, for dummy encoding, one decides to use one of the <span class="math notranslate nohighlight">\(K\)</span> categories as default such that we only need <span class="math notranslate nohighlight">\(K-1\)</span> binary variables to represent all categories. This can also be done with the <code class="docutils literal notranslate"><span class="pre">OneHotEncoder</span></code> by setting the drop argument accordingly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">onehot_encoder</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="s2">&quot;first&quot;</span><span class="p">,</span> <span class="n">sparse_output</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">onehot_encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">nominal_features</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.],
+       [1.],
+       [0.]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>One-hot encoding (and sometimes also categorical encoding) may be problematic if the original feature as a large amount of different categories. This leads to a high dimensional feature space after transformation. In such cases, it may be a better strategy to encode up to a maximum number of categories and put the remaining ones into a single category. This can be done by setting the <code class="docutils literal notranslate"><span class="pre">max_categories</span></code> argument.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nominal_features</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="s2">&quot;one&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;two&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;three&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;four&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">],</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">object</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="n">onehot_encoder</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">max_categories</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">sparse_output</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">onehot_encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">nominal_features</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0., 0., 1.],
+       [0., 0., 1.],
+       [0., 0., 1.],
+       [0., 1., 0.],
+       [0., 1., 0.],
+       [0., 1., 0.],
+       [0., 1., 0.],
+       [0., 1., 0.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [1., 0., 0.],
+       [0., 0., 1.],
+       [0., 0., 1.]])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="comparability-of-numerical-data">
+<h3>Comparability of numerical data<a class="headerlink" href="#comparability-of-numerical-data" title="Link to this heading">#</a></h3>
+<p>Values of numerical feature variables are often on very different numerical ranges. For instance, the number of employees of a company are in the hundreds or thousands, its market capitalization might be in millions or even billions. For some machine learning models it is of great importance that these values are brought to comparable and smaller numerical ranges, otherwise, the algorithm faces numerical issues. Furthermore, leaving numerical values in their raw form, may induce weightings which are not wanted. For instance, if an algorithm uses euclidean distance it will give higher weights to features on higher numerical ranges. Furthermore, comparable numerical ranges can help to improve the comparability of results.</p>
+<p>The most common techniques for bringing numerical features to similar numerical ranges are standardization and min-max scaling, respectively. Both techniques are implemented by the <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> and <code class="docutils literal notranslate"><span class="pre">MinMaxScaler</span></code> classes of the <code class="docutils literal notranslate"><span class="pre">preprocessing</span></code> module. The standard scaler estimates the mean and standard deviation of every feature and transforms <span class="math notranslate nohighlight">\(x\)</span> by:</p>
+<div class="math notranslate nohighlight">
+\[
+z = \frac{x - \hat{\mu}}{\hat{\sigma}}
+\]</div>
+<p>Min-max scaling is done by determining the minimum and maximum value of feature <span class="math notranslate nohighlight">\(x\)</span> and transforming it by:</p>
+<div class="math notranslate nohighlight">
+\[
+z = \frac{x - \min(x)}{\max(x) - \min(x)}
+\]</div>
+<p>This brings all values into the numerical range <span class="math notranslate nohighlight">\([0, 1]\)</span>. If another range <span class="math notranslate nohighlight">\([l, u]\)</span> is desired, values can be transformed to it by:</p>
+<div class="math notranslate nohighlight">
+\[
+z^{*} = z*(u - l) + l
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">standard_scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">minmax_scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
+<span class="n">lu_scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">(</span><span class="n">feature_range</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.</span><span class="p">],</span> <span class="p">[</span><span class="mf">2.</span><span class="p">],</span> <span class="p">[</span><span class="mf">3.</span><span class="p">],</span> <span class="p">[</span><span class="mf">4.</span><span class="p">]])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Original data: </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Data after standardization: &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">standard_scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Data after minmax scaling: &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">minmax_scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Data after minmax scaling to [-3, 3]: &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lu_scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Original data: [[1.]
+ [2.]
+ [3.]
+ [4.]]
+
+Data after standardization: 
+[[-1.34164079]
+ [-0.4472136 ]
+ [ 0.4472136 ]
+ [ 1.34164079]]
+
+Data after minmax scaling: 
+[[0.        ]
+ [0.33333333]
+ [0.66666667]
+ [1.        ]]
+
+Data after minmax scaling to [-3, 3]: 
+[[-3.]
+ [-1.]
+ [ 1.]
+ [ 3.]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="supervised-learning-with-sklearn">
+<h2>Supervised learning with sklearn<a class="headerlink" href="#supervised-learning-with-sklearn" title="Link to this heading">#</a></h2>
+<p>Taking a quick look <a class="reference external" href="https://scikit-learn.org/stable/supervised_learning.html">here</a> gives you an overview of implemented supervised learning algorithms in the sklearn package. As you realize, this may be a little too much for detailed discussions in this course which is why we restrict ourselves to a few examples. The good news is that that class definitions for each algorithm are written in a consistent manner which allows you to use the majority of all algorithms in the same way. Supervised learning is a machine learning task where feature variables are used to predict one (or on rare occasions more than one) labeled variable. If this variable is numerical, we face a regression task, in case of a categorical variable, we face a classification task.</p>
+<p>Every supervised learning algorithm needs an array of features <span class="math notranslate nohighlight">\(X\)</span> and values for the target variable <span class="math notranslate nohighlight">\(y\)</span> as input. Furthermore, more advanced algorithms often can be further calibrated by so called hyperparameters which must be set as well. Let us take a look at the linear regression model and estimate it for the example where we regress Apple’s stock returns on the Russell 3000 returns. In this example, Apple’s returns are the target variable and the Russell 3000 serves as an approximation of the market portfolio. Roughly, the estimated coefficient can be interpreted as the market beta.</p>
+<p>For all supervised learning algorithms in the sklearn package, we first define an instance of the algorithms class along with its function arguments. Next, we can estimated the model for given data by the <code class="docutils literal notranslate"><span class="pre">fit</span></code> method. Afterwards, estimated attributes can be examined. These differ with respect to the algorithm, but, can be found at the algorithms documentation. For instance, the linear regression model’s documentation can be found <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression">here</a>. Among the attributes section, you can see that the <code class="docutils literal notranslate"><span class="pre">coef_</span></code> and <code class="docutils literal notranslate"><span class="pre">intercept_</span></code> attribute are the names of the estimated parameters. Furthermore, if you take a look at the methods section, you can see which methods are implemented for the algorithm. The <code class="docutils literal notranslate"><span class="pre">predict</span></code> method is implemented under this name for all supervised learning algorithms and can be used to determine the model’s predictions after it has been estimated.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import adjusted close prices</span>
+<span class="n">close_prices</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/close_prices_small.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="s2">&quot;date&quot;</span><span class="p">)</span>
+<span class="n">close_prices_rua</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/close_prices_rua.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
+<span class="n">close_prices_all</span> <span class="o">=</span> <span class="n">close_prices_rua</span><span class="p">[</span><span class="s2">&quot;Adj Close&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="s2">&quot;RUA&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">close_prices</span><span class="p">,</span> <span class="n">left_index</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="c1"># calculate returns </span>
+<span class="n">discrete_returns</span> <span class="o">=</span> <span class="n">close_prices_all</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">discrete_returns</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;RUA&quot;</span><span class="p">,</span> <span class="s2">&quot;AAPL&quot;</span><span class="p">]]</span>
+
+<span class="c1"># define the model</span>
+<span class="n">linear_regression</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="c1"># fit the model</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;RUA&quot;</span><span class="p">]],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;AAPL&quot;</span><span class="p">]</span>
+<span class="n">linear_regression</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The estimated value for the constant is: </span><span class="si">{</span><span class="n">linear_regression</span><span class="o">.</span><span class="n">intercept_</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> and for beta it is: </span><span class="si">{</span><span class="n">linear_regression</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">y_hat</span> <span class="o">=</span> <span class="n">linear_regression</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="c1"># plot data</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;data&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">y_hat</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;predicted&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Russell 3000 returns&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Apple returns&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The estimated value for the constant is: 0.0000 and for beta it is: 1.2022
+</pre></div>
+</div>
+<img alt="_images/2c7e3c2d167c32a7fa6f4b3194af65aa338bc05bffc3f69bdb56b700723ce8ce.png" src="_images/2c7e3c2d167c32a7fa6f4b3194af65aa338bc05bffc3f69bdb56b700723ce8ce.png" />
+</div>
+</div>
+<p>Let us practice how to use other models to demonstrate the similarity. You may or may not have heard about quantile regression before. It is implemented as a <code class="docutils literal notranslate"><span class="pre">QuantileRegressor</span></code> class in the <code class="docutils literal notranslate"><span class="pre">linear_model</span></code> module. In short, it predicts a quantile of the target variable instead of its expected values (as it is done for the linear regression model). By default, the median is predicted. As quantiles only depend on the ordering of the data instead of their values, quantile regression with the median is sometimes considered as the robust counterpart of traditional regression. See below that the quantile regression is done in almost the same way as the linear regression before.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quantile_regressor</span> <span class="o">=</span> <span class="n">QuantileRegressor</span><span class="p">(</span><span class="n">quantile</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">quantile_regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">y_hat_median</span> <span class="o">=</span> <span class="n">quantile_regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="c1"># plot data</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;data&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">y_hat</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;linear regression&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">y_hat_median</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;median regression&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Russell 3000 returns&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Apple returns&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/382d1d70c618f27927e2b25dd283789c6fb16562e7b72e1ccffa982c32b8d983.png" src="_images/382d1d70c618f27927e2b25dd283789c6fb16562e7b72e1ccffa982c32b8d983.png" />
+</div>
+</div>
+<p>And as a further demonstration let us fit a model which is able to make non-linear predictions. For instance the gradient boosted regressor. As you can see, the pythonic part is always the same, only the name of the class differs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gbr</span> <span class="o">=</span> <span class="n">GradientBoostingRegressor</span><span class="p">()</span>
+<span class="n">gbr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">y_hat_gbr</span> <span class="o">=</span> <span class="n">gbr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="c1"># plot data</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;data&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">y_hat</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;linear regression&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">y_hat_median</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;median regression&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">y_hat_gbr</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;gradient boost regression&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Russell 3000 returns&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Apple returns&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d989c277c6b673cc3d58610fad75f43fc4165d5bd83ac1a6a752f1f3d4f1eefd.png" src="_images/d989c277c6b673cc3d58610fad75f43fc4165d5bd83ac1a6a752f1f3d4f1eefd.png" />
+</div>
+</div>
+</section>
+<section id="unsupervised-learning-with-sklearn">
+<h2>Unsupervised learning with sklearn<a class="headerlink" href="#unsupervised-learning-with-sklearn" title="Link to this heading">#</a></h2>
+<p>Unsupervised learning is about learning structure and relationships within data instead of focusing on a target variable. For instance, we may want to extract the most relevant information (dimensionality reduction) or group observations in the data such that members of the same group have similar observations of all variables and different observations to members of other groups (clustering). The handling in sklearn is almost the same as for supervised learning algorithms, except for the fact that we only need to provide the data as input to the <code class="docutils literal notranslate"><span class="pre">fit</span></code> method. Again, let us take a look at some examples.</p>
+<section id="pca">
+<h3>PCA<a class="headerlink" href="#pca" title="Link to this heading">#</a></h3>
+<p>We already learned about PCA which is implemented in the <code class="docutils literal notranslate"><span class="pre">decomposition</span></code> module of the sklearn package. By default, it takes care of mean standardization and extracts all principal components. Furthermore, instead of eigenvalue decomposition, it estimates the principal components by singular value decomposition. The <code class="docutils literal notranslate"><span class="pre">n_components</span></code> argument can be used to restrict the estimation to the desired number of components. Once, the model is estimated, several useful information can be found among the attributes of this class. The principal components are saved under the <code class="docutils literal notranslate"><span class="pre">components_</span></code> attribute. Furthermore, we can take a look at the explained variance and the explained variance ratio. The data can be transformed to the principal components scores by the <code class="docutils literal notranslate"><span class="pre">transform</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import adjusted close prices</span>
+<span class="n">close_prices</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/close_prices_small.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="s2">&quot;date&quot;</span><span class="p">)</span>
+<span class="n">close_prices_rua</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/close_prices_rua.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
+<span class="n">close_prices_all</span> <span class="o">=</span> <span class="n">close_prices_rua</span><span class="p">[</span><span class="s2">&quot;Adj Close&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="s2">&quot;RUA&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">close_prices</span><span class="p">,</span> <span class="n">left_index</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="c1"># calculate returns </span>
+<span class="n">discrete_returns</span> <span class="o">=</span> <span class="n">close_prices_all</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">discrete_returns</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;RUA&quot;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">()</span>
+<span class="n">pca</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;explained variance ratio&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">),</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;cumulative&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;PCA&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Principal component&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8af81591bf99f07a2424bcfdd2c225e3e350e4513f40777d4e07d9459144f2b6.png" src="_images/8af81591bf99f07a2424bcfdd2c225e3e350e4513f40777d4e07d9459144f2b6.png" />
+</div>
+</div>
+<p>One of the usages of PCA is to bring the original data to a lower dimensional representation in order to visualize it. Below you can see how we transform the data and visualize the first two principal component scores.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Z</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Z</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">Z</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;pca 1&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;pca 1&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c8ad9c5cd58d735c1741252d7a42baf7b51f28217f5ee151a3320552402f0b8b.png" src="_images/c8ad9c5cd58d735c1741252d7a42baf7b51f28217f5ee151a3320552402f0b8b.png" />
+</div>
+</div>
+<p>To interpret this plot for financial return data, it takes some detailed inspection of the results. First let us take a look the the loading from the first two principal components.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">components_</span><span class="o">.</span><span class="n">transpose</span><span class="p">()[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">],</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;pca_1&quot;</span><span class="p">,</span> <span class="s2">&quot;pca_2&quot;</span><span class="p">],</span> <span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pca_1</th>
+      <th>pca_2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AAPL</th>
+      <td>0.232240</td>
+      <td>-0.007787</td>
+    </tr>
+    <tr>
+      <th>MSFT</th>
+      <td>0.246423</td>
+      <td>-0.108982</td>
+    </tr>
+    <tr>
+      <th>GOOGL</th>
+      <td>0.275136</td>
+      <td>-0.162611</td>
+    </tr>
+    <tr>
+      <th>TSLA</th>
+      <td>0.444172</td>
+      <td>0.787342</td>
+    </tr>
+    <tr>
+      <th>META</th>
+      <td>0.411633</td>
+      <td>-0.564749</td>
+    </tr>
+    <tr>
+      <th>AMZN</th>
+      <td>0.336148</td>
+      <td>-0.147337</td>
+    </tr>
+    <tr>
+      <th>NVDA</th>
+      <td>0.484429</td>
+      <td>0.020267</td>
+    </tr>
+    <tr>
+      <th>AVGO</th>
+      <td>0.265601</td>
+      <td>-0.006593</td>
+    </tr>
+    <tr>
+      <th>V</th>
+      <td>0.150158</td>
+      <td>-0.020232</td>
+    </tr>
+    <tr>
+      <th>XOM</th>
+      <td>0.046393</td>
+      <td>0.014150</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We observe equal signs for the first principal component loadings. This means if the value of the corresponding score is positive, the companies had above average returns on that day and below average returns if the score is negative. The loadings from the second principal component score split the companies into two groups, where the one with negative signs is largely driven by Tesla as its absolute value is by far the largest. Thus, for the second principal component scores, we have a large positive value if Tesla has a large positive return. If you take a look at the scatter plot, you can see that we have two observations with high scores of the second principal component. Let us take a look a these days.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">Z</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>AAPL</th>
+      <th>MSFT</th>
+      <th>GOOGL</th>
+      <th>TSLA</th>
+      <th>META</th>
+      <th>AMZN</th>
+      <th>NVDA</th>
+      <th>AVGO</th>
+      <th>V</th>
+      <th>XOM</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-02-03</th>
+      <td>-0.016720</td>
+      <td>-0.038952</td>
+      <td>-0.033176</td>
+      <td>-0.016032</td>
+      <td>-0.263901</td>
+      <td>-0.078128</td>
+      <td>-0.051264</td>
+      <td>-0.037419</td>
+      <td>-0.016481</td>
+      <td>-0.011660</td>
+    </tr>
+    <tr>
+      <th>2022-10-27</th>
+      <td>-0.030465</td>
+      <td>-0.019756</td>
+      <td>-0.028547</td>
+      <td>0.002003</td>
+      <td>-0.245571</td>
+      <td>-0.040636</td>
+      <td>0.021712</td>
+      <td>-0.012533</td>
+      <td>0.004721</td>
+      <td>0.003827</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>As you can see, it is true, on these days all companies experienced rather negative returns, however, among these companies, Tesla seems to have better days in comparison. Besides the visualization, principal component scores can be interpreted as systematic factors for the original variables. In the financial domain, factor models play a bigger role, if we want to examine what systematically impact individual developments of companies. Let us combine PCA with linear regression, to examine this for our dataset. We are going to use two components as well in order to visualize our result in a simple fashion afterwards. Note, we would rather use more factors in a more realistic scenario. In a loop we estimate betas for the following regression for every company <span class="math notranslate nohighlight">\(i\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+r_{t, i} = \beta_0 + \beta_1 z_{t, 1} + \beta_2 z_{t, 2} + \epsilon_i
+\]</div>
+<p>However, as you can see below, the estimated betas are identical to the loadings which is not surprising as principal components are independent (so no interaction effects impact estimated betas) and the loadings are derived by minimizing the squared deviations of original variables and projections. The estimated intercept of these regressions are equal to the means of each company returns which are subtracted for mean normalization when performing pca. Thus, we can use the loadings to group companies according to their systematic exposure.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">intercepts</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">betas</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">company</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">linear_regression</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+    <span class="n">linear_regression</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Z</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="n">company</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+    <span class="n">intercepts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linear_regression</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
+    <span class="n">betas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linear_regression</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+
+<span class="n">betas_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">betas</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="sa">r</span><span class="s2">&quot;beta_1&quot;</span><span class="p">,</span> <span class="s2">&quot;beta_2&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Estimated betas:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">betas_df</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Visualization:&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">betas_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">betas_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\beta_1$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\beta_2$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Estimated betas:
+         beta_1    beta_2
+AAPL   0.232240 -0.007787
+MSFT   0.246423 -0.108982
+GOOGL  0.275136 -0.162611
+TSLA   0.444172  0.787342
+META   0.411633 -0.564749
+AMZN   0.336148 -0.147337
+NVDA   0.484429  0.020267
+AVGO   0.265601 -0.006593
+V      0.150158 -0.020232
+XOM    0.046393  0.014150
+
+Visualization:
+</pre></div>
+</div>
+<img alt="_images/b31388926e6637ad8def9501845e5139f9d776b2558693aaa9da0dc673b81ce7.png" src="_images/b31388926e6637ad8def9501845e5139f9d776b2558693aaa9da0dc673b81ce7.png" />
+</div>
+</div>
+<p>With the systematic exposure (loadings of the first two principal components), we can take a look at another example for unsupervised learning, clustering, here for instance the k-means clustering. By now, you will have no problems doing this on your own by using the common syntax. However, if you do not know the details about the algorithm, results are hard to interpret. Below we see the rather less spectacular result that the companies are divided into Tesla and all other companies if the desired number of clusters would be equal to two.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loadings</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">components_</span><span class="o">.</span><span class="n">transpose</span><span class="p">()[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">],</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;pca_1&quot;</span><span class="p">,</span> <span class="s2">&quot;pca_2&quot;</span><span class="p">],</span> <span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">kmeans</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">loadings</span><span class="p">)</span>
+<span class="n">kmeans</span><span class="o">.</span><span class="n">labels_</span>
+
+
+<span class="n">loadings</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;cluster&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">labels_</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">cluster</span> <span class="ow">in</span> <span class="n">loadings</span><span class="o">.</span><span class="n">cluster</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">loadings</span><span class="p">[</span><span class="n">loadings</span><span class="o">.</span><span class="n">cluster</span> <span class="o">==</span> <span class="n">cluster</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;pca_1&quot;</span><span class="p">],</span> <span class="n">loadings</span><span class="p">[</span><span class="n">loadings</span><span class="o">.</span><span class="n">cluster</span> <span class="o">==</span> <span class="n">cluster</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;pca_2&quot;</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;cluster </span><span class="si">{</span><span class="n">cluster</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;loading of the first pca&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;loading of the first pca&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/09ad780b08dc8becc5ee089cf2267c1ffdbe46ff11f81ba7709e5cbd5f176e92.png" src="_images/09ad780b08dc8becc5ee089cf2267c1ffdbe46ff11f81ba7709e5cbd5f176e92.png" />
+</div>
+</div>
+<p>Note that the number of groups should be determined in other ways which we are not going to discuss any further. However, one important aspect for this application should be mentioned. As PCA only mean centers the data by default, its input data is largely impacted by the individual variance of each company which is why Tesla is playing such a special role in our example as its variance is the largest among those companies. Usually, we are more interested in companies which play an important role with respect to the dependencies to other companies. We can shift the attention of the PCA towards this characteristic by standardizing the input data. See below how drastically this changes the loadings for the second principal component in our example. Now, ExxonMobil (XOM) exhibits the most distinct loading combination which is likely due to its rather low average correlation to the other companies.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">standard_scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">()</span>
+
+<span class="n">df_s</span> <span class="o">=</span> <span class="n">standard_scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">pca</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df_s</span><span class="p">)</span>
+
+<span class="n">loadings</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">components_</span><span class="o">.</span><span class="n">transpose</span><span class="p">()[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">],</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;pca_1&quot;</span><span class="p">,</span> <span class="s2">&quot;pca_2&quot;</span><span class="p">],</span> <span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">loadings</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pca_1</th>
+      <th>pca_2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AAPL</th>
+      <td>0.363753</td>
+      <td>0.087873</td>
+    </tr>
+    <tr>
+      <th>MSFT</th>
+      <td>0.363638</td>
+      <td>-0.088218</td>
+    </tr>
+    <tr>
+      <th>GOOGL</th>
+      <td>0.350260</td>
+      <td>-0.109504</td>
+    </tr>
+    <tr>
+      <th>TSLA</th>
+      <td>0.276817</td>
+      <td>-0.032731</td>
+    </tr>
+    <tr>
+      <th>META</th>
+      <td>0.304486</td>
+      <td>-0.206002</td>
+    </tr>
+    <tr>
+      <th>AMZN</th>
+      <td>0.339513</td>
+      <td>-0.093976</td>
+    </tr>
+    <tr>
+      <th>NVDA</th>
+      <td>0.350872</td>
+      <td>-0.081487</td>
+    </tr>
+    <tr>
+      <th>AVGO</th>
+      <td>0.330279</td>
+      <td>0.055830</td>
+    </tr>
+    <tr>
+      <th>V</th>
+      <td>0.297413</td>
+      <td>0.243288</td>
+    </tr>
+    <tr>
+      <th>XOM</th>
+      <td>0.086663</td>
+      <td>0.922615</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="evaluation">
+<h2>Evaluation<a class="headerlink" href="#evaluation" title="Link to this heading">#</a></h2>
+<p>In order to examine the performance of our models, we can make use of different <a class="reference external" href="https://scikit-learn.org/stable/modules/classes.html#module-sklearn.metrics">metrics</a> which need to be selected in accordance with the aim of the analysis. Furthermore, to evaluate the generality of our model, we should evaluate our model to new and unseen data. In its simplest form, this can be done by splitting the data into two parts. One to train the model and one to test its performance for new and unseen data. Sklearn provides a <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> method in the <code class="docutils literal notranslate"><span class="pre">model_selection</span></code> module to split data. The arguments of this method allow us to shuffle the data or not, set a random state and set the size of the test data. Usually, one uses more data for training than for testing. Note, that this helps to train the model, however it induces greater variation in the performance evaluation of the test data. Loosely speaking, the smaller the number of observations, the higher the estimator’s standard error. We demonstrate the train-test splitting in the cell below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_regression</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">n_features</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">n_informative</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">noise</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span><span class="p">)</span>
+
+<span class="n">linear_regression</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">linear_regression</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">y_train_hat</span> <span class="o">=</span> <span class="n">linear_regression</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">y_test_hat</span> <span class="o">=</span> <span class="n">linear_regression</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="n">r2_train</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_train_hat</span><span class="p">)</span>
+<span class="n">r2_test</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_test_hat</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R^2 for training data: </span><span class="si">{</span><span class="n">r2_train</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, R^2 for test data: </span><span class="si">{</span><span class="n">r2_test</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>R^2 for training data: 0.9905, R^2 for test data: 0.9923.
+</pre></div>
+</div>
+</div>
+</div>
+<p>However, the evaluation of the training data is largely impacted by the randomness of data and the corresponding split. To generate more stable evaluation of test data, one either uses some form of cross-validation which splits and evaluates the data multiple times. One popular choice is cross-fold validation which splits the data into <span class="math notranslate nohighlight">\(k\)</span> equally sized folds and for <span class="math notranslate nohighlight">\(k\)</span> times leaves one fold out as test data and uses the remaining ones for model estimation. The <code class="docutils literal notranslate"><span class="pre">KFold</span></code> class can be used to determine the indices of the folds. Given these indices we select training and test data, estimate the model and calculate the score of choice. Finally, the average test score is the score which we use. Either on a standalone basis if this is meaningful or for comparison to other models.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r2_train_folds</span><span class="p">,</span> <span class="n">r2_test_folds</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="n">kfold</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">train_idx</span><span class="p">,</span> <span class="n">test_idx</span> <span class="ow">in</span> <span class="n">kfold</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+    <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">train_idx</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">train_idx</span><span class="p">]</span>
+    <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">test_idx</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">test_idx</span><span class="p">]</span>
+    <span class="n">linear_regression</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+    <span class="n">linear_regression</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+    <span class="n">y_train_hat</span> <span class="o">=</span> <span class="n">linear_regression</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+    <span class="n">y_test_hat</span> <span class="o">=</span> <span class="n">linear_regression</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+    <span class="n">r2_train</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_train_hat</span><span class="p">)</span>
+    <span class="n">r2_test</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_test_hat</span><span class="p">)</span>
+    <span class="n">r2_train_folds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r2_train</span><span class="p">)</span>
+    <span class="n">r2_test_folds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r2_test</span><span class="p">)</span>
+
+<span class="n">train_cv_score</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">r2_train_folds</span><span class="p">)</span>
+<span class="n">test_cv_score</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">r2_test_folds</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The training cross validation score is: </span><span class="si">{</span><span class="n">train_cv_score</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, the test cross validation score is: </span><span class="si">{</span><span class="n">test_cv_score</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The training cross validation score is: 0.9911, the test cross validation score is: 0.9907.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that test scores for each fold can be determined in a simpler way by using the <code class="docutils literal notranslate"><span class="pre">cross_val_score</span></code> method. See below how this works. Basically, we tell the method which model, which splitting instance and which data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">linear_regression</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">kfold</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">()</span>
+<span class="n">cross_val_score</span><span class="p">(</span><span class="n">linear_regression</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span> <span class="o">=</span> <span class="n">kfold</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.99169444, 0.99173572, 0.98872134, 0.99198814, 0.98956276])
+</pre></div>
+</div>
+</div>
+</div>
+<p>An important aspect w.r.t. to the financial domain is the temporal structure in the data. Common cross-validation would not respect it and sometimes uses data from the future to make predictions for the past. As this is not realistic, one should respect the time structure when splitting the data. Two choices are common: (1) start with a minimum level of training data and add more data to training over time or (2) a rolling window which means at time <span class="math notranslate nohighlight">\(t\)</span> we always use the same number of observations from the past to estimate the model and another fixed number of days in the future to evaluate the model.</p>
+<p>Below, we regress Apple’s stock returns on the Russell 3000 returns over time. We always use 252 days to estimate the model and evaluate its performance for the next 60 days. This means we approximately use one year of trading days for estimation and three months for testing. The results indicate two things: (1) Apple seems to decouple its development a little from the market as less variation can be explained by it more recently. (2) The beta, i.e., systematic exposure seems to vary over time as the test score (<span class="math notranslate nohighlight">\(R^2\)</span>) is much smaller for test data than for training data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">discrete_returns</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;RUA&quot;</span><span class="p">,</span> <span class="s2">&quot;AAPL&quot;</span><span class="p">]]</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;RUA&quot;</span><span class="p">]],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;AAPL&quot;</span><span class="p">]</span>
+
+<span class="n">training_size</span> <span class="o">=</span> <span class="mi">252</span>
+<span class="n">test_size</span> <span class="o">=</span> <span class="mi">60</span>
+<span class="n">t_splits</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">training_size</span> <span class="o">-</span> <span class="n">test_size</span>
+
+<span class="n">r2_train_folds</span><span class="p">,</span> <span class="n">r2_test_folds</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="n">dates</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">training_size</span><span class="p">,</span> <span class="n">t_splits</span> <span class="o">+</span> <span class="n">training_size</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">df_train</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[(</span><span class="n">t</span> <span class="o">-</span> <span class="n">training_size</span><span class="p">):</span> <span class="n">t</span><span class="p">]</span>
+    <span class="n">df_test</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">t</span><span class="p">:(</span><span class="n">t</span> <span class="o">+</span> <span class="n">test_size</span><span class="p">)]</span>
+    <span class="n">dates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">df_train</span><span class="p">[[</span><span class="s2">&quot;RUA&quot;</span><span class="p">]],</span> <span class="n">df_train</span><span class="p">[</span><span class="s2">&quot;AAPL&quot;</span><span class="p">]</span>
+    <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">df_test</span><span class="p">[[</span><span class="s2">&quot;RUA&quot;</span><span class="p">]],</span> <span class="n">df_test</span><span class="p">[</span><span class="s2">&quot;AAPL&quot;</span><span class="p">]</span>
+    <span class="n">linear_regression</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+    <span class="n">linear_regression</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+    <span class="n">y_train_hat</span> <span class="o">=</span> <span class="n">linear_regression</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+    <span class="n">y_test_hat</span> <span class="o">=</span> <span class="n">linear_regression</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    <span class="n">r2_train</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_train_hat</span><span class="p">)</span>
+    <span class="n">r2_test</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_test_hat</span><span class="p">)</span>
+    <span class="n">r2_train_folds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r2_train</span><span class="p">)</span>
+    <span class="n">r2_test_folds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r2_test</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">dates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">dates</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dates</span><span class="p">,</span> <span class="n">r2_train_folds</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;training data&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dates</span><span class="p">,</span> <span class="n">r2_test_folds</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;test data&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">labelrotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$R^2$ score&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/75cce12b9cac0e1ca562cae0e7bd3b9d59ed222d001446deb7628a3edd162062.png" src="_images/75cce12b9cac0e1ca562cae0e7bd3b9d59ed222d001446deb7628a3edd162062.png" />
+</div>
+</div>
+</section>
+<section id="other-packages-for-statistics-and-deep-learning">
+<h2>Other packages for statistics and deep learning<a class="headerlink" href="#other-packages-for-statistics-and-deep-learning" title="Link to this heading">#</a></h2>
+<p>Even though sklearn includes a great variety of methods from statistics and machine learning, we sometimes can and should use other packages.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="05_sc_with_scipy.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Scientific computing with scipy</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="07_torch.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Pytorch</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-manipulation">Data manipulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imputation">Imputation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-categorical-data">Encoding categorical data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparability-of-numerical-data">Comparability of numerical data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-learning-with-sklearn">Supervised learning with sklearn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unsupervised-learning-with-sklearn">Unsupervised learning with sklearn</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pca">PCA</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">Evaluation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-packages-for-statistics-and-deep-learning">Other packages for statistics and deep learning</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Prof. Dr. Ralf Kellner
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
