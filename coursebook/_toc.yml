@@ -6,10 +6,10 @@ root: 00_welcome
 chapters:
 - file: 01_python_basics
 - file: 02_sc_with_numpy
+- file: 05_sc_with_scipy
 - file: 03_data
 - file: 08_getting_data
 - file: 04_graphics
-- file: 05_sc_with_scipy
 - file: 06_sklearn
 - file: 07_torch
 - file: 09_digital_reporting
