@@ -184,10 +184,10 @@
 <li class="toctree-l1"><a class="reference internal" href="01_python_basics.html">How to use and install python</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="02_sc_with_numpy.html">Scientific computing with numpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_sc_with_scipy.html">Scientific computing with scipy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_data.html">Working with Data</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Collecting data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04_graphics.html">Graphics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="05_sc_with_scipy.html">Scientific computing with scipy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="06_sklearn.html">SciKit Learn</a></li>
 <li class="toctree-l1"><a class="reference internal" href="07_torch.html">Pytorch</a></li>
 
@@ -842,10 +842,33 @@ document.write(`
  &#39;quoteSourceName&#39;: &#39;Nasdaq Real Time Price&#39;,
  &#39;triggerable&#39;: True,
  &#39;customPriceAlertConfidence&#39;: &#39;HIGH&#39;,
+ &#39;postMarketTime&#39;: 1745366389,
+ &#39;regularMarketTime&#39;: 1745352002,
  &#39;regularMarketChangePercent&#39;: 3.4065034,
  &#39;regularMarketPrice&#39;: 199.74,
- &#39;shortName&#39;: &#39;Apple Inc.&#39;,
+ &#39;exchange&#39;: &#39;NMS&#39;,
+ &#39;messageBoardId&#39;: &#39;finmb_24937&#39;,
+ &#39;exchangeTimezoneName&#39;: &#39;America/New_York&#39;,
+ &#39;exchangeTimezoneShortName&#39;: &#39;EDT&#39;,
+ &#39;gmtOffSetMilliseconds&#39;: -14400000,
+ &#39;market&#39;: &#39;us_market&#39;,
+ &#39;esgPopulated&#39;: False,
+ &#39;corporateActions&#39;: [],
+ &#39;marketState&#39;: &#39;PREPRE&#39;,
  &#39;longName&#39;: &#39;Apple Inc.&#39;,
+ &#39;shortName&#39;: &#39;Apple Inc.&#39;,
+ &#39;epsTrailingTwelveMonths&#39;: 6.29,
+ &#39;epsForward&#39;: 8.31,
+ &#39;epsCurrentYear&#39;: 7.2503,
+ &#39;priceEpsCurrentYear&#39;: 27.549206,
+ &#39;fiftyDayAverageChange&#39;: -20.722992,
+ &#39;fiftyDayAverageChangePercent&#39;: -0.0939976,
+ &#39;twoHundredDayAverageChange&#39;: -28.19049,
+ &#39;twoHundredDayAverageChangePercent&#39;: -0.123680204,
+ &#39;sourceInterval&#39;: 15,
+ &#39;exchangeDataDelayedBy&#39;: 0,
+ &#39;averageAnalystRating&#39;: &#39;2.0 - Buy&#39;,
+ &#39;cryptoTradeable&#39;: False,
  &#39;hasPrePostMarketData&#39;: True,
  &#39;firstTradeDateMilliseconds&#39;: 345479400000,
  &#39;postMarketChangePercent&#39;: 2.65845,
@@ -860,7 +883,6 @@ document.write(`
  &#39;fiftyTwoWeekRange&#39;: &#39;166.21 - 260.1&#39;,
  &#39;fiftyTwoWeekHighChange&#39;: -60.36,
  &#39;fiftyTwoWeekHighChangePercent&#39;: -0.23206459,
- &#39;marketState&#39;: &#39;PREPRE&#39;,
  &#39;fiftyTwoWeekChangePercent&#39;: 18.175364,
  &#39;dividendDate&#39;: 1739404800,
  &#39;earningsTimestamp&#39;: 1746129600,
@@ -869,28 +891,6 @@ document.write(`
  &#39;earningsCallTimestampStart&#39;: 1746133200,
  &#39;earningsCallTimestampEnd&#39;: 1746133200,
  &#39;isEarningsDateEstimate&#39;: False,
- &#39;epsTrailingTwelveMonths&#39;: 6.29,
- &#39;epsForward&#39;: 8.31,
- &#39;epsCurrentYear&#39;: 7.2503,
- &#39;priceEpsCurrentYear&#39;: 27.549206,
- &#39;fiftyDayAverageChange&#39;: -20.722992,
- &#39;fiftyDayAverageChangePercent&#39;: -0.0939976,
- &#39;twoHundredDayAverageChange&#39;: -28.19049,
- &#39;twoHundredDayAverageChangePercent&#39;: -0.123680204,
- &#39;sourceInterval&#39;: 15,
- &#39;exchangeDataDelayedBy&#39;: 0,
- &#39;averageAnalystRating&#39;: &#39;2.0 - Buy&#39;,
- &#39;cryptoTradeable&#39;: False,
- &#39;corporateActions&#39;: [],
- &#39;postMarketTime&#39;: 1745366389,
- &#39;regularMarketTime&#39;: 1745352002,
- &#39;exchange&#39;: &#39;NMS&#39;,
- &#39;messageBoardId&#39;: &#39;finmb_24937&#39;,
- &#39;exchangeTimezoneName&#39;: &#39;America/New_York&#39;,
- &#39;exchangeTimezoneShortName&#39;: &#39;EDT&#39;,
- &#39;gmtOffSetMilliseconds&#39;: -14400000,
- &#39;market&#39;: &#39;us_market&#39;,
- &#39;esgPopulated&#39;: False,
  &#39;displayName&#39;: &#39;Apple&#39;,
  &#39;trailingPegRatio&#39;: 1.9604}
 </pre></div>
@@ -2531,26 +2531,26 @@ Length: 129, dtype: int64
   <tbody>
     <tr>
       <th>2024-04-23</th>
-      <td>166.115616</td>
+      <td>166.115631</td>
       <td>404.481934</td>
-      <td>166.264920</td>
+      <td>166.264935</td>
       <td>405.107165</td>
-      <td>164.144925</td>
+      <td>164.144941</td>
       <td>400.006095</td>
-      <td>164.572913</td>
+      <td>164.572928</td>
       <td>401.177147</td>
       <td>49537800</td>
       <td>15734500</td>
     </tr>
     <tr>
       <th>2024-04-24</th>
-      <td>168.225677</td>
+      <td>168.225662</td>
       <td>405.960632</td>
-      <td>168.504360</td>
+      <td>168.504345</td>
       <td>409.344799</td>
-      <td>165.428886</td>
+      <td>165.428871</td>
       <td>403.697909</td>
-      <td>165.757322</td>
+      <td>165.757307</td>
       <td>406.456844</td>
       <td>48251800</td>
       <td>15065300</td>
@@ -2558,39 +2558,39 @@ Length: 129, dtype: int64
     <tr>
       <th>2024-04-25</th>
       <td>169.091583</td>
-      <td>396.016571</td>
+      <td>396.016541</td>
       <td>169.808201</td>
-      <td>396.860137</td>
+      <td>396.860106</td>
       <td>167.359755</td>
-      <td>385.089982</td>
+      <td>385.089952</td>
       <td>168.733275</td>
-      <td>391.044521</td>
+      <td>391.044491</td>
       <td>50558300</td>
       <td>40586500</td>
     </tr>
     <tr>
       <th>2024-04-26</th>
-      <td>168.504333</td>
+      <td>168.504349</td>
       <td>403.241425</td>
-      <td>170.534739</td>
+      <td>170.534755</td>
       <td>409.870805</td>
-      <td>168.384887</td>
+      <td>168.384902</td>
       <td>402.685670</td>
-      <td>169.081609</td>
+      <td>169.081625</td>
       <td>409.047107</td>
       <td>44838400</td>
       <td>29694700</td>
     </tr>
     <tr>
       <th>2024-04-29</th>
-      <td>172.684601</td>
-      <td>399.202271</td>
-      <td>175.202709</td>
-      <td>403.241441</td>
-      <td>172.286487</td>
-      <td>396.165458</td>
-      <td>172.555207</td>
-      <td>402.179540</td>
+      <td>172.684616</td>
+      <td>399.202240</td>
+      <td>175.202725</td>
+      <td>403.241410</td>
+      <td>172.286502</td>
+      <td>396.165427</td>
+      <td>172.555222</td>
+      <td>402.179510</td>
       <td>68169400</td>
       <td>19582100</td>
     </tr>
