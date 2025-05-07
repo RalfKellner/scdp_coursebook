@@ -528,107 +528,74 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">YFRateLimitError</span><span class="g g-Whitespace">                          </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">start_day</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">ticker</span><span class="o">.</span><span class="n">history</span><span class="p">(</span><span class="n">start</span> <span class="o">=</span> <span class="n">start_day</span><span class="p">)</span>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+<span class="nn">File ~/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/yfinance/utils.py:104,</span> in <span class="ni">log_indent_decorator.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">101</span> <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Entering </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">()&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">103</span> <span class="k">with</span> <span class="n">IndentationContext</span><span class="p">():</span>
+<span class="ne">--&gt; </span><span class="mi">104</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">106</span> <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Exiting </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">()&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">107</span> <span class="k">return</span> <span class="n">result</span>
 
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Open</th>
-      <th>High</th>
-      <th>Low</th>
-      <th>Close</th>
-      <th>Volume</th>
-      <th>Dividends</th>
-      <th>Stock Splits</th>
-    </tr>
-    <tr>
-      <th>Date</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>2025-04-14 00:00:00-04:00</th>
-      <td>211.440002</td>
-      <td>212.940002</td>
-      <td>201.160004</td>
-      <td>202.520004</td>
-      <td>101352900</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>2025-04-15 00:00:00-04:00</th>
-      <td>201.860001</td>
-      <td>203.509995</td>
-      <td>199.800003</td>
-      <td>202.139999</td>
-      <td>51343900</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>2025-04-16 00:00:00-04:00</th>
-      <td>198.360001</td>
-      <td>200.699997</td>
-      <td>192.369995</td>
-      <td>194.270004</td>
-      <td>59732400</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>2025-04-17 00:00:00-04:00</th>
-      <td>197.199997</td>
-      <td>198.830002</td>
-      <td>194.419998</td>
-      <td>196.979996</td>
-      <td>51334300</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>2025-04-21 00:00:00-04:00</th>
-      <td>193.270004</td>
-      <td>193.800003</td>
-      <td>189.809998</td>
-      <td>193.160004</td>
-      <td>46742500</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>2025-04-22 00:00:00-04:00</th>
-      <td>196.119995</td>
-      <td>201.589996</td>
-      <td>195.970001</td>
-      <td>199.740005</td>
-      <td>52660200</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
+<span class="nn">File ~/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/yfinance/base.py:82,</span> in <span class="ni">TickerBase.history</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">80</span> <span class="nd">@utils</span><span class="o">.</span><span class="n">log_indent_decorator</span>
+<span class="g g-Whitespace">     </span><span class="mi">81</span> <span class="k">def</span><span class="w"> </span><span class="nf">history</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">82</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lazy_load_price_history</span><span class="p">()</span><span class="o">.</span><span class="n">history</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/yfinance/utils.py:104,</span> in <span class="ni">log_indent_decorator.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">101</span> <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Entering </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">()&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">103</span> <span class="k">with</span> <span class="n">IndentationContext</span><span class="p">():</span>
+<span class="ne">--&gt; </span><span class="mi">104</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">106</span> <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Exiting </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">()&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">107</span> <span class="k">return</span> <span class="n">result</span>
+
+<span class="nn">File ~/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/yfinance/scrapers/history.py:175,</span> in <span class="ni">PriceHistory.history</span><span class="nt">(self, period, interval, start, end, prepost, actions, auto_adjust, back_adjust, repair, keepna, proxy, rounding, timeout, raise_errors)</span>
+<span class="g g-Whitespace">    </span><span class="mi">173</span>         <span class="n">get_fn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">cache_get</span>
+<span class="g g-Whitespace">    </span><span class="mi">174</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">175</span>     <span class="n">data</span> <span class="o">=</span> <span class="n">get_fn</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">176</span>         <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">177</span>         <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">178</span>         <span class="n">proxy</span><span class="o">=</span><span class="n">proxy</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">179</span>         <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span>
+<span class="g g-Whitespace">    </span><span class="mi">180</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">181</span>     <span class="k">if</span> <span class="s2">&quot;Will be right back&quot;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">text</span> <span class="ow">or</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">182</span>         <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;*** YAHOO! FINANCE IS CURRENTLY DOWN! ***</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">183</span>                            <span class="s2">&quot;Our engineers are working quickly to resolve &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">184</span>                            <span class="s2">&quot;the issue. Thank you for your patience.&quot;</span><span class="p">)</span>
+
+<span class="nn">File ~/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/yfinance/utils.py:104,</span> in <span class="ni">log_indent_decorator.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">101</span> <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Entering </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">()&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">103</span> <span class="k">with</span> <span class="n">IndentationContext</span><span class="p">():</span>
+<span class="ne">--&gt; </span><span class="mi">104</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">106</span> <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Exiting </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">()&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">107</span> <span class="k">return</span> <span class="n">result</span>
+
+<span class="nn">File ~/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/yfinance/data.py:349,</span> in <span class="ni">YfData.get</span><span class="nt">(self, url, user_agent_headers, params, proxy, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">347</span> <span class="nd">@utils</span><span class="o">.</span><span class="n">log_indent_decorator</span>
+<span class="g g-Whitespace">    </span><span class="mi">348</span> <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">user_agent_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">proxy</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">349</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">request_method</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_session</span><span class="o">.</span><span class="n">get</span><span class="p">,</span> <span class="n">user_agent_headers</span><span class="o">=</span><span class="n">user_agent_headers</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">proxy</span><span class="o">=</span><span class="n">proxy</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
+
+<span class="nn">File ~/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/yfinance/utils.py:104,</span> in <span class="ni">log_indent_decorator.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">101</span> <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Entering </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">()&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">103</span> <span class="k">with</span> <span class="n">IndentationContext</span><span class="p">():</span>
+<span class="ne">--&gt; </span><span class="mi">104</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">106</span> <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Exiting </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">()&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">107</span> <span class="k">return</span> <span class="n">result</span>
+
+<span class="nn">File ~/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/yfinance/data.py:411,</span> in <span class="ni">YfData._make_request</span><span class="nt">(self, url, request_method, user_agent_headers, body, params, proxy, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">409</span>     <span class="c1"># Raise exception if rate limited</span>
+<span class="g g-Whitespace">    </span><span class="mi">410</span>     <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">429</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">411</span>         <span class="k">raise</span> <span class="n">YFRateLimitError</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">413</span> <span class="k">return</span> <span class="n">response</span>
+
+<span class="ne">YFRateLimitError</span>: Too Many Requests. Rate limited. Try after a while.
+</pre></div>
+</div>
+</div>
 </div>
 <p>To collect general information about the company. Note, this output is given in json format which we are going to discuss later in the course.</p>
 <div class="cell docutils container">
@@ -740,42 +707,42 @@ document.write(`
  &#39;executiveTeam&#39;: [],
  &#39;maxAge&#39;: 86400,
  &#39;priceHint&#39;: 2,
- &#39;previousClose&#39;: 193.16,
- &#39;open&#39;: 196.07,
- &#39;dayLow&#39;: 196.0,
- &#39;dayHigh&#39;: 201.55,
- &#39;regularMarketPreviousClose&#39;: 193.16,
- &#39;regularMarketOpen&#39;: 196.07,
- &#39;regularMarketDayLow&#39;: 196.0,
- &#39;regularMarketDayHigh&#39;: 201.59,
+ &#39;previousClose&#39;: 196.98,
+ &#39;open&#39;: 193.265,
+ &#39;dayLow&#39;: 189.8112,
+ &#39;dayHigh&#39;: 193.8,
+ &#39;regularMarketPreviousClose&#39;: 196.98,
+ &#39;regularMarketOpen&#39;: 193.265,
+ &#39;regularMarketDayLow&#39;: 189.8112,
+ &#39;regularMarketDayHigh&#39;: 193.8,
  &#39;dividendRate&#39;: 1.0,
- &#39;dividendYield&#39;: 0.5,
+ &#39;dividendYield&#39;: 0.52,
  &#39;exDividendDate&#39;: 1739145600,
  &#39;payoutRatio&#39;: 0.1571,
  &#39;fiveYearAvgDividendYield&#39;: 0.57,
  &#39;beta&#39;: 1.259,
- &#39;trailingPE&#39;: 31.755169,
- &#39;forwardPE&#39;: 24.0361,
- &#39;volume&#39;: 51869389,
- &#39;regularMarketVolume&#39;: 51869389,
- &#39;averageVolume&#39;: 61391024,
- &#39;averageVolume10days&#39;: 87773750,
- &#39;averageDailyVolume10Day&#39;: 87773750,
- &#39;bid&#39;: 190.2,
- &#39;ask&#39;: 209.89,
+ &#39;trailingPE&#39;: 30.660316,
+ &#39;forwardPE&#39;: 23.244284,
+ &#39;volume&#39;: 46628147,
+ &#39;regularMarketVolume&#39;: 46628147,
+ &#39;averageVolume&#39;: 61513900,
+ &#39;averageVolume10days&#39;: 98546440,
+ &#39;averageDailyVolume10Day&#39;: 98546440,
+ &#39;bid&#39;: 193.03,
+ &#39;ask&#39;: 202.85,
  &#39;bidSize&#39;: 1,
  &#39;askSize&#39;: 1,
- &#39;marketCap&#39;: 3000514379776,
- &#39;fiftyTwoWeekLow&#39;: 166.21,
+ &#39;marketCap&#39;: 2959056568320,
+ &#39;fiftyTwoWeekLow&#39;: 164.92,
  &#39;fiftyTwoWeekHigh&#39;: 260.1,
- &#39;priceToSalesTrailing12Months&#39;: 7.581651,
- &#39;fiftyDayAverage&#39;: 220.463,
- &#39;twoHundredDayAverage&#39;: 227.9305,
+ &#39;priceToSalesTrailing12Months&#39;: 7.4768963,
+ &#39;fiftyDayAverage&#39;: 221.0208,
+ &#39;twoHundredDayAverage&#39;: 228.03955,
  &#39;trailingAnnualDividendRate&#39;: 0.99,
- &#39;trailingAnnualDividendYield&#39;: 0.0051252847,
+ &#39;trailingAnnualDividendYield&#39;: 0.005025891,
  &#39;currency&#39;: &#39;USD&#39;,
  &#39;tradeable&#39;: False,
- &#39;enterpriseValue&#39;: 3043532734464,
+ &#39;enterpriseValue&#39;: 2944687669248,
  &#39;profitMargins&#39;: 0.24295,
  &#39;floatShares&#39;: 14998037683,
  &#39;sharesOutstanding&#39;: 15022100480,
@@ -785,34 +752,34 @@ document.write(`
  &#39;dateShortInterest&#39;: 1743379200,
  &#39;sharesPercentSharesOut&#39;: 0.0075,
  &#39;heldPercentInsiders&#39;: 0.02073,
- &#39;heldPercentInstitutions&#39;: 0.62974,
+ &#39;heldPercentInstitutions&#39;: 0.62975,
  &#39;shortRatio&#39;: 2.11,
  &#39;shortPercentOfFloat&#39;: 0.0075,
  &#39;impliedSharesOutstanding&#39;: 15319199744,
  &#39;bookValue&#39;: 4.438,
- &#39;priceToBook&#39;: 45.00676,
+ &#39;priceToBook&#39;: 43.52411,
  &#39;lastFiscalYearEnd&#39;: 1727481600,
  &#39;nextFiscalYearEnd&#39;: 1759017600,
  &#39;mostRecentQuarter&#39;: 1735344000,
  &#39;earningsQuarterlyGrowth&#39;: 0.071,
  &#39;netIncomeToCommon&#39;: 96150003712,
- &#39;trailingEps&#39;: 6.29,
+ &#39;trailingEps&#39;: 6.3,
  &#39;forwardEps&#39;: 8.31,
  &#39;lastSplitFactor&#39;: &#39;4:1&#39;,
  &#39;lastSplitDate&#39;: 1598832000,
- &#39;enterpriseToRevenue&#39;: 7.69,
- &#39;enterpriseToEbitda&#39;: 22.159,
- &#39;52WeekChange&#39;: 0.18175364,
- &#39;SandP52WeekChange&#39;: 0.042615533,
+ &#39;enterpriseToRevenue&#39;: 7.441,
+ &#39;enterpriseToEbitda&#39;: 21.439,
+ &#39;52WeekChange&#39;: 0.15733969,
+ &#39;SandP52WeekChange&#39;: 0.017286062,
  &#39;lastDividendValue&#39;: 0.25,
  &#39;lastDividendDate&#39;: 1739145600,
  &#39;quoteType&#39;: &#39;EQUITY&#39;,
- &#39;currentPrice&#39;: 199.74,
+ &#39;currentPrice&#39;: 193.16,
  &#39;targetHighPrice&#39;: 300.0,
  &#39;targetLowPrice&#39;: 165.0,
- &#39;targetMeanPrice&#39;: 237.79951,
+ &#39;targetMeanPrice&#39;: 237.87096,
  &#39;targetMedianPrice&#39;: 245.0,
- &#39;recommendationMean&#39;: 1.95833,
+ &#39;recommendationMean&#39;: 1.97872,
  &#39;recommendationKey&#39;: &#39;buy&#39;,
  &#39;numberOfAnalystOpinions&#39;: 42,
  &#39;totalCash&#39;: 53774999552,
@@ -842,48 +809,30 @@ document.write(`
  &#39;quoteSourceName&#39;: &#39;Nasdaq Real Time Price&#39;,
  &#39;triggerable&#39;: True,
  &#39;customPriceAlertConfidence&#39;: &#39;HIGH&#39;,
- &#39;postMarketTime&#39;: 1745366389,
- &#39;regularMarketTime&#39;: 1745352002,
- &#39;regularMarketChangePercent&#39;: 3.4065034,
- &#39;regularMarketPrice&#39;: 199.74,
- &#39;exchange&#39;: &#39;NMS&#39;,
+ &#39;shortName&#39;: &#39;Apple Inc.&#39;,
+ &#39;longName&#39;: &#39;Apple Inc.&#39;,
+ &#39;regularMarketChangePercent&#39;: -1.9392792,
+ &#39;regularMarketPrice&#39;: 193.16,
+ &#39;corporateActions&#39;: [],
+ &#39;preMarketTime&#39;: 1745315656,
+ &#39;regularMarketTime&#39;: 1745265602,
  &#39;messageBoardId&#39;: &#39;finmb_24937&#39;,
  &#39;exchangeTimezoneName&#39;: &#39;America/New_York&#39;,
  &#39;exchangeTimezoneShortName&#39;: &#39;EDT&#39;,
  &#39;gmtOffSetMilliseconds&#39;: -14400000,
  &#39;market&#39;: &#39;us_market&#39;,
  &#39;esgPopulated&#39;: False,
- &#39;corporateActions&#39;: [],
- &#39;marketState&#39;: &#39;PREPRE&#39;,
- &#39;longName&#39;: &#39;Apple Inc.&#39;,
- &#39;shortName&#39;: &#39;Apple Inc.&#39;,
- &#39;epsTrailingTwelveMonths&#39;: 6.29,
- &#39;epsForward&#39;: 8.31,
- &#39;epsCurrentYear&#39;: 7.2503,
- &#39;priceEpsCurrentYear&#39;: 27.549206,
- &#39;fiftyDayAverageChange&#39;: -20.722992,
- &#39;fiftyDayAverageChangePercent&#39;: -0.0939976,
- &#39;twoHundredDayAverageChange&#39;: -28.19049,
- &#39;twoHundredDayAverageChangePercent&#39;: -0.123680204,
- &#39;sourceInterval&#39;: 15,
- &#39;exchangeDataDelayedBy&#39;: 0,
- &#39;averageAnalystRating&#39;: &#39;2.0 - Buy&#39;,
- &#39;cryptoTradeable&#39;: False,
+ &#39;exchange&#39;: &#39;NMS&#39;,
+ &#39;marketState&#39;: &#39;PRE&#39;,
  &#39;hasPrePostMarketData&#39;: True,
- &#39;firstTradeDateMilliseconds&#39;: 345479400000,
- &#39;postMarketChangePercent&#39;: 2.65845,
- &#39;postMarketPrice&#39;: 205.05,
- &#39;postMarketChange&#39;: 5.31,
- &#39;regularMarketChange&#39;: 6.580002,
- &#39;regularMarketDayRange&#39;: &#39;196.0 - 201.59&#39;,
  &#39;fullExchangeName&#39;: &#39;NasdaqGS&#39;,
- &#39;averageDailyVolume3Month&#39;: 61391024,
- &#39;fiftyTwoWeekLowChange&#39;: 33.53,
- &#39;fiftyTwoWeekLowChangePercent&#39;: 0.20173272,
- &#39;fiftyTwoWeekRange&#39;: &#39;166.21 - 260.1&#39;,
- &#39;fiftyTwoWeekHighChange&#39;: -60.36,
- &#39;fiftyTwoWeekHighChangePercent&#39;: -0.23206459,
- &#39;fiftyTwoWeekChangePercent&#39;: 18.175364,
+ &#39;averageDailyVolume3Month&#39;: 61513900,
+ &#39;fiftyTwoWeekLowChange&#39;: 28.240005,
+ &#39;fiftyTwoWeekLowChangePercent&#39;: 0.17123458,
+ &#39;fiftyTwoWeekRange&#39;: &#39;164.92 - 260.1&#39;,
+ &#39;fiftyTwoWeekHighChange&#39;: -66.94,
+ &#39;fiftyTwoWeekHighChangePercent&#39;: -0.25736254,
+ &#39;fiftyTwoWeekChangePercent&#39;: 15.733969,
  &#39;dividendDate&#39;: 1739404800,
  &#39;earningsTimestamp&#39;: 1746129600,
  &#39;earningsTimestampStart&#39;: 1746129600,
@@ -891,8 +840,26 @@ document.write(`
  &#39;earningsCallTimestampStart&#39;: 1746133200,
  &#39;earningsCallTimestampEnd&#39;: 1746133200,
  &#39;isEarningsDateEstimate&#39;: False,
+ &#39;epsTrailingTwelveMonths&#39;: 6.3,
+ &#39;epsForward&#39;: 8.31,
+ &#39;epsCurrentYear&#39;: 7.25482,
+ &#39;priceEpsCurrentYear&#39;: 26.62506,
+ &#39;fiftyDayAverageChange&#39;: -27.860794,
+ &#39;fiftyDayAverageChangePercent&#39;: -0.12605508,
+ &#39;twoHundredDayAverageChange&#39;: -34.879547,
+ &#39;twoHundredDayAverageChangePercent&#39;: -0.15295394,
+ &#39;sourceInterval&#39;: 15,
+ &#39;exchangeDataDelayedBy&#39;: 0,
+ &#39;averageAnalystRating&#39;: &#39;2.0 - Buy&#39;,
+ &#39;cryptoTradeable&#39;: False,
+ &#39;firstTradeDateMilliseconds&#39;: 345479400000,
+ &#39;preMarketChange&#39;: 2.1600037,
+ &#39;preMarketChangePercent&#39;: 1.1182458,
+ &#39;preMarketPrice&#39;: 195.32,
+ &#39;regularMarketChange&#39;: -3.819992,
+ &#39;regularMarketDayRange&#39;: &#39;189.8112 - 193.8&#39;,
  &#39;displayName&#39;: &#39;Apple&#39;,
- &#39;trailingPegRatio&#39;: 1.9604}
+ &#39;trailingPegRatio&#39;: 1.8958}
 </pre></div>
 </div>
 </div>
@@ -1732,36 +1699,90 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;id&#39;: &#39;60e80755-9bea-3e98-978e-4b2fb7713384&#39;,
-  &#39;content&#39;: {&#39;id&#39;: &#39;60e80755-9bea-3e98-978e-4b2fb7713384&#39;,
-   &#39;contentType&#39;: &#39;VIDEO&#39;,
-   &#39;title&#39;: &#39;How to trade the Magnificent 7 amid the market sell-off&#39;,
-   &#39;description&#39;: &#39;&lt;p&gt;As US stocks (&lt;a data-i13n=&quot;cpos:1;pos:1&quot; href=&quot;https://finance.yahoo.com/quote/%5EDJI&quot;&gt;^DJI&lt;/a&gt;, &lt;a data-i13n=&quot;cpos:2;pos:1&quot; href=&quot;https://finance.yahoo.com/quote/%5EGSPC&quot;&gt;^GSPC&lt;/a&gt;,&lt;a data-i13n=&quot;cpos:3;pos:1&quot; href=&quot;https://finance.yahoo.com/quote/%5EIXIC&quot;&gt; ^IXIC&lt;/a&gt;) sell off, Solidarity Capital CEO Jeff McClean sits down with &lt;a data-i13n=&quot;cpos:4;pos:1&quot; href=&quot;https://finance.yahoo.com/author/josh-lipton/&quot;&gt;Josh Lipton&lt;/a&gt; to check in on the &quot;Magnificent Seven,&quot; made up of Nvidia (&lt;a data-i13n=&quot;cpos:5;pos:1&quot; href=&quot;https://finance.yahoo.com/quote/NVDA&quot;&gt;NVDA&lt;/a&gt;), Alphabet (&lt;a data-i13n=&quot;cpos:6;pos:1&quot; href=&quot;https://finance.yahoo.com/quote/GOOG&quot;&gt;GOOG&lt;/a&gt;,&lt;a data-i13n=&quot;cpos:7;pos:1&quot; href=&quot;https://finance.yahoo.com/quote/GOOGL&quot;&gt; GOOGL&lt;/a&gt;), Tesla (&lt;a data-i13n=&quot;cpos:8;pos:1&quot; href=&quot;https://finance.yahoo.com/quote/TSLA&quot;&gt;TSLA&lt;/a&gt;), Microsoft (&lt;a data-i13n=&quot;cpos:9;pos:1&quot; href=&quot;https://finance.yahoo.com/quote/MSFT&quot;&gt;MSFT&lt;/a&gt;), Amazon (&lt;a data-i13n=&quot;cpos:10;pos:1&quot; href=&quot;https://finance.yahoo.com/quote/AMZN&quot;&gt;AMZN&lt;/a&gt;), Meta (&lt;a data-i13n=&quot;cpos:11;pos:1&quot; href=&quot;https://finance.yahoo.com/quote/META&quot;&gt;META&lt;/a&gt;), and Apple (&lt;a data-i13n=&quot;cpos:12;pos:1&quot; href=&quot;https://finance.yahoo.com/quote/AAPL&quot;&gt;AAPL&lt;/a&gt;).&lt;/p&gt;\n&lt;p&gt;To watch more expert insights and analysis on the latest market action, check out more Asking for a Trend &lt;a data-i13n=&quot;cpos:13;pos:1&quot; href=&quot;https://finance.yahoo.com/videos/series/asking-for-a-trend/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;&#39;,
-   &#39;summary&#39;: &#39;As US stocks (^DJI, ^GSPC, ^IXIC) sell off, Solidarity Capital CEO Jeff McClean sits down with Josh Lipton to check in on the &quot;Magnificent Seven,&quot; made up of Nvidia (NVDA), Alphabet (GOOG, GOOGL), Tesla (TSLA), Microsoft (MSFT), Amazon (AMZN), Meta (META), and Apple (AAPL). To watch more expert insights and analysis on the latest market action, check out more Asking for a Trend here.&#39;,
-   &#39;pubDate&#39;: &#39;2025-04-22T12:00:21Z&#39;,
-   &#39;displayTime&#39;: &#39;&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;id&#39;: &#39;debff5be-1170-4c2d-8dc9-e249fea79be3&#39;,
+  &#39;content&#39;: {&#39;id&#39;: &#39;debff5be-1170-4c2d-8dc9-e249fea79be3&#39;,
+   &#39;contentType&#39;: &#39;STORY&#39;,
+   &#39;title&#39;: &#39;Chicken, crypto, and Nvidia: The companies that helped Trump’s inauguration shatter fundraising records&#39;,
+   &#39;description&#39;: &#39;&#39;,
+   &#39;summary&#39;: &#39;A wide array of companies helped President Trump shatter fundraising records during his second inauguration, netting $239 million.&#39;,
+   &#39;pubDate&#39;: &#39;2025-04-21T16:09:42Z&#39;,
+   &#39;displayTime&#39;: &#39;2025-04-21T16:09:43Z&#39;,
    &#39;isHosted&#39;: True,
    &#39;bypassModal&#39;: False,
    &#39;previewUrl&#39;: None,
-   &#39;thumbnail&#39;: {&#39;originalUrl&#39;: &#39;https://s.yimg.com/os/creatr-uploaded-images/2025-04/3ce117c0-1ef9-11f0-9fbb-34aca073c2c4&#39;,
-    &#39;originalWidth&#39;: 3439,
-    &#39;originalHeight&#39;: 1936,
+   &#39;thumbnail&#39;: {&#39;originalUrl&#39;: &#39;https://s.yimg.com/os/creatr-uploaded-images/2025-04/0daa3150-1eca-11f0-baff-5cb796c95ca7&#39;,
+    &#39;originalWidth&#39;: 7378,
+    &#39;originalHeight&#39;: 4919,
     &#39;caption&#39;: &#39;&#39;,
-    &#39;resolutions&#39;: [{&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/VlOlRHjC5nAAamKlVuEaqg--~B/aD0xOTM2O3c9MzQzOTthcHBpZD15dGFjaHlvbg--/https://s.yimg.com/os/creatr-uploaded-images/2025-04/3ce117c0-1ef9-11f0-9fbb-34aca073c2c4&#39;,
-      &#39;width&#39;: 3439,
-      &#39;height&#39;: 1936,
+    &#39;resolutions&#39;: [{&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/olaYzgHnl6yVYHnSaw_ylA--~B/aD00OTE5O3c9NzM3ODthcHBpZD15dGFjaHlvbg--/https://s.yimg.com/os/creatr-uploaded-images/2025-04/0daa3150-1eca-11f0-baff-5cb796c95ca7&#39;,
+      &#39;width&#39;: 7378,
+      &#39;height&#39;: 4919,
       &#39;tag&#39;: &#39;original&#39;},
-     {&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/_9UiNOUfshq156lTx4Te7w--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://s.yimg.com/os/creatr-uploaded-images/2025-04/3ce117c0-1ef9-11f0-9fbb-34aca073c2c4&#39;,
+     {&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/11VZb6PXHyKmUIHqXtnDcA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://s.yimg.com/os/creatr-uploaded-images/2025-04/0daa3150-1eca-11f0-baff-5cb796c95ca7&#39;,
       &#39;width&#39;: 170,
       &#39;height&#39;: 128,
       &#39;tag&#39;: &#39;170x128&#39;}]},
-   &#39;provider&#39;: {&#39;displayName&#39;: &#39;Yahoo Finance Video&#39;,
-    &#39;url&#39;: &#39;https://finance.yahoo.com/&#39;},
-   &#39;canonicalUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/video/trade-magnificent-7-amid-market-120021370.html&#39;,
+   &#39;provider&#39;: {&#39;displayName&#39;: &#39;Yahoo Finance&#39;,
+    &#39;url&#39;: &#39;http://finance.yahoo.com/&#39;},
+   &#39;canonicalUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/chicken-crypto-and-nvidia-the-companies-that-helped-trumps-inauguration-shatter-fundraising-records-160942136.html&#39;,
     &#39;site&#39;: &#39;finance&#39;,
     &#39;region&#39;: &#39;US&#39;,
     &#39;lang&#39;: &#39;en-US&#39;},
-   &#39;clickThroughUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/video/trade-magnificent-7-amid-market-120021370.html&#39;,
+   &#39;clickThroughUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/chicken-crypto-and-nvidia-the-companies-that-helped-trumps-inauguration-shatter-fundraising-records-160942136.html&#39;,
+    &#39;site&#39;: &#39;finance&#39;,
+    &#39;region&#39;: &#39;US&#39;,
+    &#39;lang&#39;: &#39;en-US&#39;},
+   &#39;metadata&#39;: {&#39;editorsPick&#39;: True},
+   &#39;finance&#39;: {&#39;premiumFinance&#39;: {&#39;isPremiumNews&#39;: False,
+     &#39;isPremiumFreeNews&#39;: False}},
+   &#39;storyline&#39;: {&#39;storylineItems&#39;: [{&#39;content&#39;: {&#39;id&#39;: &#39;26c0f14d-876f-3f8e-aeba-d8fe7f217b13&#39;,
+       &#39;contentType&#39;: &#39;VIDEO&#39;,
+       &#39;isHosted&#39;: True,
+       &#39;title&#39;: &quot;How China&#39;s &#39;monster market&#39; could impact US Big Tech&quot;,
+       &#39;thumbnail&#39;: {&#39;originalUrl&#39;: &#39;https://s.yimg.com/os/creatr-uploaded-images/2025-04/528577a0-1ec3-11f0-bfff-ce2f5fc2a15e&#39;,
+        &#39;originalWidth&#39;: 5000,
+        &#39;originalHeight&#39;: 2814,
+        &#39;caption&#39;: &#39;&#39;,
+        &#39;resolutions&#39;: None},
+       &#39;provider&#39;: {&#39;displayName&#39;: &#39;Yahoo Finance Video&#39;,
+        &#39;sourceId&#39;: &#39;video.yahoofinance.com&#39;},
+       &#39;previewUrl&#39;: None,
+       &#39;providerContentUrl&#39;: &#39;&#39;,
+       &#39;canonicalUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/video/chinas-monster-market-could-impact-153517257.html&#39;},
+       &#39;clickThroughUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/video/chinas-monster-market-could-impact-153517257.html&#39;}}},
+     {&#39;content&#39;: {&#39;id&#39;: &#39;1141c53f-8932-40a9-8d7a-cb6cb4af20df&#39;,
+       &#39;contentType&#39;: &#39;STORY&#39;,
+       &#39;isHosted&#39;: True,
+       &#39;title&#39;: &#39;What the falling US dollar has historically meant for stocks: By the numbers&#39;,
+       &#39;thumbnail&#39;: {&#39;originalUrl&#39;: &#39;https://s.yimg.com/os/creatr-uploaded-images/2025-04/854f5a90-1c5a-11f0-b7ff-c4f5f95f1f4f&#39;,
+        &#39;originalWidth&#39;: 3500,
+        &#39;originalHeight&#39;: 2165,
+        &#39;caption&#39;: &#39;&#39;,
+        &#39;resolutions&#39;: None},
+       &#39;provider&#39;: {&#39;displayName&#39;: &#39;Yahoo Finance&#39;,
+        &#39;sourceId&#39;: &#39;yahoofinance.com&#39;},
+       &#39;previewUrl&#39;: None,
+       &#39;providerContentUrl&#39;: &#39;&#39;,
+       &#39;canonicalUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/what-the-falling-us-dollar-has-historically-meant-for-stocks-by-the-numbers-142613097.html&#39;},
+       &#39;clickThroughUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/what-the-falling-us-dollar-has-historically-meant-for-stocks-by-the-numbers-142613097.html&#39;}}}]}}},
+ {&#39;id&#39;: &#39;aa382e73-42e4-3552-ab3e-b38e8088ad2b&#39;,
+  &#39;content&#39;: {&#39;id&#39;: &#39;aa382e73-42e4-3552-ab3e-b38e8088ad2b&#39;,
+   &#39;contentType&#39;: &#39;STORY&#39;,
+   &#39;title&#39;: &#39;ChatGPT: Everything you need to know about the AI-powered chatbot&#39;,
+   &#39;description&#39;: &#39;&#39;,
+   &#39;summary&#39;: &#39;ChatGPT, OpenAI’s text-generating AI chatbot, has taken the world by storm since its launch in November 2022. What started as a tool to supercharge productivity through writing essays and code with short text prompts has evolved into a behemoth with 300 million weekly active users. 2024 was a big year for OpenAI, from its partnership with Apple for its generative AI offering, Apple Intelligence, the release of GPT-4o with voice capabilities, and the highly-anticipated launch of its text-to-video&#39;,
+   &#39;pubDate&#39;: &#39;2025-04-21T13:25:27Z&#39;,
+   &#39;displayTime&#39;: &#39;2025-04-21T13:25:27Z&#39;,
+   &#39;isHosted&#39;: True,
+   &#39;bypassModal&#39;: False,
+   &#39;previewUrl&#39;: None,
+   &#39;thumbnail&#39;: None,
+   &#39;provider&#39;: {&#39;displayName&#39;: &#39;TechCrunch&#39;, &#39;url&#39;: &#39;https://techcrunch.com/&#39;},
+   &#39;canonicalUrl&#39;: {&#39;url&#39;: &#39;https://techcrunch.com/2025/04/21/chatgpt-everything-to-know-about-the-ai-chatbot/&#39;,
+    &#39;site&#39;: &#39;finance&#39;,
+    &#39;region&#39;: &#39;US&#39;,
+    &#39;lang&#39;: &#39;en-US&#39;},
+   &#39;clickThroughUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/chatgpt-everything-know-ai-powered-210339686.html&#39;,
     &#39;site&#39;: &#39;finance&#39;,
     &#39;region&#39;: &#39;US&#39;,
     &#39;lang&#39;: &#39;en-US&#39;},
@@ -1769,69 +1790,72 @@ document.write(`
    &#39;finance&#39;: {&#39;premiumFinance&#39;: {&#39;isPremiumNews&#39;: False,
      &#39;isPremiumFreeNews&#39;: False}},
    &#39;storyline&#39;: None}},
- {&#39;id&#39;: &#39;0f9840e5-497c-3ef9-b530-333766c3554e&#39;,
-  &#39;content&#39;: {&#39;id&#39;: &#39;0f9840e5-497c-3ef9-b530-333766c3554e&#39;,
+ {&#39;id&#39;: &#39;ff1e0e11-9e2d-4525-8760-1c22db58f449&#39;,
+  &#39;content&#39;: {&#39;id&#39;: &#39;ff1e0e11-9e2d-4525-8760-1c22db58f449&#39;,
    &#39;contentType&#39;: &#39;STORY&#39;,
-   &#39;title&#39;: &#39;Tech Earnings Arrive With Lots of Uncertainty. Here Are the 3 Most Important Things to Watch.&#39;,
+   &#39;title&#39;: &#39;Apple may have a key problem bringing back manufacturing to beat Trump tariffs, former Intel CEO warns&#39;,
    &#39;description&#39;: &#39;&#39;,
-   &#39;summary&#39;: &#39;Many of tech’s biggest companies—from Alphabet and Meta Platforms to Amazon and Apple—will report their quarterly results in the coming days.&#39;,
-   &#39;pubDate&#39;: &#39;2025-04-23T07:00:00Z&#39;,
-   &#39;displayTime&#39;: &#39;2025-04-23T07:00:00Z&#39;,
-   &#39;isHosted&#39;: False,
-   &#39;bypassModal&#39;: False,
-   &#39;previewUrl&#39;: &#39;https://finance.yahoo.com/m/0f9840e5-497c-3ef9-b530-333766c3554e/tech-earnings-arrive-with.html&#39;,
-   &#39;thumbnail&#39;: {&#39;originalUrl&#39;: &#39;https://media.zenfs.com/en/Barrons.com/c41bff6efaa405309b292b279c020c7f&#39;,
-    &#39;originalWidth&#39;: 1280,
-    &#39;originalHeight&#39;: 640,
-    &#39;caption&#39;: &#39;&#39;,
-    &#39;resolutions&#39;: [{&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/bVYrLgdFDknaSacDfy3UOQ--~B/aD02NDA7dz0xMjgwO2FwcGlkPXl0YWNoeW9u/https://media.zenfs.com/en/Barrons.com/c41bff6efaa405309b292b279c020c7f&#39;,
-      &#39;width&#39;: 1280,
-      &#39;height&#39;: 640,
-      &#39;tag&#39;: &#39;original&#39;},
-     {&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/TVZYIyqgkEVfVc8eaqj7pQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/Barrons.com/c41bff6efaa405309b292b279c020c7f&#39;,
-      &#39;width&#39;: 170,
-      &#39;height&#39;: 128,
-      &#39;tag&#39;: &#39;170x128&#39;}]},
-   &#39;provider&#39;: {&#39;displayName&#39;: &#39;Barrons.com&#39;,
-    &#39;url&#39;: &#39;http://www.barrons.com/&#39;},
-   &#39;canonicalUrl&#39;: {&#39;url&#39;: &#39;https://www.barrons.com/articles/tech-earnings-ibm-google-stock-price-ceb6ebf5?siteid=yhoof2&amp;yptr=yahoo&#39;,
-    &#39;site&#39;: &#39;finance&#39;,
-    &#39;region&#39;: &#39;US&#39;,
-    &#39;lang&#39;: &#39;en-US&#39;},
-   &#39;clickThroughUrl&#39;: None,
-   &#39;metadata&#39;: {&#39;editorsPick&#39;: False},
-   &#39;finance&#39;: {&#39;premiumFinance&#39;: {&#39;isPremiumNews&#39;: False,
-     &#39;isPremiumFreeNews&#39;: False}},
-   &#39;storyline&#39;: None}},
- {&#39;id&#39;: &#39;9d35141a-06e9-3d46-a0f2-a415f170c704&#39;,
-  &#39;content&#39;: {&#39;id&#39;: &#39;9d35141a-06e9-3d46-a0f2-a415f170c704&#39;,
-   &#39;contentType&#39;: &#39;STORY&#39;,
-   &#39;title&#39;: &quot;34.4% of Warren Buffett&#39;s $265 Billion Portfolio Is Invested in 4 Artificial Intelligence (AI) Stocks&quot;,
-   &#39;description&#39;: &#39;&#39;,
-   &#39;summary&#39;: &#39;Warren Buffett has served as the CEO of the Berkshire Hathaway (NYSE: BRK.A)(NYSE: BRK.B) holding company since 1965.  Had you invested $1,000 in Berkshire stock when he took the helm, it would have been worth a whopping $44.7 million at the end of 2024.  Buffett and his team oversee a $265 billion portfolio of stocks and securities, in addition to several wholly owned subsidiaries.&#39;,
-   &#39;pubDate&#39;: &#39;2025-04-23T01:10:00Z&#39;,
-   &#39;displayTime&#39;: &#39;2025-04-23T01:10:00Z&#39;,
+   &#39;summary&#39;: &quot;It won&#39;t be so easy to build US manufacturing if you are Apple, warns Intel&#39;s former CEO.&quot;,
+   &#39;pubDate&#39;: &#39;2025-04-21T13:21:51Z&#39;,
+   &#39;displayTime&#39;: &#39;2025-04-21T13:21:51Z&#39;,
    &#39;isHosted&#39;: True,
    &#39;bypassModal&#39;: False,
    &#39;previewUrl&#39;: None,
-   &#39;thumbnail&#39;: {&#39;originalUrl&#39;: &#39;https://media.zenfs.com/en/motleyfool.com/8711335bbaaecd5a627107eeb012628b&#39;,
-    &#39;originalWidth&#39;: 1400,
-    &#39;originalHeight&#39;: 933,
-    &#39;caption&#39;: &#39;Warren Buffett smiling, surrounded by cameras.&#39;,
-    &#39;resolutions&#39;: [{&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/JJzGeOauiUHfXlsXiGQ7dg--~B/aD05MzM7dz0xNDAwO2FwcGlkPXl0YWNoeW9u/https://media.zenfs.com/en/motleyfool.com/8711335bbaaecd5a627107eeb012628b&#39;,
-      &#39;width&#39;: 1400,
-      &#39;height&#39;: 933,
+   &#39;thumbnail&#39;: {&#39;originalUrl&#39;: &#39;https://s.yimg.com/os/creatr-uploaded-images/2025-04/970345f0-17bc-11f0-a75f-24dfd543a792&#39;,
+    &#39;originalWidth&#39;: 8126,
+    &#39;originalHeight&#39;: 5420,
+    &#39;caption&#39;: &#39;&#39;,
+    &#39;resolutions&#39;: [{&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/EenhkQ0neq1ni9W1GHfkiQ--~B/aD01NDIwO3c9ODEyNjthcHBpZD15dGFjaHlvbg--/https://s.yimg.com/os/creatr-uploaded-images/2025-04/970345f0-17bc-11f0-a75f-24dfd543a792&#39;,
+      &#39;width&#39;: 8126,
+      &#39;height&#39;: 5420,
       &#39;tag&#39;: &#39;original&#39;},
-     {&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/Ju.SdL_ZWQr8rIlCnR7Xnw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/8711335bbaaecd5a627107eeb012628b&#39;,
+     {&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/XTWbUydk5ETG6CZt_UB5ng--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://s.yimg.com/os/creatr-uploaded-images/2025-04/970345f0-17bc-11f0-a75f-24dfd543a792&#39;,
+      &#39;width&#39;: 170,
+      &#39;height&#39;: 128,
+      &#39;tag&#39;: &#39;170x128&#39;}]},
+   &#39;provider&#39;: {&#39;displayName&#39;: &#39;Yahoo Finance&#39;,
+    &#39;url&#39;: &#39;http://finance.yahoo.com/&#39;},
+   &#39;canonicalUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/apple-may-have-a-key-problem-bringing-back-manufacturing-to-beat-trump-tariffs-former-intel-ceo-warns-132151346.html&#39;,
+    &#39;site&#39;: &#39;finance&#39;,
+    &#39;region&#39;: &#39;US&#39;,
+    &#39;lang&#39;: &#39;en-US&#39;},
+   &#39;clickThroughUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/apple-may-have-a-key-problem-bringing-back-manufacturing-to-beat-trump-tariffs-former-intel-ceo-warns-132151346.html&#39;,
+    &#39;site&#39;: &#39;finance&#39;,
+    &#39;region&#39;: &#39;US&#39;,
+    &#39;lang&#39;: &#39;en-US&#39;},
+   &#39;metadata&#39;: {&#39;editorsPick&#39;: True},
+   &#39;finance&#39;: {&#39;premiumFinance&#39;: {&#39;isPremiumNews&#39;: False,
+     &#39;isPremiumFreeNews&#39;: False}},
+   &#39;storyline&#39;: None}},
+ {&#39;id&#39;: &#39;f261d0b6-83f6-33bf-9a68-b1b9808c48d2&#39;,
+  &#39;content&#39;: {&#39;id&#39;: &#39;f261d0b6-83f6-33bf-9a68-b1b9808c48d2&#39;,
+   &#39;contentType&#39;: &#39;STORY&#39;,
+   &#39;title&#39;: &quot;Despite Cutting Apple&#39;s Price Target, Wedbush&#39;s Dan Ives Remains Bullish on the Stock for the Long Term. Should You?&quot;,
+   &#39;description&#39;: &#39;&#39;,
+   &#39;summary&#39;: &quot;Investors may not know what to make of Apple (NASDAQ: AAPL) stock.  This is not the case with Wedbush&#39;s Dan Ives, who continues to hold to a long-term bullish call on Apple stock.  Ives seems to base his case for Apple stock primarily on the success of the iPhone.&quot;,
+   &#39;pubDate&#39;: &#39;2025-04-22T09:29:52Z&#39;,
+   &#39;displayTime&#39;: &#39;2025-04-22T09:29:52Z&#39;,
+   &#39;isHosted&#39;: True,
+   &#39;bypassModal&#39;: False,
+   &#39;previewUrl&#39;: None,
+   &#39;thumbnail&#39;: {&#39;originalUrl&#39;: &#39;https://media.zenfs.com/en/motleyfool.com/000c84e185d50451f6a7805f42ed6da9&#39;,
+    &#39;originalWidth&#39;: 720,
+    &#39;originalHeight&#39;: 441,
+    &#39;caption&#39;: &#39;AAPL PE Ratio Chart&#39;,
+    &#39;resolutions&#39;: [{&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/ggsSH7iS3Y33dgNj6_nhUw--~B/aD00NDE7dz03MjA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/000c84e185d50451f6a7805f42ed6da9&#39;,
+      &#39;width&#39;: 720,
+      &#39;height&#39;: 441,
+      &#39;tag&#39;: &#39;original&#39;},
+     {&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/4wZP3.Wmbfku0DCNr6oHrA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/000c84e185d50451f6a7805f42ed6da9&#39;,
       &#39;width&#39;: 170,
       &#39;height&#39;: 128,
       &#39;tag&#39;: &#39;170x128&#39;}]},
    &#39;provider&#39;: {&#39;displayName&#39;: &#39;Motley Fool&#39;, &#39;url&#39;: &#39;http://www.fool.com/&#39;},
-   &#39;canonicalUrl&#39;: {&#39;url&#39;: &#39;https://www.fool.com/investing/2025/04/22/344-of-warren-buffetts-265-billion-in-4-ai-stocks/?source=eptyholnk0000202&amp;utm_source=yahoo-host-full&amp;utm_medium=feed&amp;utm_campaign=article&amp;referring_guid=2bb368a3-37d5-4083-96e3-5871d94765b1&#39;,
+   &#39;canonicalUrl&#39;: {&#39;url&#39;: &#39;https://www.fool.com/investing/2025/04/22/despite-apple-target-dan-ives-bullish-long-term/?source=eptyholnk0000202&amp;utm_source=yahoo-host-full&amp;utm_medium=feed&amp;utm_campaign=article&amp;referring_guid=e1cd63d2-2f6a-469c-8b27-70f980b280cc&#39;,
     &#39;site&#39;: &#39;finance&#39;,
     &#39;region&#39;: &#39;US&#39;,
     &#39;lang&#39;: &#39;en-US&#39;},
-   &#39;clickThroughUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/34-4-warren-buffetts-265-011000830.html&#39;,
+   &#39;clickThroughUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/despite-cutting-apples-price-target-092952069.html&#39;,
     &#39;site&#39;: &#39;finance&#39;,
     &#39;region&#39;: &#39;US&#39;,
     &#39;lang&#39;: &#39;en-US&#39;},
@@ -1839,36 +1863,35 @@ document.write(`
    &#39;finance&#39;: {&#39;premiumFinance&#39;: {&#39;isPremiumNews&#39;: False,
      &#39;isPremiumFreeNews&#39;: False}},
    &#39;storyline&#39;: None}},
- {&#39;id&#39;: &#39;81af1923-dc41-3b08-ad60-0847466201ea&#39;,
-  &#39;content&#39;: {&#39;id&#39;: &#39;81af1923-dc41-3b08-ad60-0847466201ea&#39;,
+ {&#39;id&#39;: &#39;b62a7e74-e858-36c2-a2a0-9c9f5e6f4fe9&#39;,
+  &#39;content&#39;: {&#39;id&#39;: &#39;b62a7e74-e858-36c2-a2a0-9c9f5e6f4fe9&#39;,
    &#39;contentType&#39;: &#39;STORY&#39;,
-   &#39;title&#39;: &#39;Apple fans spent $1,199 on an iPhone — Bitcoin buyers turned it into a MacBook&#39;,
+   &#39;title&#39;: &quot;Trump&#39;s Tariffs Continue to Affect Apple. Should Investors Sell the Stock?&quot;,
    &#39;description&#39;: &#39;&#39;,
-   &#39;summary&#39;: &quot;If you purchased Bitcoin instead of Apple&#39;s iconic iPhone 16 Pro Max on its launch day, you would be able to purchase a MacBook Pro with M4 chip today.&quot;,
-   &#39;pubDate&#39;: &#39;2025-04-22T21:00:00Z&#39;,
-   &#39;displayTime&#39;: &#39;2025-04-22T21:00:00Z&#39;,
+   &#39;summary&#39;: &quot;President Trump&#39;s economic policies are causing significant volatility in the stock market.  On April 3, he announced his administration would impose expansive tariffs on most countries.  Then, about a week later, he decided to pause this plan for 90 days for most countries -- except China, for which he increased the previously announced tariffs.&quot;,
+   &#39;pubDate&#39;: &#39;2025-04-22T08:54:00Z&#39;,
+   &#39;displayTime&#39;: &#39;2025-04-22T08:54:00Z&#39;,
    &#39;isHosted&#39;: True,
    &#39;bypassModal&#39;: False,
    &#39;previewUrl&#39;: None,
-   &#39;thumbnail&#39;: {&#39;originalUrl&#39;: &#39;https://media.zenfs.com/en/thestreet_881/3a35e7dd3d9339bb867cf7e95d00b243&#39;,
-    &#39;originalWidth&#39;: 1200,
-    &#39;originalHeight&#39;: 800,
-    &#39;caption&#39;: &#39;&#39;,
-    &#39;resolutions&#39;: [{&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/DgCN264ZVLvhUStCyaP5iA--~B/aD04MDA7dz0xMjAwO2FwcGlkPXl0YWNoeW9u/https://media.zenfs.com/en/thestreet_881/3a35e7dd3d9339bb867cf7e95d00b243&#39;,
-      &#39;width&#39;: 1200,
-      &#39;height&#39;: 800,
+   &#39;thumbnail&#39;: {&#39;originalUrl&#39;: &#39;https://media.zenfs.com/en/motleyfool.com/188fbd7bafe95097ce8c734b8b983aef&#39;,
+    &#39;originalWidth&#39;: 720,
+    &#39;originalHeight&#39;: 441,
+    &#39;caption&#39;: &#39;AAPL Free Cash Flow Chart&#39;,
+    &#39;resolutions&#39;: [{&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/nWdkrVICqX4CBKonMhCQKA--~B/aD00NDE7dz03MjA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/188fbd7bafe95097ce8c734b8b983aef&#39;,
+      &#39;width&#39;: 720,
+      &#39;height&#39;: 441,
       &#39;tag&#39;: &#39;original&#39;},
-     {&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/j8Fn6ZWLRpJGTuISDCaVVg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/thestreet_881/3a35e7dd3d9339bb867cf7e95d00b243&#39;,
+     {&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/wRhMMVMQPTUDsyUkETq6EA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/188fbd7bafe95097ce8c734b8b983aef&#39;,
       &#39;width&#39;: 170,
       &#39;height&#39;: 128,
       &#39;tag&#39;: &#39;170x128&#39;}]},
-   &#39;provider&#39;: {&#39;displayName&#39;: &#39;TheStreet&#39;,
-    &#39;url&#39;: &#39;https://www.thestreet.com/&#39;},
-   &#39;canonicalUrl&#39;: {&#39;url&#39;: &#39;https://www.thestreet.com/crypto/markets/bought-btc-instead-of-iphone-16-pro-max-you-can-buy-a-macbook-pro-today&#39;,
+   &#39;provider&#39;: {&#39;displayName&#39;: &#39;Motley Fool&#39;, &#39;url&#39;: &#39;http://www.fool.com/&#39;},
+   &#39;canonicalUrl&#39;: {&#39;url&#39;: &#39;https://www.fool.com/investing/2025/04/22/trumps-tariffs-continue-to-affect-apple-should-inv/?source=eptyholnk0000202&amp;utm_source=yahoo-host-full&amp;utm_medium=feed&amp;utm_campaign=article&amp;referring_guid=48d36758-a504-4ff2-973a-ef6d50d08bdf&#39;,
     &#39;site&#39;: &#39;finance&#39;,
     &#39;region&#39;: &#39;US&#39;,
     &#39;lang&#39;: &#39;en-US&#39;},
-   &#39;clickThroughUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/apple-fans-spent-1-199-210000536.html&#39;,
+   &#39;clickThroughUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/trumps-tariffs-continue-affect-apple-085400122.html&#39;,
     &#39;site&#39;: &#39;finance&#39;,
     &#39;region&#39;: &#39;US&#39;,
     &#39;lang&#39;: &#39;en-US&#39;},
@@ -1876,187 +1899,188 @@ document.write(`
    &#39;finance&#39;: {&#39;premiumFinance&#39;: {&#39;isPremiumNews&#39;: False,
      &#39;isPremiumFreeNews&#39;: False}},
    &#39;storyline&#39;: None}},
- {&#39;id&#39;: &#39;f862527e-fa7e-335a-928f-a6bc54dfc703&#39;,
-  &#39;content&#39;: {&#39;id&#39;: &#39;f862527e-fa7e-335a-928f-a6bc54dfc703&#39;,
+ {&#39;id&#39;: &#39;49d58730-e13e-3521-b702-b0ebbb427459&#39;,
+  &#39;content&#39;: {&#39;id&#39;: &#39;49d58730-e13e-3521-b702-b0ebbb427459&#39;,
    &#39;contentType&#39;: &#39;STORY&#39;,
-   &#39;title&#39;: &#39;Survey Shows Pent-Up Demand For New Apple iPhones&#39;,
+   &#39;title&#39;: &#39;Apple Inc. (AAPL) to Use On-Device Data and Synthetic Inputs to Boost AI Capabilities&#39;,
    &#39;description&#39;: &#39;&#39;,
-   &#39;summary&#39;: &#39;A survey of U.S. consumers in March indicates surprisingly strong demand for iPhone upgrades despite &quot;a challenging fundamental backdrop.&quot;&#39;,
-   &#39;pubDate&#39;: &#39;2025-04-22T20:27:20Z&#39;,
-   &#39;displayTime&#39;: &#39;2025-04-22T20:27:20Z&#39;,
-   &#39;isHosted&#39;: False,
+   &#39;summary&#39;: &#39;We recently compiled a list of the 12 AI Stocks on Wall Street’s Radar. In this article, we are going to take a look at where Apple Inc. (NASDAQ:AAPL) stands against the other AI stocks on Wall Street’s radar. Almost 50 House Democrats have signed a message to stop the unauthorized use of AI tools in […]&#39;,
+   &#39;pubDate&#39;: &#39;2025-04-22T07:49:32Z&#39;,
+   &#39;displayTime&#39;: &#39;2025-04-22T07:49:32Z&#39;,
+   &#39;isHosted&#39;: True,
    &#39;bypassModal&#39;: False,
-   &#39;previewUrl&#39;: &#39;https://finance.yahoo.com/m/f862527e-fa7e-335a-928f-a6bc54dfc703/survey-shows-pent-up-demand.html&#39;,
-   &#39;thumbnail&#39;: {&#39;originalUrl&#39;: &#39;https://media.zenfs.com/en/ibd.com/c301943da6d25921fb285ea4e4455813&#39;,
+   &#39;previewUrl&#39;: None,
+   &#39;thumbnail&#39;: {&#39;originalUrl&#39;: &#39;https://media.zenfs.com/en/insidermonkey.com/bd47dc2e86b4a3086f845d200d9daf1f&#39;,
+    &#39;originalWidth&#39;: 1456,
+    &#39;originalHeight&#39;: 816,
+    &#39;caption&#39;: &#39;Apple (AAPL) Target Slashed to $141: ‘No Easy Answers’ as Trade Tensions and AI Lag Take Toll&#39;,
+    &#39;resolutions&#39;: [{&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/fTPNobtT0bdcSxj2xXAamw--~B/aD04MTY7dz0xNDU2O2FwcGlkPXl0YWNoeW9u/https://media.zenfs.com/en/insidermonkey.com/bd47dc2e86b4a3086f845d200d9daf1f&#39;,
+      &#39;width&#39;: 1456,
+      &#39;height&#39;: 816,
+      &#39;tag&#39;: &#39;original&#39;},
+     {&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/ERk7UFMt6k8ofjYa8ja0kw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/bd47dc2e86b4a3086f845d200d9daf1f&#39;,
+      &#39;width&#39;: 170,
+      &#39;height&#39;: 128,
+      &#39;tag&#39;: &#39;170x128&#39;}]},
+   &#39;provider&#39;: {&#39;displayName&#39;: &#39;Insider Monkey&#39;,
+    &#39;url&#39;: &#39;http://www.insidermonkey.com&#39;},
+   &#39;canonicalUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/apple-inc-aapl-device-data-074932869.html&#39;,
+    &#39;site&#39;: &#39;finance&#39;,
+    &#39;region&#39;: &#39;US&#39;,
+    &#39;lang&#39;: &#39;en-US&#39;},
+   &#39;clickThroughUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/apple-inc-aapl-device-data-074932869.html&#39;,
+    &#39;site&#39;: &#39;finance&#39;,
+    &#39;region&#39;: &#39;US&#39;,
+    &#39;lang&#39;: &#39;en-US&#39;},
+   &#39;metadata&#39;: {&#39;editorsPick&#39;: False},
+   &#39;finance&#39;: {&#39;premiumFinance&#39;: {&#39;isPremiumNews&#39;: False,
+     &#39;isPremiumFreeNews&#39;: False}},
+   &#39;storyline&#39;: None}},
+ {&#39;id&#39;: &#39;0aa6eadc-79e8-38f0-9385-d48cd7dead32&#39;,
+  &#39;content&#39;: {&#39;id&#39;: &#39;0aa6eadc-79e8-38f0-9385-d48cd7dead32&#39;,
+   &#39;contentType&#39;: &#39;STORY&#39;,
+   &#39;title&#39;: &#39;Apple Inc. (AAPL): Among Stocks That Could 10X Over the Next 2 Years&#39;,
+   &#39;description&#39;: &#39;&#39;,
+   &#39;summary&#39;: &#39;We recently published a list of 9 Stocks That Could 10X Over the Next 2 Years. In this article, we are going to take a look at where Apple Inc. (NASDAQ:AAPL) stands against other stocks that could 10X over the next 2 years. US Tariffs and the Stock Market Turmoil While tariffs from the US […]&#39;,
+   &#39;pubDate&#39;: &#39;2025-04-22T02:16:14Z&#39;,
+   &#39;displayTime&#39;: &#39;2025-04-22T02:16:14Z&#39;,
+   &#39;isHosted&#39;: True,
+   &#39;bypassModal&#39;: False,
+   &#39;previewUrl&#39;: None,
+   &#39;thumbnail&#39;: {&#39;originalUrl&#39;: &#39;https://media.zenfs.com/en/insidermonkey.com/bd47dc2e86b4a3086f845d200d9daf1f&#39;,
+    &#39;originalWidth&#39;: 1456,
+    &#39;originalHeight&#39;: 816,
+    &#39;caption&#39;: &#39;Apple Inc. (AAPL): Among Stocks That Could 10X Over the Next 2 Years&#39;,
+    &#39;resolutions&#39;: [{&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/fTPNobtT0bdcSxj2xXAamw--~B/aD04MTY7dz0xNDU2O2FwcGlkPXl0YWNoeW9u/https://media.zenfs.com/en/insidermonkey.com/bd47dc2e86b4a3086f845d200d9daf1f&#39;,
+      &#39;width&#39;: 1456,
+      &#39;height&#39;: 816,
+      &#39;tag&#39;: &#39;original&#39;},
+     {&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/ERk7UFMt6k8ofjYa8ja0kw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/bd47dc2e86b4a3086f845d200d9daf1f&#39;,
+      &#39;width&#39;: 170,
+      &#39;height&#39;: 128,
+      &#39;tag&#39;: &#39;170x128&#39;}]},
+   &#39;provider&#39;: {&#39;displayName&#39;: &#39;Insider Monkey&#39;,
+    &#39;url&#39;: &#39;http://www.insidermonkey.com&#39;},
+   &#39;canonicalUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/apple-inc-aapl-among-stocks-021614536.html&#39;,
+    &#39;site&#39;: &#39;finance&#39;,
+    &#39;region&#39;: &#39;US&#39;,
+    &#39;lang&#39;: &#39;en-US&#39;},
+   &#39;clickThroughUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/apple-inc-aapl-among-stocks-021614536.html&#39;,
+    &#39;site&#39;: &#39;finance&#39;,
+    &#39;region&#39;: &#39;US&#39;,
+    &#39;lang&#39;: &#39;en-US&#39;},
+   &#39;metadata&#39;: {&#39;editorsPick&#39;: False},
+   &#39;finance&#39;: {&#39;premiumFinance&#39;: {&#39;isPremiumNews&#39;: False,
+     &#39;isPremiumFreeNews&#39;: False}},
+   &#39;storyline&#39;: None}},
+ {&#39;id&#39;: &#39;4c360dee-b15c-397a-9384-f150963ae39c&#39;,
+  &#39;content&#39;: {&#39;id&#39;: &#39;4c360dee-b15c-397a-9384-f150963ae39c&#39;,
+   &#39;contentType&#39;: &#39;STORY&#39;,
+   &#39;title&#39;: &#39;Can President Trump Fire Fed Chair Jerome Powell?&#39;,
+   &#39;description&#39;: &#39;&#39;,
+   &#39;summary&#39;: &#39;(Bloomberg) -- Never miss an episode. Follow The Big Take daily podcast today.Most Read from BloombergDOGE Visits National Gallery of Art to Discuss Museum’s Legal StatusTrump Gives New York ‘One Last Chance’ to End Congestion FeeTrump Administration Takes Over New York Penn Station RevampThe Racial Wealth Gap Is Not Just About MoneyNashville’s $3 Billion Transit Plan Brings a Call for Zoning ReformPresident Trump’s attacks on Federal Reserve Chair Jerome Powell just keep comingToday on the Big&#39;,
+   &#39;pubDate&#39;: &#39;2025-04-21T21:52:36Z&#39;,
+   &#39;displayTime&#39;: &#39;2025-04-21T21:52:36Z&#39;,
+   &#39;isHosted&#39;: True,
+   &#39;bypassModal&#39;: False,
+   &#39;previewUrl&#39;: None,
+   &#39;thumbnail&#39;: {&#39;originalUrl&#39;: &#39;https://media.zenfs.com/en/bloomberg_holding_pen_162/a2e6d45401c66f66016df17aff921f4d&#39;,
+    &#39;originalWidth&#39;: 2000,
+    &#39;originalHeight&#39;: 1334,
+    &#39;caption&#39;: &#39;&#39;,
+    &#39;resolutions&#39;: [{&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/g16zHqpoRLxu0u6S8mCR5A--~B/aD0xMzM0O3c9MjAwMDthcHBpZD15dGFjaHlvbg--/https://media.zenfs.com/en/bloomberg_holding_pen_162/a2e6d45401c66f66016df17aff921f4d&#39;,
+      &#39;width&#39;: 2000,
+      &#39;height&#39;: 1334,
+      &#39;tag&#39;: &#39;original&#39;},
+     {&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/X651u2kcAhbBfPwlK0RMLw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/bloomberg_holding_pen_162/a2e6d45401c66f66016df17aff921f4d&#39;,
+      &#39;width&#39;: 170,
+      &#39;height&#39;: 128,
+      &#39;tag&#39;: &#39;170x128&#39;}]},
+   &#39;provider&#39;: {&#39;displayName&#39;: &#39;Bloomberg&#39;,
+    &#39;url&#39;: &#39;https://www.bloomberg.com/company&#39;},
+   &#39;canonicalUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/president-trump-fire-fed-chair-215236982.html&#39;,
+    &#39;site&#39;: &#39;finance&#39;,
+    &#39;region&#39;: &#39;US&#39;,
+    &#39;lang&#39;: &#39;en-US&#39;},
+   &#39;clickThroughUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/president-trump-fire-fed-chair-215236982.html&#39;,
+    &#39;site&#39;: &#39;finance&#39;,
+    &#39;region&#39;: &#39;US&#39;,
+    &#39;lang&#39;: &#39;en-US&#39;},
+   &#39;metadata&#39;: {&#39;editorsPick&#39;: False},
+   &#39;finance&#39;: {&#39;premiumFinance&#39;: {&#39;isPremiumNews&#39;: False,
+     &#39;isPremiumFreeNews&#39;: False}},
+   &#39;storyline&#39;: None}},
+ {&#39;id&#39;: &#39;d0ed9b50-6f93-32a7-98ca-dfb392ba2db2&#39;,
+  &#39;content&#39;: {&#39;id&#39;: &#39;d0ed9b50-6f93-32a7-98ca-dfb392ba2db2&#39;,
+   &#39;contentType&#39;: &#39;STORY&#39;,
+   &#39;title&#39;: &#39;Apple (AAPL) Stock Moves -1.94%: What You Should Know&#39;,
+   &#39;description&#39;: &#39;&#39;,
+   &#39;summary&#39;: &#39;In the most recent trading session, Apple (AAPL) closed at $193.16, indicating a -1.94% shift from the previous trading day.&#39;,
+   &#39;pubDate&#39;: &#39;2025-04-21T21:45:31Z&#39;,
+   &#39;displayTime&#39;: &#39;2025-04-21T21:45:31Z&#39;,
+   &#39;isHosted&#39;: True,
+   &#39;bypassModal&#39;: False,
+   &#39;previewUrl&#39;: None,
+   &#39;thumbnail&#39;: {&#39;originalUrl&#39;: &#39;https://media.zenfs.com/en/zacks.com/432476d296d64c50172213c0415587c9&#39;,
     &#39;originalWidth&#39;: 1000,
-    &#39;originalHeight&#39;: 511,
+    &#39;originalHeight&#39;: 603,
     &#39;caption&#39;: &#39;&#39;,
-    &#39;resolutions&#39;: [{&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/TFJCepNPNGZ9FxOCxi06bw--~B/aD01MTE7dz0xMDAwO2FwcGlkPXl0YWNoeW9u/https://media.zenfs.com/en/ibd.com/c301943da6d25921fb285ea4e4455813&#39;,
+    &#39;resolutions&#39;: [{&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/Fs_R4sd8jCoOMib958Znmg--~B/aD02MDM7dz0xMDAwO2FwcGlkPXl0YWNoeW9u/https://media.zenfs.com/en/zacks.com/432476d296d64c50172213c0415587c9&#39;,
       &#39;width&#39;: 1000,
-      &#39;height&#39;: 511,
+      &#39;height&#39;: 603,
       &#39;tag&#39;: &#39;original&#39;},
-     {&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/QCCWNtbitiHVwNC1kBZvUw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/ibd.com/c301943da6d25921fb285ea4e4455813&#39;,
+     {&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/VHlzTcmp5MiZoTQkdAhz1A--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/432476d296d64c50172213c0415587c9&#39;,
       &#39;width&#39;: 170,
       &#39;height&#39;: 128,
       &#39;tag&#39;: &#39;170x128&#39;}]},
-   &#39;provider&#39;: {&#39;displayName&#39;: &quot;Investor&#39;s Business Daily&quot;,
-    &#39;url&#39;: &#39;http://www.investors.com/&#39;},
-   &#39;canonicalUrl&#39;: {&#39;url&#39;: &#39;https://www.investors.com/news/technology/apple-stock-iphone-survey-shows-pent-up-demand/?src=A00220&amp;yptr=yahoo&#39;,
+   &#39;provider&#39;: {&#39;displayName&#39;: &#39;Zacks&#39;, &#39;url&#39;: &#39;http://www.zacks.com/&#39;},
+   &#39;canonicalUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/apple-aapl-stock-moves-1-214531353.html&#39;,
     &#39;site&#39;: &#39;finance&#39;,
     &#39;region&#39;: &#39;US&#39;,
     &#39;lang&#39;: &#39;en-US&#39;},
-   &#39;clickThroughUrl&#39;: None,
+   &#39;clickThroughUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/apple-aapl-stock-moves-1-214531353.html&#39;,
+    &#39;site&#39;: &#39;finance&#39;,
+    &#39;region&#39;: &#39;US&#39;,
+    &#39;lang&#39;: &#39;en-US&#39;},
    &#39;metadata&#39;: {&#39;editorsPick&#39;: False},
    &#39;finance&#39;: {&#39;premiumFinance&#39;: {&#39;isPremiumNews&#39;: False,
      &#39;isPremiumFreeNews&#39;: False}},
    &#39;storyline&#39;: None}},
- {&#39;id&#39;: &#39;f98db0a3-dca0-372e-9926-42a161c199bd&#39;,
-  &#39;content&#39;: {&#39;id&#39;: &#39;f98db0a3-dca0-372e-9926-42a161c199bd&#39;,
+ {&#39;id&#39;: &#39;75570703-143d-32d9-9d87-93917492ed85&#39;,
+  &#39;content&#39;: {&#39;id&#39;: &#39;75570703-143d-32d9-9d87-93917492ed85&#39;,
    &#39;contentType&#39;: &#39;STORY&#39;,
-   &#39;title&#39;: &#39;Sector Update: Tech Stocks Higher in Late Afternoon Trading&#39;,
+   &#39;title&#39;: &quot;Apple&#39;s China Dependence Leaves It Exposed as Tariff Risks Rise&quot;,
    &#39;description&#39;: &#39;&#39;,
-   &#39;summary&#39;: &#39;Tech stocks were rising late Tuesday afternoon, with the Technology Select Sector SPDR Fund (XLK) ad&#39;,
-   &#39;pubDate&#39;: &#39;2025-04-22T19:54:52Z&#39;,
-   &#39;displayTime&#39;: &#39;2025-04-22T19:54:52Z&#39;,
+   &#39;summary&#39;: &#39;Apple makes 90% of iPhones in China, keeping it exposed to U.S. tariffs.&#39;,
+   &#39;pubDate&#39;: &#39;2025-04-21T21:35:29Z&#39;,
+   &#39;displayTime&#39;: &#39;2025-04-21T21:35:29Z&#39;,
    &#39;isHosted&#39;: True,
    &#39;bypassModal&#39;: False,
    &#39;previewUrl&#39;: None,
-   &#39;thumbnail&#39;: None,
-   &#39;provider&#39;: {&#39;displayName&#39;: &#39;MT Newswires&#39;,
-    &#39;url&#39;: &#39;https://www.mtnewswires.com/&#39;},
-   &#39;canonicalUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/sector-tech-stocks-higher-afternoon-195452339.html&#39;,
-    &#39;site&#39;: &#39;finance&#39;,
-    &#39;region&#39;: &#39;US&#39;,
-    &#39;lang&#39;: &#39;en-US&#39;},
-   &#39;clickThroughUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/sector-tech-stocks-higher-afternoon-195452339.html&#39;,
-    &#39;site&#39;: &#39;finance&#39;,
-    &#39;region&#39;: &#39;US&#39;,
-    &#39;lang&#39;: &#39;en-US&#39;},
-   &#39;metadata&#39;: {&#39;editorsPick&#39;: False},
-   &#39;finance&#39;: {&#39;premiumFinance&#39;: {&#39;isPremiumNews&#39;: True,
-     &#39;isPremiumFreeNews&#39;: False}},
-   &#39;storyline&#39;: None}},
- {&#39;id&#39;: &#39;ef7ad16d-2bf6-3023-a342-27066267251b&#39;,
-  &#39;content&#39;: {&#39;id&#39;: &#39;ef7ad16d-2bf6-3023-a342-27066267251b&#39;,
-   &#39;contentType&#39;: &#39;STORY&#39;,
-   &#39;title&#39;: &#39;Apple Rebuilds Siri Team With Vision Pro Veterans After Project Setbacks&#39;,
-   &#39;description&#39;: &#39;&#39;,
-   &#39;summary&#39;: &#39;Apple brings in new faces from Vision Pro team to reboot Siri, following project delays and mounting competitive pressure&#39;,
-   &#39;pubDate&#39;: &#39;2025-04-22T19:36:03Z&#39;,
-   &#39;displayTime&#39;: &#39;2025-04-22T19:36:03Z&#39;,
-   &#39;isHosted&#39;: True,
-   &#39;bypassModal&#39;: False,
-   &#39;previewUrl&#39;: None,
-   &#39;thumbnail&#39;: {&#39;originalUrl&#39;: &#39;https://media.zenfs.com/en/us.finance.gurufocus/1a4a9d6af83a8cd2d0760f4f7fd9eba9&#39;,
-    &#39;originalWidth&#39;: 1960,
-    &#39;originalHeight&#39;: 1568,
+   &#39;thumbnail&#39;: {&#39;originalUrl&#39;: &#39;https://media.zenfs.com/en/us.finance.gurufocus/b3bdeaa8bbcaaef7d764d6a0b08ff6b8&#39;,
+    &#39;originalWidth&#39;: 550,
+    &#39;originalHeight&#39;: 475,
     &#39;caption&#39;: &#39;&#39;,
-    &#39;resolutions&#39;: [{&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/pZH7Xl8CfazTgubtkYn8cA--~B/aD0xNTY4O3c9MTk2MDthcHBpZD15dGFjaHlvbg--/https://media.zenfs.com/en/us.finance.gurufocus/1a4a9d6af83a8cd2d0760f4f7fd9eba9&#39;,
-      &#39;width&#39;: 1960,
-      &#39;height&#39;: 1568,
+    &#39;resolutions&#39;: [{&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/0y.fLTbHepNRlzX9490YSQ--~B/aD00NzU7dz01NTA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/us.finance.gurufocus/b3bdeaa8bbcaaef7d764d6a0b08ff6b8&#39;,
+      &#39;width&#39;: 550,
+      &#39;height&#39;: 475,
       &#39;tag&#39;: &#39;original&#39;},
-     {&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/iLzpr731dNC5uPlBS51COw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/us.finance.gurufocus/1a4a9d6af83a8cd2d0760f4f7fd9eba9&#39;,
+     {&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/qyu.XK0O5AdUbWxEPL2_KA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/us.finance.gurufocus/b3bdeaa8bbcaaef7d764d6a0b08ff6b8&#39;,
       &#39;width&#39;: 170,
       &#39;height&#39;: 128,
       &#39;tag&#39;: &#39;170x128&#39;}]},
    &#39;provider&#39;: {&#39;displayName&#39;: &#39;GuruFocus.com&#39;,
     &#39;url&#39;: &#39;http://www.gurufocus.com/&#39;},
-   &#39;canonicalUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/apple-rebuilds-siri-team-vision-193603179.html&#39;,
+   &#39;canonicalUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/apples-china-dependence-leaves-exposed-213529963.html&#39;,
     &#39;site&#39;: &#39;finance&#39;,
     &#39;region&#39;: &#39;US&#39;,
     &#39;lang&#39;: &#39;en-US&#39;},
-   &#39;clickThroughUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/apple-rebuilds-siri-team-vision-193603179.html&#39;,
-    &#39;site&#39;: &#39;finance&#39;,
-    &#39;region&#39;: &#39;US&#39;,
-    &#39;lang&#39;: &#39;en-US&#39;},
-   &#39;metadata&#39;: {&#39;editorsPick&#39;: False},
-   &#39;finance&#39;: {&#39;premiumFinance&#39;: {&#39;isPremiumNews&#39;: False,
-     &#39;isPremiumFreeNews&#39;: False}},
-   &#39;storyline&#39;: None}},
- {&#39;id&#39;: &#39;e6443436-3d3a-3b94-86a6-86772e3a862c&#39;,
-  &#39;content&#39;: {&#39;id&#39;: &#39;e6443436-3d3a-3b94-86a6-86772e3a862c&#39;,
-   &#39;contentType&#39;: &#39;STORY&#39;,
-   &#39;title&#39;: &#39;Bessent Calls U.S.-China Trade War Unsustainable; S&amp;P 500 Bounces&#39;,
-   &#39;description&#39;: &#39;&#39;,
-   &#39;summary&#39;: &#39;The U.S.-China standoff over tariffs is unsustainable and likely to de-escalate, Treasury Secretary Scott Bessent said.&#39;,
-   &#39;pubDate&#39;: &#39;2025-04-22T17:50:53Z&#39;,
-   &#39;displayTime&#39;: &#39;2025-04-22T17:50:53Z&#39;,
-   &#39;isHosted&#39;: False,
-   &#39;bypassModal&#39;: False,
-   &#39;previewUrl&#39;: &#39;https://finance.yahoo.com/m/e6443436-3d3a-3b94-86a6-86772e3a862c/bessent-calls-u-s-china.html&#39;,
-   &#39;thumbnail&#39;: {&#39;originalUrl&#39;: &#39;https://media.zenfs.com/en/ibd.com/73b518bb8987e9c166788ee12d42a176&#39;,
-    &#39;originalWidth&#39;: 1000,
-    &#39;originalHeight&#39;: 563,
-    &#39;caption&#39;: &#39;&#39;,
-    &#39;resolutions&#39;: [{&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/zNiuyVC4C.lBwT3oQIepqQ--~B/aD01NjM7dz0xMDAwO2FwcGlkPXl0YWNoeW9u/https://media.zenfs.com/en/ibd.com/73b518bb8987e9c166788ee12d42a176&#39;,
-      &#39;width&#39;: 1000,
-      &#39;height&#39;: 563,
-      &#39;tag&#39;: &#39;original&#39;},
-     {&#39;url&#39;: &#39;https://s.yimg.com/uu/api/res/1.2/JM1jSMqsaK7GvHZrOnsPTQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/ibd.com/73b518bb8987e9c166788ee12d42a176&#39;,
-      &#39;width&#39;: 170,
-      &#39;height&#39;: 128,
-      &#39;tag&#39;: &#39;170x128&#39;}]},
-   &#39;provider&#39;: {&#39;displayName&#39;: &quot;Investor&#39;s Business Daily&quot;,
-    &#39;url&#39;: &#39;http://www.investors.com/&#39;},
-   &#39;canonicalUrl&#39;: {&#39;url&#39;: &#39;https://www.investors.com/news/bessent-us-china-trade-war-unsustainable-trump-tariffs-sp-500/?src=A00220&amp;yptr=yahoo&#39;,
-    &#39;site&#39;: &#39;finance&#39;,
-    &#39;region&#39;: &#39;US&#39;,
-    &#39;lang&#39;: &#39;en-US&#39;},
-   &#39;clickThroughUrl&#39;: None,
-   &#39;metadata&#39;: {&#39;editorsPick&#39;: False},
-   &#39;finance&#39;: {&#39;premiumFinance&#39;: {&#39;isPremiumNews&#39;: False,
-     &#39;isPremiumFreeNews&#39;: False}},
-   &#39;storyline&#39;: None}},
- {&#39;id&#39;: &#39;c7016456-ef5c-3275-9201-b8e1a2d88d29&#39;,
-  &#39;content&#39;: {&#39;id&#39;: &#39;c7016456-ef5c-3275-9201-b8e1a2d88d29&#39;,
-   &#39;contentType&#39;: &#39;STORY&#39;,
-   &#39;title&#39;: &#39;Trade deals are key to halting US tech decline, Wedbush’s Ives says&#39;,
-   &#39;description&#39;: &#39;&#39;,
-   &#39;summary&#39;: &#39;Investing.com -- Wedbush tech analyst Dan Ives highlighted the urgent need for trade deals to address the challenges facing the US technology sector amid ongoing tariff disputes. The analysts pointed out the significant uncertainty and potential damage to the US and global economies, particularly the US tech industry, which has been thrust into the eye of the storm.&#39;,
-   &#39;pubDate&#39;: &#39;2025-04-22T17:09:08Z&#39;,
-   &#39;displayTime&#39;: &#39;2025-04-22T17:09:08Z&#39;,
-   &#39;isHosted&#39;: True,
-   &#39;bypassModal&#39;: False,
-   &#39;previewUrl&#39;: None,
-   &#39;thumbnail&#39;: None,
-   &#39;provider&#39;: {&#39;displayName&#39;: &#39;Investing.com&#39;,
-    &#39;url&#39;: &#39;https://www.investing.com/&#39;},
-   &#39;canonicalUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/trade-deals-key-halting-us-170908149.html&#39;,
-    &#39;site&#39;: &#39;finance&#39;,
-    &#39;region&#39;: &#39;US&#39;,
-    &#39;lang&#39;: &#39;en-US&#39;},
-   &#39;clickThroughUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/trade-deals-key-halting-us-170908149.html&#39;,
+   &#39;clickThroughUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/apples-china-dependence-leaves-exposed-213529963.html&#39;,
     &#39;site&#39;: &#39;finance&#39;,
     &#39;region&#39;: &#39;US&#39;,
     &#39;lang&#39;: &#39;en-US&#39;},
    &#39;metadata&#39;: {&#39;editorsPick&#39;: False},
    &#39;finance&#39;: {&#39;premiumFinance&#39;: {&#39;isPremiumNews&#39;: False,
-     &#39;isPremiumFreeNews&#39;: False}},
-   &#39;storyline&#39;: None}},
- {&#39;id&#39;: &#39;3b2f2481-2f6d-39ab-94f1-c2c648c25c2d&#39;,
-  &#39;content&#39;: {&#39;id&#39;: &#39;3b2f2481-2f6d-39ab-94f1-c2c648c25c2d&#39;,
-   &#39;contentType&#39;: &#39;STORY&#39;,
-   &#39;title&#39;: &#39;Market Chatter: Apple Overhauls Team Developing Siri Voice Assistant&#39;,
-   &#39;description&#39;: &#39;&#39;,
-   &#39;summary&#39;: &quot;Apple&#39;s (AAPL) recently appointed head of engineering for Siri, Mike Rockwell, is overhauling the te&quot;,
-   &#39;pubDate&#39;: &#39;2025-04-22T17:04:56Z&#39;,
-   &#39;displayTime&#39;: &#39;2025-04-22T17:04:56Z&#39;,
-   &#39;isHosted&#39;: True,
-   &#39;bypassModal&#39;: False,
-   &#39;previewUrl&#39;: None,
-   &#39;thumbnail&#39;: None,
-   &#39;provider&#39;: {&#39;displayName&#39;: &#39;MT Newswires&#39;,
-    &#39;url&#39;: &#39;https://www.mtnewswires.com/&#39;},
-   &#39;canonicalUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/market-chatter-apple-overhauls-team-170456643.html&#39;,
-    &#39;site&#39;: &#39;finance&#39;,
-    &#39;region&#39;: &#39;US&#39;,
-    &#39;lang&#39;: &#39;en-US&#39;},
-   &#39;clickThroughUrl&#39;: {&#39;url&#39;: &#39;https://finance.yahoo.com/news/market-chatter-apple-overhauls-team-170456643.html&#39;,
-    &#39;site&#39;: &#39;finance&#39;,
-    &#39;region&#39;: &#39;US&#39;,
-    &#39;lang&#39;: &#39;en-US&#39;},
-   &#39;metadata&#39;: {&#39;editorsPick&#39;: False},
-   &#39;finance&#39;: {&#39;premiumFinance&#39;: {&#39;isPremiumNews&#39;: True,
      &#39;isPremiumFreeNews&#39;: False}},
    &#39;storyline&#39;: None}}]
 </pre></div>
@@ -2152,12 +2176,12 @@ document.write(`
 2023-11-04 00:00:00-04:00    15634199552
 2023-11-09 00:00:00-05:00    15552799744
                                 ...     
+2025-04-11 00:00:00-04:00    15687100416
 2025-04-12 00:00:00-04:00    15022100480
 2025-04-16 00:00:00-04:00    15022100480
 2025-04-17 00:00:00-04:00    15022100480
 2025-04-22 00:00:00-04:00    15319199744
-2025-04-23 00:00:00-04:00    15022100480
-Length: 129, dtype: int64
+Length: 128, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -2261,92 +2285,35 @@ Length: 129, dtype: int64
     <tr>
       <th>46</th>
       <td>AAPL250425C00200000</td>
-      <td>2025-04-22 19:59:59+00:00</td>
+      <td>2025-04-21 19:59:59+00:00</td>
       <td>200.0</td>
-      <td>3.23</td>
+      <td>1.51</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>43627.0</td>
+      <td>32673.0</td>
       <td>0</td>
-      <td>0.003916</td>
+      <td>0.062509</td>
       <td>False</td>
       <td>REGULAR</td>
       <td>USD</td>
-      <td>2025-10-17</td>
+      <td>2025-09-19</td>
       <td>call</td>
     </tr>
     <tr>
       <th>46</th>
       <td>AAPL250425C00200000</td>
-      <td>2025-04-22 19:59:59+00:00</td>
+      <td>2025-04-21 19:59:59+00:00</td>
       <td>200.0</td>
-      <td>3.23</td>
+      <td>1.51</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>43627.0</td>
+      <td>32673.0</td>
       <td>0</td>
-      <td>0.003916</td>
-      <td>False</td>
-      <td>REGULAR</td>
-      <td>USD</td>
-      <td>2025-05-02</td>
-      <td>call</td>
-    </tr>
-    <tr>
-      <th>46</th>
-      <td>AAPL250425C00200000</td>
-      <td>2025-04-22 19:59:59+00:00</td>
-      <td>200.0</td>
-      <td>3.23</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>43627.0</td>
-      <td>0</td>
-      <td>0.003916</td>
-      <td>False</td>
-      <td>REGULAR</td>
-      <td>USD</td>
-      <td>2026-06-18</td>
-      <td>call</td>
-    </tr>
-    <tr>
-      <th>46</th>
-      <td>AAPL250425C00200000</td>
-      <td>2025-04-22 19:59:59+00:00</td>
-      <td>200.0</td>
-      <td>3.23</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>43627.0</td>
-      <td>0</td>
-      <td>0.003916</td>
-      <td>False</td>
-      <td>REGULAR</td>
-      <td>USD</td>
-      <td>2026-01-16</td>
-      <td>call</td>
-    </tr>
-    <tr>
-      <th>46</th>
-      <td>AAPL250425C00200000</td>
-      <td>2025-04-22 19:59:59+00:00</td>
-      <td>200.0</td>
-      <td>3.23</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>43627.0</td>
-      <td>0</td>
-      <td>0.003916</td>
+      <td>0.062509</td>
       <td>False</td>
       <td>REGULAR</td>
       <td>USD</td>
@@ -2356,73 +2323,73 @@ Length: 129, dtype: int64
     <tr>
       <th>46</th>
       <td>AAPL250425C00200000</td>
-      <td>2025-04-22 19:59:59+00:00</td>
+      <td>2025-04-21 19:59:59+00:00</td>
       <td>200.0</td>
-      <td>3.23</td>
+      <td>1.51</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>43627.0</td>
+      <td>32673.0</td>
       <td>0</td>
-      <td>0.003916</td>
+      <td>0.062509</td>
       <td>False</td>
       <td>REGULAR</td>
       <td>USD</td>
-      <td>2026-12-18</td>
+      <td>2027-12-17</td>
       <td>call</td>
     </tr>
     <tr>
       <th>46</th>
       <td>AAPL250425C00200000</td>
-      <td>2025-04-22 19:59:59+00:00</td>
+      <td>2025-04-21 19:59:59+00:00</td>
       <td>200.0</td>
-      <td>3.23</td>
+      <td>1.51</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>43627.0</td>
+      <td>32673.0</td>
       <td>0</td>
-      <td>0.003916</td>
+      <td>0.062509</td>
       <td>False</td>
       <td>REGULAR</td>
       <td>USD</td>
-      <td>2025-07-18</td>
+      <td>2026-01-16</td>
       <td>call</td>
     </tr>
     <tr>
       <th>46</th>
       <td>AAPL250425C00200000</td>
-      <td>2025-04-22 19:59:59+00:00</td>
+      <td>2025-04-21 19:59:59+00:00</td>
       <td>200.0</td>
-      <td>3.23</td>
+      <td>1.51</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>43627.0</td>
+      <td>32673.0</td>
       <td>0</td>
-      <td>0.003916</td>
+      <td>0.062509</td>
       <td>False</td>
       <td>REGULAR</td>
       <td>USD</td>
-      <td>2027-01-15</td>
+      <td>2025-05-02</td>
       <td>call</td>
     </tr>
     <tr>
       <th>46</th>
       <td>AAPL250425C00200000</td>
-      <td>2025-04-22 19:59:59+00:00</td>
+      <td>2025-04-21 19:59:59+00:00</td>
       <td>200.0</td>
-      <td>3.23</td>
+      <td>1.51</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>43627.0</td>
+      <td>32673.0</td>
       <td>0</td>
-      <td>0.003916</td>
+      <td>0.062509</td>
       <td>False</td>
       <td>REGULAR</td>
       <td>USD</td>
@@ -2432,20 +2399,77 @@ Length: 129, dtype: int64
     <tr>
       <th>46</th>
       <td>AAPL250425C00200000</td>
-      <td>2025-04-22 19:59:59+00:00</td>
+      <td>2025-04-21 19:59:59+00:00</td>
       <td>200.0</td>
-      <td>3.23</td>
+      <td>1.51</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>43627.0</td>
+      <td>32673.0</td>
       <td>0</td>
-      <td>0.003916</td>
+      <td>0.062509</td>
       <td>False</td>
       <td>REGULAR</td>
       <td>USD</td>
-      <td>2025-06-20</td>
+      <td>2026-06-18</td>
+      <td>call</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>AAPL250425C00200000</td>
+      <td>2025-04-21 19:59:59+00:00</td>
+      <td>200.0</td>
+      <td>1.51</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>32673.0</td>
+      <td>0</td>
+      <td>0.062509</td>
+      <td>False</td>
+      <td>REGULAR</td>
+      <td>USD</td>
+      <td>2025-05-09</td>
+      <td>call</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>AAPL250425C00200000</td>
+      <td>2025-04-21 19:59:59+00:00</td>
+      <td>200.0</td>
+      <td>1.51</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>32673.0</td>
+      <td>0</td>
+      <td>0.062509</td>
+      <td>False</td>
+      <td>REGULAR</td>
+      <td>USD</td>
+      <td>2026-03-20</td>
+      <td>call</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>AAPL250425C00200000</td>
+      <td>2025-04-21 19:59:59+00:00</td>
+      <td>200.0</td>
+      <td>1.51</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>32673.0</td>
+      <td>0</td>
+      <td>0.062509</td>
+      <td>False</td>
+      <td>REGULAR</td>
+      <td>USD</td>
+      <td>2025-10-17</td>
       <td>call</td>
     </tr>
   </tbody>
@@ -2464,13 +2488,10 @@ Length: 129, dtype: int64
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[                       0%                       ]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[*********************100%***********************]  2 of 2 completed
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>YF.download() has changed argument auto_adjust default to True
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[*********************100%***********************]  2 of 2 completed
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -2530,14 +2551,27 @@ Length: 129, dtype: int64
   </thead>
   <tbody>
     <tr>
+      <th>2024-04-22</th>
+      <td>165.060593</td>
+      <td>397.921997</td>
+      <td>166.473917</td>
+      <td>399.797691</td>
+      <td>163.995629</td>
+      <td>392.751481</td>
+      <td>164.742104</td>
+      <td>397.048660</td>
+      <td>48116400</td>
+      <td>20286900</td>
+    </tr>
+    <tr>
       <th>2024-04-23</th>
-      <td>166.115631</td>
+      <td>166.115616</td>
       <td>404.481934</td>
-      <td>166.264935</td>
+      <td>166.264920</td>
       <td>405.107165</td>
-      <td>164.144941</td>
+      <td>164.144925</td>
       <td>400.006095</td>
-      <td>164.572928</td>
+      <td>164.572913</td>
       <td>401.177147</td>
       <td>49537800</td>
       <td>15734500</td>
@@ -2581,19 +2615,6 @@ Length: 129, dtype: int64
       <td>44838400</td>
       <td>29694700</td>
     </tr>
-    <tr>
-      <th>2024-04-29</th>
-      <td>172.684616</td>
-      <td>399.202240</td>
-      <td>175.202725</td>
-      <td>403.241410</td>
-      <td>172.286502</td>
-      <td>396.165427</td>
-      <td>172.555222</td>
-      <td>402.179510</td>
-      <td>68169400</td>
-      <td>19582100</td>
-    </tr>
   </tbody>
 </table>
 </div></div></div>
@@ -2607,7 +2628,7 @@ Length: 129, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/85039270998447cfbab9ac1aa53ea20c9c781b4d514653b19ab525d1bcd396a2.png" src="_images/85039270998447cfbab9ac1aa53ea20c9c781b4d514653b19ab525d1bcd396a2.png" />
+<img alt="_images/71ead80c852184d4a67141fd895ab733bf3d5d0da2771022ffd0fe5a445aefd8.png" src="_images/71ead80c852184d4a67141fd895ab733bf3d5d0da2771022ffd0fe5a445aefd8.png" />
 </div>
 </div>
 <p>While working with the yfinance package is simple and powerful, it also comes along with a few disadvantages. First of all, it is written by a nice person who is doing this voluntarily. Very likely, this is not the person’s main job and if some changes occur which cause errors, it may take a while until the package is running again. Furthermore, yahoo finance excludes delisted companies from their web page. This means, no information can be found for stocks which are not listed on exchanges anymore. Try for yourself by, e.g. looking for Twitter. This causes problems from an academic perspective. One of the reasons for stocks getting delisted is that they go bankrupt or are bought by another companies. Often, this follows adverse company developments. By ignoring such companies in analysis, we introduce a bias towards more successful companies. Thus, results are more promising than they are in reality. This is also quite relevant if you compare different trading strategies so be careful!</p>
@@ -2666,6 +2687,16 @@ Length: 129, dtype: int64
   </thead>
   <tbody>
     <tr>
+      <th>11362</th>
+      <td>2025-04-14</td>
+      <td>312.43</td>
+      <td>318.20</td>
+      <td>311.13</td>
+      <td>316.07</td>
+      <td>316.07</td>
+      <td>4068300</td>
+    </tr>
+    <tr>
       <th>11363</th>
       <td>2025-04-15</td>
       <td>316.13</td>
@@ -2703,17 +2734,7 @@ Length: 129, dtype: int64
       <td>305.12</td>
       <td>308.72</td>
       <td>308.72</td>
-      <td>2669900</td>
-    </tr>
-    <tr>
-      <th>11367</th>
-      <td>2025-04-22</td>
-      <td>311.76</td>
-      <td>320.00</td>
-      <td>311.19</td>
-      <td>319.08</td>
-      <td>319.08</td>
-      <td>4198100</td>
+      <td>2668300</td>
     </tr>
   </tbody>
 </table>
