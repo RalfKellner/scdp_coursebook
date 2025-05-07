@@ -365,6 +365,13 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-operations-with-numpy">Mathematical operations with numpy</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fundamental-stock-market-calculations-with-numpy">Fundamental stock market calculations with numpy</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-algebra-with-numpy">Linear algebra with numpy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-multiplication">Matrix multiplication</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#similarities">Similarities</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#differences">Differences</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#special-considerations">Special Considerations</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#best-practice">Best Practice</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-independence-of-vectors">Linear independence of vectors</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#similarity-of-vectors">Similarity of vectors</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-inversion">Matrix inversion</a></li>
@@ -892,6 +899,140 @@ Average correlation: 0.4847
 <li><p>matrix decomposition</p></li>
 </ul>
 <p>These examples are from the mathematical field of linear algebra. Numpy includes many useful linear algebra algorithms in the corresponding module. Let us use the examples from above to familiarize ourselves with this module.</p>
+<section id="matrix-multiplication">
+<h3>Matrix multiplication<a class="headerlink" href="#matrix-multiplication" title="Link to this heading">#</a></h3>
+<p>When performing matrix multiplication in NumPy, there are several syntactic options available. While they often produce the same result for 2D arrays, there are important differences in behavior, readability, and support for higher-dimensional arrays. This section outlines the <strong>similarities and differences</strong> between the three primary methods:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">np.matmul(A,</span> <span class="pre">B)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">&#64;</span> <span class="pre">B</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">A.dot(B)</span></code></p></li>
+</ul>
+<section id="similarities">
+<h4>Similarities<a class="headerlink" href="#similarities" title="Link to this heading">#</a></h4>
+<p>All three approaches perform <strong>matrix multiplication</strong>, not element-wise multiplication, when used with <strong>2D arrays</strong>.</p>
+<p>For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># All compute the same matrix product XᵀX</span>
+<span class="n">version_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+<span class="n">version_2</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">X</span>
+<span class="n">version_3</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="c1"># returns only True if all results are the same</span>
+<span class="nb">print</span><span class="p">((</span><span class="n">version_1</span> <span class="o">==</span> <span class="n">version_2</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span> <span class="ow">and</span> <span class="p">(</span><span class="n">version_2</span> <span class="o">==</span> <span class="n">version_3</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Each of these returns a <code class="docutils literal notranslate"><span class="pre">(3,</span> <span class="pre">3)</span></code> matrix resulting from the product of <code class="docutils literal notranslate"><span class="pre">X.T</span></code> (shape <code class="docutils literal notranslate"><span class="pre">(3,</span> <span class="pre">4)</span></code>) and <code class="docutils literal notranslate"><span class="pre">X</span></code> (shape <code class="docutils literal notranslate"><span class="pre">(4,</span> <span class="pre">3)</span></code>).</p>
+</section>
+<section id="differences">
+<h4>Differences<a class="headerlink" href="#differences" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">np.matmul(A,</span> <span class="pre">B)</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">&#64;</span> <span class="pre">B</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">A.dot(B)</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Syntax Type</p></td>
+<td><p>Function</p></td>
+<td><p>Operator</p></td>
+<td><p>Method</p></td>
+</tr>
+<tr class="row-odd"><td><p>Supported array types</p></td>
+<td><p>1D, 2D, ≥3D</p></td>
+<td><p>1D, 2D, ≥3D</p></td>
+<td><p>1D, 2D only</p></td>
+</tr>
+<tr class="row-even"><td><p>Supports batch multiplication</p></td>
+<td><p>✅ Yes</p></td>
+<td><p>✅ Yes</p></td>
+<td><p>❌ No</p></td>
+</tr>
+<tr class="row-odd"><td><p>Readability (for 2D)</p></td>
+<td><p>Medium</p></td>
+<td><p>✅ Best</p></td>
+<td><p>Acceptable</p></td>
+</tr>
+<tr class="row-even"><td><p>Recommended for</p></td>
+<td><p>High-dimensional matmul</p></td>
+<td><p>Clean matrix math (2D)</p></td>
+<td><p>Legacy, dot product use</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="special-considerations">
+<h4>Special Considerations<a class="headerlink" href="#special-considerations" title="Link to this heading">#</a></h4>
+<p>When working with 1D arrays:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+
+<span class="n">a</span> <span class="o">@</span> <span class="n">b</span>        <span class="c1"># 11: dot product</span>
+<span class="n">a</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>     <span class="c1"># 11: dot product</span>
+<span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>  <span class="c1"># 11: dot product</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.int64(11)
+</pre></div>
+</div>
+</div>
+</div>
+<p>All methods behave the same for 1D vectors, returning a scalar (the inner product).</p>
+<p>For higher dimensions (Batch Matrix Multiplication) <code class="docutils literal notranslate"><span class="pre">np.matmul</span></code> and <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> support batch matrix multiplication for arrays with more than 2 dimensions:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>  <span class="c1"># 10 matrices of shape (3, 4)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">version_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>  <span class="c1"># (10, 3, 2)</span>
+<span class="n">version_2</span> <span class="o">=</span> <span class="n">A</span> <span class="o">@</span> <span class="n">B</span>                  <span class="c1"># also works</span>
+<span class="n">version_3</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>               <span class="c1"># ❌ Error: not supported</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The shape of the first matrix operation is: </span><span class="si">{</span><span class="n">version_1</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The shape of the second matrix operation is: </span><span class="si">{</span><span class="n">version_2</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The shape of the third matrix operation is: </span><span class="si">{</span><span class="n">version_3</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The shape of the first matrix operation is: (10, 3, 2)
+The shape of the second matrix operation is: (10, 3, 2)
+The shape of the third matrix operation is: (10, 3, 10, 2)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="best-practice">
+<h4>Best Practice<a class="headerlink" href="#best-practice" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> for <strong>clean, readable matrix math</strong> in 2D (e.g., linear regression, PCA).</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">np.matmul()</span></code> when working with <strong>3D+ arrays</strong> (e.g., batch operations).</p></li>
+<li><p>Avoid using <code class="docutils literal notranslate"><span class="pre">.dot()</span></code> for general matrix math — it does not support batching and can be misleading with 1D arrays.</p></li>
+</ul>
+<p>While <code class="docutils literal notranslate"><span class="pre">&#64;</span></code>, <code class="docutils literal notranslate"><span class="pre">np.matmul</span></code>, and <code class="docutils literal notranslate"><span class="pre">.dot()</span></code> often produce the same results for 2D arrays, they differ in syntax, flexibility, and suitability for higher-dimensional computations. For modern, readable, and consistent matrix math, prefer the <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> operator or <code class="docutils literal notranslate"><span class="pre">np.matmul()</span></code> depending on dimensionality.</p>
+</section>
+</section>
 <section id="linear-independence-of-vectors">
 <h3>Linear independence of vectors<a class="headerlink" href="#linear-independence-of-vectors" title="Link to this heading">#</a></h3>
 <p>Vectors <span class="math notranslate nohighlight">\(\boldsymbol{a_1}, \boldsymbol{a_2}, ..., \boldsymbol{a_k} \in \mathbb{R}^m\)</span> are independent if the linear equation system:</p>
@@ -1376,6 +1517,13 @@ Eigenvectors:
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-operations-with-numpy">Mathematical operations with numpy</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fundamental-stock-market-calculations-with-numpy">Fundamental stock market calculations with numpy</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-algebra-with-numpy">Linear algebra with numpy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-multiplication">Matrix multiplication</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#similarities">Similarities</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#differences">Differences</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#special-considerations">Special Considerations</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#best-practice">Best Practice</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-independence-of-vectors">Linear independence of vectors</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#similarity-of-vectors">Similarity of vectors</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-inversion">Matrix inversion</a></li>

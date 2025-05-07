@@ -818,6 +818,14 @@ Data after minmax scaling to [-3, 3]:
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ralfkellner/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/sklearn/decomposition/_pca.py:606: RuntimeWarning: divide by zero encountered in matmul
+  C = X.T @ X
+/Users/ralfkellner/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/sklearn/decomposition/_pca.py:606: RuntimeWarning: overflow encountered in matmul
+  C = X.T @ X
+/Users/ralfkellner/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/sklearn/decomposition/_pca.py:606: RuntimeWarning: invalid value encountered in matmul
+  C = X.T @ X
+</pre></div>
+</div>
 <img alt="_images/8af81591bf99f07a2424bcfdd2c225e3e350e4513f40777d4e07d9459144f2b6.png" src="_images/8af81591bf99f07a2424bcfdd2c225e3e350e4513f40777d4e07d9459144f2b6.png" />
 </div>
 </div>
@@ -834,6 +842,14 @@ Data after minmax scaling to [-3, 3]:
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ralfkellner/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/sklearn/decomposition/_base.py:148: RuntimeWarning: divide by zero encountered in matmul
+  X_transformed = X @ self.components_.T
+/Users/ralfkellner/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/sklearn/decomposition/_base.py:148: RuntimeWarning: overflow encountered in matmul
+  X_transformed = X @ self.components_.T
+/Users/ralfkellner/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/sklearn/decomposition/_base.py:148: RuntimeWarning: invalid value encountered in matmul
+  X_transformed = X @ self.components_.T
+</pre></div>
+</div>
 <img alt="_images/c8ad9c5cd58d735c1741252d7a42baf7b51f28217f5ee151a3320552402f0b8b.png" src="_images/c8ad9c5cd58d735c1741252d7a42baf7b51f28217f5ee151a3320552402f0b8b.png" />
 </div>
 </div>
@@ -1061,7 +1077,7 @@ Visualization:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9822c1ac3fd63cc7ee5781fc412d3cc35620a6bfbcc56f6ee1d8b9c477a3b9a5.png" src="_images/9822c1ac3fd63cc7ee5781fc412d3cc35620a6bfbcc56f6ee1d8b9c477a3b9a5.png" />
+<img alt="_images/09ad780b08dc8becc5ee089cf2267c1ffdbe46ff11f81ba7709e5cbd5f176e92.png" src="_images/09ad780b08dc8becc5ee089cf2267c1ffdbe46ff11f81ba7709e5cbd5f176e92.png" />
 </div>
 </div>
 <p>Note that the number of groups should be determined in other ways which we are not going to discuss any further. However, one important aspect for this application should be mentioned. As PCA only mean centers the data by default, its input data is largely impacted by the individual variance of each company which is why Tesla is playing such a special role in our example as its variance is the largest among those companies. Usually, we are more interested in companies which play an important role with respect to the dependencies to other companies. We can shift the attention of the PCA towards this characteristic by standardizing the input data. See below how drastically this changes the loadings for the second principal component in our example. Now, ExxonMobil (XOM) exhibits the most distinct loading combination which is likely due to its rather low average correlation to the other companies.</p>
@@ -1079,6 +1095,14 @@ Visualization:
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ralfkellner/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/sklearn/decomposition/_pca.py:606: RuntimeWarning: divide by zero encountered in matmul
+  C = X.T @ X
+/Users/ralfkellner/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/sklearn/decomposition/_pca.py:606: RuntimeWarning: overflow encountered in matmul
+  C = X.T @ X
+/Users/ralfkellner/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/sklearn/decomposition/_pca.py:606: RuntimeWarning: invalid value encountered in matmul
+  C = X.T @ X
+</pre></div>
+</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1183,6 +1207,14 @@ Visualization:
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>R^2 for training data: 0.9905, R^2 for test data: 0.9923.
 </pre></div>
 </div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ralfkellner/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: divide by zero encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/ralfkellner/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: overflow encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/ralfkellner/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: invalid value encountered in matmul
+  return X @ coef_ + self.intercept_
+</pre></div>
+</div>
 </div>
 </div>
 <p>However, the evaluation of the training data is largely impacted by the randomness of data and the corresponding split. To generate more stable evaluation of test data, one either uses some form of cross-validation which splits and evaluates the data multiple times. One popular choice is cross-fold validation which splits the data into <span class="math notranslate nohighlight">\(k\)</span> equally sized folds and for <span class="math notranslate nohighlight">\(k\)</span> times leaves one fold out as test data and uses the remaining ones for model estimation. The <code class="docutils literal notranslate"><span class="pre">KFold</span></code> class can be used to determine the indices of the folds. Given these indices we select training and test data, estimate the model and calculate the score of choice. Finally, the average test score is the score which we use. Either on a standalone basis if this is meaningful or for comparison to other models.</p>
@@ -1212,7 +1244,41 @@ Visualization:
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ralfkellner/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: divide by zero encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/ralfkellner/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: overflow encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/ralfkellner/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: invalid value encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/ralfkellner/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: divide by zero encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/ralfkellner/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: overflow encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/ralfkellner/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: invalid value encountered in matmul
+  return X @ coef_ + self.intercept_
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The training cross validation score is: 0.9911, the test cross validation score is: 0.9907.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ralfkellner/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: divide by zero encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/ralfkellner/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: overflow encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/ralfkellner/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: invalid value encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/ralfkellner/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: divide by zero encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/ralfkellner/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: overflow encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/ralfkellner/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: invalid value encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/ralfkellner/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: divide by zero encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/ralfkellner/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: overflow encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/ralfkellner/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: invalid value encountered in matmul
+  return X @ coef_ + self.intercept_
 </pre></div>
 </div>
 </div>
