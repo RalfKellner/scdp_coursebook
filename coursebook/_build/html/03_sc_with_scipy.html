@@ -59,11 +59,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '05_sc_with_scipy';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '03_sc_with_scipy';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Working with Data" href="03_data.html" />
+    <link rel="next" title="Collecting data" href="04_getting_data.html" />
     <link rel="prev" title="Scientific computing with numpy" href="02_sc_with_numpy.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -187,11 +187,11 @@
 
 <li class="toctree-l1"><a class="reference internal" href="02_sc_with_numpy.html">Scientific computing with numpy</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Scientific computing with scipy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03_data.html">Working with Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="08_getting_data.html">Collecting data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04_graphics.html">Graphics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="06_sklearn.html">SciKit Learn</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_torch.html">Pytorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_getting_data.html">Collecting data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_data.html">Working with Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_graphics.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_sklearn.html">SciKit Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_torch.html">Pytorch</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="09_digital_reporting.html">Digital reporting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="A_math_statistics.html">Appendix - Math and statistics</a></li>
@@ -267,7 +267,7 @@
       
       
       
-      <li><a href="_sources/05_sc_with_scipy.ipynb" target="_blank"
+      <li><a href="_sources/03_sc_with_scipy.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -522,7 +522,7 @@ Cov(X,Y) = E\left[(X_1-E(X_1))\cdot (X_2-E(X_2)) \right] = E(X_1\cdot X_2) - E(X
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/80f6991000021c8e63f6fbb7d90e475a6ec55c71ccdd42a7af6ed6f68767ac01.png" src="_images/80f6991000021c8e63f6fbb7d90e475a6ec55c71ccdd42a7af6ed6f68767ac01.png" />
+<img alt="_images/73873380d4eeab50424ad391b7cca3975295f99b91da892d404006bcb1f2f98a.png" src="_images/73873380d4eeab50424ad391b7cca3975295f99b91da892d404006bcb1f2f98a.png" />
 </div>
 </div>
 <p>Calculations can be done as you hopefully remember from your statistics classes. For instance, the probability <span class="math notranslate nohighlight">\(P \left(1 \leq X \leq 2 \right) = P \left( X \leq 2 \right) - P \left( X \leq 1 \right)\)</span> can be determined by:</p>
@@ -579,8 +579,8 @@ Cov(X,Y) = E\left[(X_1-E(X_1))\cdot (X_2-E(X_2)) \right] = E(X_1\cdot X_2) - E(X
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b687ce8ce3a67124c4ec44d00b8f1b26e5873e9edced22f8acbc60c3b5ec6215.png" src="_images/b687ce8ce3a67124c4ec44d00b8f1b26e5873e9edced22f8acbc60c3b5ec6215.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The estimated quantile of S is: 8.3701
+<img alt="_images/ec3b6769d2675d1184e203e3a8752f2e003a507ce399ef32ca3dcf469fa1e3b1.png" src="_images/ec3b6769d2675d1184e203e3a8752f2e003a507ce399ef32ca3dcf469fa1e3b1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The estimated quantile of S is: 8.9435
 </pre></div>
 </div>
 </div>
@@ -916,11 +916,11 @@ l \left( \mu, \sigma^2 \right) = - \frac{n}{2} \log \left(2 \pi \sigma^2 \right)
       </div>
     </a>
     <a class="right-next"
-       href="03_data.html"
+       href="04_getting_data.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Working with Data</p>
+        <p class="prev-next-title">Collecting data</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
