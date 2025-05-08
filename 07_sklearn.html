@@ -59,12 +59,12 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '06_sklearn';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '07_sklearn';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Pytorch" href="07_torch.html" />
-    <link rel="prev" title="Graphics" href="04_graphics.html" />
+    <link rel="next" title="Pytorch" href="08_torch.html" />
+    <link rel="prev" title="Graphics" href="06_graphics.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -186,12 +186,12 @@
 <li class="toctree-l1"><a class="reference internal" href="01_python_basics.html">How to use and install python</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="02_sc_with_numpy.html">Scientific computing with numpy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="05_sc_with_scipy.html">Scientific computing with scipy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03_data.html">Working with Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="08_getting_data.html">Collecting data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04_graphics.html">Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_sc_with_scipy.html">Scientific computing with scipy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_getting_data.html">Collecting data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_data.html">Working with Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_graphics.html">Graphics</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">SciKit Learn</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_torch.html">Pytorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_torch.html">Pytorch</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="09_digital_reporting.html">Digital reporting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="A_math_statistics.html">Appendix - Math and statistics</a></li>
@@ -267,7 +267,7 @@
       
       
       
-      <li><a href="_sources/06_sklearn.ipynb" target="_blank"
+      <li><a href="_sources/07_sklearn.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -1244,6 +1244,9 @@ Visualization:
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The training cross validation score is: 0.9911, the test cross validation score is: 0.9907.
+</pre></div>
+</div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ralfkellner/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: divide by zero encountered in matmul
   return X @ coef_ + self.intercept_
 /Users/ralfkellner/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: overflow encountered in matmul
@@ -1256,12 +1259,7 @@ Visualization:
   return X @ coef_ + self.intercept_
 /Users/ralfkellner/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: invalid value encountered in matmul
   return X @ coef_ + self.intercept_
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The training cross validation score is: 0.9911, the test cross validation score is: 0.9907.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ralfkellner/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: divide by zero encountered in matmul
+/Users/ralfkellner/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: divide by zero encountered in matmul
   return X @ coef_ + self.intercept_
 /Users/ralfkellner/Documents/Kurse/SCDP/.venv/lib/python3.13/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: overflow encountered in matmul
   return X @ coef_ + self.intercept_
@@ -1380,7 +1378,7 @@ Visualization:
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="04_graphics.html"
+       href="06_graphics.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
@@ -1389,7 +1387,7 @@ Visualization:
       </div>
     </a>
     <a class="right-next"
-       href="07_torch.html"
+       href="08_torch.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
